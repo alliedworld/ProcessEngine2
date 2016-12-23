@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessEngine", "ProcessEng
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessEngine.Persistence", "ProcessEngine.Persistence\ProcessEngine.Persistence.csproj", "{8030DADC-0110-4DDE-A176-32EF96DE9306}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessDeployer", "ProcessDeployer\ProcessDeployer.csproj", "{88370FD1-3CEC-430E-985C-47EDC1C91E97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8030DADC-0110-4DDE-A176-32EF96DE9306}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8030DADC-0110-4DDE-A176-32EF96DE9306}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8030DADC-0110-4DDE-A176-32EF96DE9306}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88370FD1-3CEC-430E-985C-47EDC1C91E97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88370FD1-3CEC-430E-985C-47EDC1C91E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88370FD1-3CEC-430E-985C-47EDC1C91E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88370FD1-3CEC-430E-985C-47EDC1C91E97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
