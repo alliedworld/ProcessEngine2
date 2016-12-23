@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FD3B54A4-4B32-4873-B5E2-03FA92E6E242}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Klaudwerk.PropertySet</RootNamespace>
+    <AssemblyName>PropertySet</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>$(SolutionDir)Build\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>$(SolutionDir)Build\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BoolSchema.cs" />
+    <Compile Include="CharSchema.cs" />
+    <Compile Include="DateTimeSchema.cs" />
+    <Compile Include="DoubleSchema.cs" />
+    <Compile Include="IntSchema.cs" />
+    <Compile Include="IPropertySchemaFactory.cs" />
+    <Compile Include="IPropertySchemaSet.cs" />
+    <Compile Include="IPropertySetCollection.cs" />
+    <Compile Include="ISchemaVisitable.cs" />
+    <Compile Include="IValueSchema.cs" />
+    <Compile Include="IValueSchemaVisitor.cs" />
+    <Compile Include="IValueSerializer.cs" />
+    <Compile Include="LongSchema.cs" />
+    <Compile Include="ObjectSchema.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertySchemaFactory.cs" />
+    <Compile Include="PropertySchemaSet.cs" />
+    <Compile Include="PropertySchemaSetBase.cs" />
+    <Compile Include="PropertySetCollection.cs" />
+    <Compile Include="PropertySetCollectionBase.cs" />
+    <Compile Include="PropertyValidationException.cs" />
+    <Compile Include="SchemaBase.cs" />
+    <Compile Include="Serialization\DefaultValueSerializer.cs" />
+    <Compile Include="Serialization\JsonPropertySerializer.cs" />
+    <Compile Include="Serialization\JsonSchemaDeserializer.cs" />
+    <Compile Include="Serialization\PropertyCollection.cs" />
+    <Compile Include="Serialization\PropertyElement.cs" />
+    <Compile Include="Serialization\PropertyValue.cs" />
+    <Compile Include="Serialization\SchemaElement.cs" />
+    <Compile Include="Serialization\SchemaJsonSerializationVisitor.cs" />
+    <Compile Include="Serialization\SerializationTypeHint.cs" />
+    <Compile Include="StringSchema.cs" />
+    <Compile Include="Test\PropertySchemaFactoryTest.cs" />
+    <Compile Include="Test\PropertySchemaSetTest.cs" />
+    <Compile Include="Test\PropertySetTests.cs" />
+    <Compile Include="Test\SchemaSerializationTest.cs" />
+    <Compile Include="Test\SchemaTests.cs" />
+    <Compile Include="Test\TestSchemaExt.cs" />
+    <Compile Include="Test\ValueSetCollectionTest.cs" />
+    <Compile Include="ValueSchemaExt.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
