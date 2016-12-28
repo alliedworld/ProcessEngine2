@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertySet", "PropertySet\PropertySet.csproj", "{FD3B54A4-4B32-4873-B5E2-03FA92E6E242}"
 EndProject
@@ -10,6 +10,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessEngine.Persistence", "ProcessEngine.Persistence\ProcessEngine.Persistence.csproj", "{8030DADC-0110-4DDE-A176-32EF96DE9306}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessDeployer", "ProcessDeployer\ProcessDeployer.csproj", "{88370FD1-3CEC-430E-985C-47EDC1C91E97}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AssemblyConfig", "AssemblyConfig", "{1D830EBD-B261-463C-A97D-B57662BF2694}"
+	ProjectSection(SolutionItems) = preProject
+		CompanyInfo.cs = CompanyInfo.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

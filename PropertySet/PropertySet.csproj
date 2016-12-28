@@ -65,6 +65,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CompanyInfo.cs">
+      <Link>Properties\CompanyInfo.cs</Link>
+    </Compile>
     <Compile Include="BoolSchema.cs" />
     <Compile Include="CharSchema.cs" />
     <Compile Include="DateTimeSchema.cs" />
