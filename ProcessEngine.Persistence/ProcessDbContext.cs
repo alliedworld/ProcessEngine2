@@ -21,8 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
   */
-using System;
-using System.ComponentModel.DataAnnotations;
+
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Common;
 using System.Data.Entity;
@@ -32,29 +31,10 @@ using System.Data.Entity.Infrastructure.Annotations;
 
 namespace KlaudWerk.ProcessEngine.Persistence
 {
-    public class AccountData
-    {
-        public Guid Id { get; set; }
-        public string SourceSystem { get; set; }
-        public string Name { get; set; }
-        public int AccountType { get; set; }
-    }
-
-    public class ProcessDefinitionAccount
-    {
-        [Key, Column(Order = 0)]
-        public Guid ProcessDefinitionId { get; set; }
-        [Key, Column(Order = 1)]
-        public int ProcessDefinitionVersion { get; set; }
-        [Key, Column(Order = 2)]
-        public Guid AccountDataId { get; set; }
-
-        public virtual ProcessDefinitionPersistence ProcessDefinition { get; set; }
-        public virtual AccountData Account { get; set; }
-    }
-
-
-
+    /// <summary>
+    /// Persistent Db Context
+    /// </summary>
+    /// <seealso cref="System.Data.Entity.DbContext" />
     public class ProcessDbContext:DbContext
     {
         #region Constructors
@@ -104,7 +84,6 @@ namespace KlaudWerk.ProcessEngine.Persistence
             modelBuilder.Entity<AccountData>().Property(c => c.AccountType).IsRequired();
 
             modelBuilder.Entity<ProcessDefinitionAccount>().ToTable("PROCESS_DEFINITION_ACCOUNT");
-
             modelBuilder.Entity<PersistentPropertyCollection>().HasKey(c => c.Id).ToTable("PROPERTIES_COLLECTIONS");
             modelBuilder.Entity<PersistentPropertyElement>().HasKey(c => c.Id).ToTable("PROPERTY_ELEMENTS");
             modelBuilder.Entity<PersistentSchemaElement>().HasKey(c => c.Id)

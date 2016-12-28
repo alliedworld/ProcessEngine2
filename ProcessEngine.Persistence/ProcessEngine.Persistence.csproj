@@ -111,7 +111,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountData.cs" />
     <Compile Include="ActionPersistence.cs" />
+    <Compile Include="ProcessDefinitionAccount.cs" />
     <Compile Include="Properties\CompanyInfo.cs" />
     <Compile Include="ManualTask\ManualTaskPersistence.cs" />
     <Compile Include="PersistentPropertyCollection.cs" />
