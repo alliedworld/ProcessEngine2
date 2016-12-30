@@ -7,10 +7,13 @@
       <sourceFolder url="file://$MODULE_DIR$/../../ProcessDeployer" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../ProcessEngine" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../ProcessEngine.Persistence" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../ProcessEngine.Persistence.Mongo" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../PropertySet" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../Build/Debug" />
       <excludeFolder url="file://$MODULE_DIR$/../../ProcessDeployer/bin" />
       <excludeFolder url="file://$MODULE_DIR$/../../ProcessDeployer/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../ProcessEngine.Persistence.Mongo/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../ProcessEngine.Persistence.Mongo/obj" />
       <excludeFolder url="file://$MODULE_DIR$/../../ProcessEngine.Persistence/bin" />
       <excludeFolder url="file://$MODULE_DIR$/../../ProcessEngine.Persistence/obj" />
       <excludeFolder url="file://$MODULE_DIR$/../../ProcessEngine/bin" />

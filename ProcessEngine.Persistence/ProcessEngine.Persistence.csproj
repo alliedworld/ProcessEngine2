@@ -111,19 +111,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountData.cs" />
     <Compile Include="ActionPersistence.cs" />
     <Compile Include="ProcessDefinitionAccount.cs" />
+    <Compile Include="ProcessDefinitionPersistence.cs" />
     <Compile Include="Properties\CompanyInfo.cs" />
     <Compile Include="ManualTask\ManualTaskPersistence.cs" />
     <Compile Include="PersistentPropertyCollection.cs" />
     <Compile Include="PersistentPropertyElement.cs" />
     <Compile Include="PersistentSchemaElement.cs" />
     <Compile Include="ProcessDbContext.cs" />
-    <Compile Include="ProcessDefinitionDigest.cs" />
     <Compile Include="ProcessDefinitionPersisnenceService.cs" />
-    <Compile Include="ProcessDefinitionPersistence.cs" />
-    <Compile Include="ProcessDefStatusEnum.cs" />
     <Compile Include="ProcessRuntimePersistence.cs" />
     <Compile Include="ProcessRuntimePersistenceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

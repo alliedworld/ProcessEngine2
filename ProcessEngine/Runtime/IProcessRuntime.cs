@@ -62,13 +62,6 @@ namespace KlaudWerk.ProcessEngine.Runtime
         IReadOnlyList<string> Errors { get; }
 
         /// <summary>
-        /// Try to compile all compilabe artifacts
-        /// </summary>
-        /// <param name="errors"></param>
-        /// <returns></returns>
-        bool TryCompile(out string[] errors);
-
-        /// <summary>
         /// Execute Single Step in the workflow
         /// </summary>
         /// <returns>

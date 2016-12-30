@@ -620,7 +620,7 @@ namespace KlaudWerk.ProcessEngine.Test
                         " PropertySet.Set(\"v_bool\",(bool?)true);"+
                         " PropertySet.Set(\"v_int\",(int?)455);"+
                         " PropertySet.Set(\"v_string\",\"value\");"+
-                        " return 1;").Done().Done()
+                        " return 1;").AddReferences("PropertySet, Version=1.0.0.0").Done().Done()
                 .End("e_1").SetName("end").Done()
                 .Link().From("s_1").To("e_1").Done()
                 .Build();

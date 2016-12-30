@@ -24,6 +24,7 @@ THE SOFTWARE.
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Klaudwerk.PropertySet;
 using KlaudWerk.ProcessEngine.Definition;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
@@ -61,6 +62,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
                 scriptOptions = scriptOptions.WithImports(_sd.Imports);
             if(_sd.References!=null && _sd.References.Length>0)
                 scriptOptions = scriptOptions.WithReferences(_sd.References);
+            scriptOptions=scriptOptions.WithReferences(typeof(IPropertySetCollection).Assembly);
             _script=CSharpScript.Create<int>(code: _sd.Script, options: scriptOptions,
                 globalsType: typeof(IProcessRuntimeEnvironment));
             var diags = _script.Compile();

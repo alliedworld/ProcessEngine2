@@ -308,7 +308,7 @@ namespace KlaudWerk.ProcessEngine.Test
             var factory = new ProcessBuilderFactory();
             var builder = factory.CreateProcess(id: "p_001", name: "Renewal", description: "Policy Renewal");
             builder.Start("s_1").Done().End("e_1");
-            builder.Link().From("s_1").To("e_1");
+            builder.Link().From("s_1").To("e_1").Done();
             Assert.AreEqual(2, builder.Steps.Count);
             Assert.AreEqual(1, builder.Links.Count);
             builder.Steps[0].Item1.Remove();

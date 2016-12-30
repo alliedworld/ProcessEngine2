@@ -1,14 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f596745c-2834-4dbe-abd7-4afbb730fe42" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.ProcessEngine/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.ProcessEngine/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.ProcessEngine/riderModule.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ProcessEngine.Persistence/AccountData.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionAccount.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDbContext.cs" afterPath="$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDbContext.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/MongoProcessDefinitionPersistenceService.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/ProcessDefinitionPersistence.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/ProcessEngine.Persistence.Mongo.csproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/Test/TestProcessDefinitionPersistence.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/app.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/packages.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ProcessEngine/Persistence/IProcessDefinitionPersisnenceService.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ProcessEngine/Persistence/ProcessDefinitionPersistenceBase.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ProcessEngine/Persistence/Test/TestProcessDefinitionPersistenceBase.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.idea.ProcessEngine/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/.idea.ProcessEngine/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.idea.ProcessEngine/riderModule.iml" afterPath="$PROJECT_DIR$/.idea/.idea.ProcessEngine/riderModule.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionPersisnenceService.cs" afterPath="$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionPersisnenceService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionPersistence.cs" afterPath="$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionPersistence.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProcessEngine.Persistence/ProcessEngine.Persistence.csproj" afterPath="$PROJECT_DIR$/ProcessEngine.Persistence/ProcessEngine.Persistence.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProcessEngine.Persistence/Test/TestProcessDefinitionPersistence.cs" afterPath="$PROJECT_DIR$/ProcessEngine.Persistence/Test/TestProcessDefinitionPersistence.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProcessEngine.sln" afterPath="$PROJECT_DIR$/ProcessEngine.sln" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProcessEngine/ProcessEngine.csproj" afterPath="$PROJECT_DIR$/ProcessEngine/ProcessEngine.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProcessEngine/Runtime/CsScriptRuntime.cs" afterPath="$PROJECT_DIR$/ProcessEngine/Runtime/CsScriptRuntime.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProcessEngine/Runtime/IProcessRuntime.cs" afterPath="$PROJECT_DIR$/ProcessEngine/Runtime/IProcessRuntime.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProcessEngine/Test/ProcessBuilderTests.cs" afterPath="$PROJECT_DIR$/ProcessEngine/Test/ProcessBuilderTests.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProcessEngine/Test/ProcessBuldRuntimeTest.cs" afterPath="$PROJECT_DIR$/ProcessEngine/Test/ProcessBuldRuntimeTest.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ProcessEngine.Persistence/AccountData.cs" afterPath="$PROJECT_DIR$/ProcessEngine/Persistence/AccountData.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefStatusEnum.cs" afterPath="$PROJECT_DIR$/ProcessEngine/Persistence/ProcessDefStatusEnum.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionDigest.cs" afterPath="$PROJECT_DIR$/ProcessEngine/Persistence/ProcessDefinitionDigest.cs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,118 +39,205 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="PropertySetPersistenceService.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/PropertySetPersistenceService.cs">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ProcessBuldRuntimeTest.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProcessEngine/Test/ProcessBuldRuntimeTest.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="495">
+              <caret line="630" column="0" lean-forward="false" selection-start-line="630" selection-start-column="0" selection-end-line="630" selection-end-column="0" />
               <folding>
-                <marker date="1482942328305" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-                <marker date="1482942328305" expanded="true" signature="1097:1272" ph="..." />
-                <marker date="1482942328305" expanded="true" signature="1319:9100" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="1368:9098" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="1639:2460" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="2471:2634" ph="/// Store the collection ... " />
-                <marker date="1482942328305" expanded="true" signature="2723:3181" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="3009:3171" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="3192:3399" ph="/// Save or Update Collection ... " />
-                <marker date="1482942328305" expanded="true" signature="3533:3865" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="3874:4101" ph="/// Find and re-load the collection ... " />
-                <marker date="1482942328305" expanded="true" signature="4173:4618" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="4249:4608" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="4629:4799" ph="/// Deserialize schemas and collection elements ... " />
-                <marker date="1482942328305" expanded="true" signature="4909:6497" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="5203:6458" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="5707:5820" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="5905:6382" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="6728:7679" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="6902:7198" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="7034:7182" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="7215:7619" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="7886:9091" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="8091:8630" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="8336:8575" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="8680:9081" ph="{...}" />
-                <marker date="1482942328305" expanded="true" signature="8793:8841" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+                <marker date="1483074436643" expanded="true" signature="1097:1385" ph="..." />
+                <marker date="1483074436643" expanded="true" signature="1425:48717" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="1485:48715" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="1556:3915" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="3984:4777" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="4865:6034" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="6112:7559" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="7628:8214" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="8292:8920" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="8835:8908" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="8987:9958" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="10042:11166" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="11248:12517" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="12605:14084" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="13344:13587" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="14165:15724" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="14860:15103" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="15805:17452" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="16500:16742" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="17518:18316" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="18394:19189" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="19256:20096" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="20106:28311" ph="Step Handler Tests" />
+                <marker date="1483074436643" expanded="true" signature="20203:21171" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="21247:22274" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="22344:23313" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="23389:24463" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="24534:25794" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="25881:27002" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="27087:28292" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="28321:47735" ph="Process Runtime Tests" />
+                <marker date="1483074436643" expanded="true" signature="28436:30363" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="29854:29944" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="30440:32850" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="32912:35062" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="35139:37351" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="37417:39371" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="39248:39359" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="39432:40617" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="40682:42204" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="42280:44744" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="44825:47714" ph="{...}" />
+                <marker date="1483074436643" expanded="true" signature="47794:48709" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProcessDbContext.cs" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDbContext.cs">
+      <file leaf-file-name="ICompilable.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProcessEngine/ICompilable.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="848">
-              <caret line="74" column="70" lean-forward="true" selection-start-line="74" selection-start-column="70" selection-end-line="74" selection-end-column="70" />
+            <state relative-caret-position="464">
+              <caret line="29" column="29" lean-forward="false" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
               <folding>
-                <marker date="1482962226215" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-                <marker date="1482962226215" expanded="true" signature="1098:1328" ph="..." />
-                <marker date="1482962226215" expanded="true" signature="1375:5454" ph="{...}" />
-                <marker date="1482962226215" expanded="true" signature="1382:1500" ph="/// Persistent Db Context ... " />
-                <marker date="1482962226215" expanded="true" signature="1544:5452" ph="{...}" />
-                <marker date="1482962226215" expanded="true" signature="1559:2528" ph="Constructors" />
-                <marker date="1482962226215" expanded="true" signature="1613:1633" ph="{...}" />
-                <marker date="1482962226215" expanded="true" signature="1706:1726" ph="{...}" />
-                <marker date="1482962226215" expanded="true" signature="1821:1841" ph="{...}" />
-                <marker date="1482962226215" expanded="true" signature="1966:1986" ph="{...}" />
-                <marker date="1482962226215" expanded="true" signature="2130:2150" ph="{...}" />
-                <marker date="1482962226215" expanded="true" signature="2324:2344" ph="{...}" />
-                <marker date="1482962226215" expanded="true" signature="2489:2509" ph="{...}" />
-                <marker date="1482962226215" expanded="true" signature="3121:5446" ph="{...}" />
+                <marker date="1482942030152" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+                <marker date="1482942030152" expanded="true" signature="1125:1443" ph="{...}" />
+                <marker date="1482942030152" expanded="true" signature="1132:1193" ph="/// Compilable Artifacts ... " />
+                <marker date="1482942030152" expanded="true" signature="1226:1441" ph="{...}" />
+                <marker date="1482942030152" expanded="true" signature="1241:1389" ph="/// Try to compile the script ... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProcessDefinitionAccount.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionAccount.cs">
+      <file leaf-file-name="StepRuntime.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProcessEngine/Runtime/StepRuntime.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="442">
+              <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
               <folding>
-                <marker date="1482962207403" expanded="true" signature="6:110" ph="..." />
-                <marker date="1482962207403" expanded="true" signature="157:1565" ph="{...}" />
-                <marker date="1482962207403" expanded="true" signature="164:227" ph="/// Persistence Link class ... " />
-                <marker date="1482962207403" expanded="true" signature="269:1563" ph="{...}" />
-                <marker date="1482962207403" expanded="true" signature="284:468" ph="/// Gets or sets the process definition identifier. ... " />
-                <marker date="1482962207403" expanded="true" signature="564:742" ph="/// Gets or sets the process definition version. ... " />
-                <marker date="1482962207403" expanded="true" signature="842:1014" ph="/// Gets or sets the account data identifier. ... " />
-                <marker date="1482962207403" expanded="true" signature="1105:1267" ph="/// Gets or sets the process definition. ... " />
-                <marker date="1482962207403" expanded="true" signature="1360:1500" ph="/// Gets or sets the account. ... " />
+                <marker date="1482942329013" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+                <marker date="1482942329013" expanded="true" signature="1097:1229" ph="..." />
+                <marker date="1482942329013" expanded="true" signature="1272:11336" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="1279:1332" ph="/// Step Runtime ... " />
+                <marker date="1482942329013" expanded="true" signature="1373:11334" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="1819:1888" ph="/// &quot;Compiled&quot; indicator ... " />
+                <marker date="1482942329013" expanded="true" signature="1950:2053" ph="/// Constructor ... " />
+                <marker date="1482942329013" expanded="true" signature="2104:2699" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="2204:2689" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="2708:2854" ph="/// Try to compile the step ... " />
+                <marker date="1482942329013" expanded="true" signature="2906:3966" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="3007:3118" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="3160:3409" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="3450:3693" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="3976:4131" ph="/// Validating Step conditions on entry ... " />
+                <marker date="1482942329013" expanded="true" signature="4228:4399" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="4408:4560" ph="/// Validate Step conditions on exit ... " />
+                <marker date="1482942329013" expanded="true" signature="4656:4824" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="4834:4994" ph="/// Executes the step asynchrnously. ... " />
+                <marker date="1482942329013" expanded="true" signature="5082:5155" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="5165:7276" ph="Private Methods" />
+                <marker date="1482942329013" expanded="true" signature="5197:5453" ph="/// Validates the on enter on exit criteria. ... " />
+                <marker date="1482942329013" expanded="true" signature="5626:6260" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="5919:6005" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="6270:6537" ph="/// Tries to validate required variables. ... " />
+                <marker date="1482942329013" expanded="true" signature="6671:7257" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="6773:7166" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="6807:7025" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="7069:7152" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="7286:11327" ph="private handlers implementations" />
+                <marker date="1482942329013" expanded="true" signature="7335:7461" ph="/// IOC service handler ... " />
+                <marker date="1482942329013" expanded="true" signature="7516:8061" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="7629:7687" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="7780:7894" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="7951:8051" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="8070:8197" ph="/// Task Service Handler ... " />
+                <marker date="1482942329013" expanded="true" signature="8253:8755" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="8358:8416" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="8508:8589" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="8645:8745" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="8764:8892" ph="/// Load Assembly Handler ... " />
+                <marker date="1482942329013" expanded="true" signature="8942:9488" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="9043:9101" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="9193:9322" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="9378:9478" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="9497:9617" ph="/// Empty handler ... " />
+                <marker date="1482942329013" expanded="true" signature="9667:10038" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="9769:9872" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="9928:10028" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="10047:10110" ph="/// Script Handler ... " />
+                <marker date="1482942329013" expanded="true" signature="10161:11308" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="10276:10385" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="10478:11158" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="10512:10783" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="10829:10973" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="11010:11144" ph="{...}" />
+                <marker date="1482942329013" expanded="true" signature="11215:11298" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountData.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/AccountData.cs">
+      <file leaf-file-name="CsScriptRuntime.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProcessEngine/Runtime/CsScriptRuntime.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="303">
+              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
               <folding>
-                <marker date="1482962195440" expanded="true" signature="60:1086" ph="{...}" />
-                <marker date="1482962195440" expanded="true" signature="67:146" ph="/// Class that represents security account ... " />
-                <marker date="1482962195440" expanded="true" signature="175:1084" ph="{...}" />
-                <marker date="1482962195440" expanded="true" signature="190:336" ph="/// Gets or sets the identifier. ... " />
-                <marker date="1482962195440" expanded="true" signature="382:534" ph="/// Gets or sets the source system. ... " />
-                <marker date="1482962195440" expanded="true" signature="592:726" ph="/// Gets or sets the name. ... " />
-                <marker date="1482962195440" expanded="true" signature="776:1033" ph="/// Gets or sets the type of the account. ... " />
+                <marker date="1483074981705" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+                <marker date="1483074981705" expanded="true" signature="1097:1311" ph="..." />
+                <marker date="1483074981705" expanded="true" signature="1354:3608" ph="{...}" />
+                <marker date="1483074981705" expanded="true" signature="1361:1427" ph="/// Process CS Script runtime ... " />
+                <marker date="1483074981705" expanded="true" signature="1460:3606" ph="{...}" />
+                <marker date="1483074981705" expanded="true" signature="1559:1703" ph="/// Constructor ... " />
+                <marker date="1483074981705" expanded="true" signature="1755:1797" ph="{...}" />
+                <marker date="1483074981705" expanded="true" signature="1807:1955" ph="/// Try to compile the script ... " />
+                <marker date="1483074981705" expanded="true" signature="2007:2931" ph="{...}" />
+                <marker date="1483074981705" expanded="true" signature="2940:3141" ph="/// Execute script Async ... " />
+                <marker date="1483074981705" expanded="true" signature="3212:3600" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProcessDefinitionDigest.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionDigest.cs">
+      <file leaf-file-name="MongoProcessDefinitionPersistenceService.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/MongoProcessDefinitionPersistenceService.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="672">
+              <caret line="42" column="100" lean-forward="false" selection-start-line="42" selection-start-column="100" selection-end-line="42" selection-end-column="100" />
               <folding>
-                <marker date="1482942328501" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-                <marker date="1482942328501" expanded="true" signature="1151:1596" ph="{...}" />
-                <marker date="1482942328501" expanded="true" signature="1158:1227" ph="/// Digest of Process Definition ... " />
-                <marker date="1482942328501" expanded="true" signature="1268:1594" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="6:258" ph="..." />
+                <marker date="1483075476506" expanded="true" signature="311:8695" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="408:8693" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="627:745" ph="/// Constructor ... " />
+                <marker date="1483075476506" expanded="true" signature="826:977" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="1080:1519" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="1212:1498" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="1622:2274" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="1917:2236" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="2284:2599" ph="/// Ceate process definition ... " />
+                <marker date="1483075476506" expanded="true" signature="2729:3920" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="2997:3158" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="3404:3870" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="3930:4214" ph="/// update status ... " />
+                <marker date="1483075476506" expanded="true" signature="4295:4852" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="4862:5178" ph="/// Implement Fidnd method ... " />
+                <marker date="1483075476506" expanded="true" signature="5335:5913" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="5618:5872" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="5923:6243" ph="/// Update the workflow. The only things that can be updated are name and description ... " />
+                <marker date="1483075476506" expanded="true" signature="6341:7432" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="6817:6943" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="6977:7233" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="7442:7557" ph="/// Create account records ... " />
+                <marker date="1483075476506" expanded="true" signature="7623:7643" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="7698:7793" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="7853:7954" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="8040:8687" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="8206:8407" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="8282:8393" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="8455:8677" ph="{...}" />
+                <marker date="1483075476506" expanded="true" signature="8538:8663" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -142,151 +246,187 @@
       <file leaf-file-name="ProcessDefinitionPersisnenceService.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionPersisnenceService.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="714">
+              <caret line="63" column="100" lean-forward="false" selection-start-line="63" selection-start-column="100" selection-end-line="63" selection-end-column="100" />
               <folding>
-                <marker date="1482942328470" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-                <marker date="1482942328470" expanded="true" signature="1097:1261" ph="..." />
-                <marker date="1482942328470" expanded="true" signature="1308:9835" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="1315:1422" ph="/// The service that saves, list, remove and load Workflow Definitions ... " />
-                <marker date="1482942328470" expanded="true" signature="1475:9833" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="1490:1598" ph="/// List all Available workflow ... " />
-                <marker date="1482942328470" expanded="true" signature="1671:2334" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="1734:2324" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="1879:2259" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="2343:2451" ph="/// List of all active workflow ... " />
-                <marker date="1482942328470" expanded="true" signature="2524:3307" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="2587:3297" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="2831:3211" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="3317:3610" ph="/// Save process definition ... " />
-                <marker date="1482942328470" expanded="true" signature="3763:4710" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="4031:4506" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="4560:4700" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="4858:5515" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="4912:5503" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="5097:5373" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="5526:5718" ph="/// Set or update status ... " />
-                <marker date="1482942328470" expanded="true" signature="5799:6212" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="5862:6202" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="6222:6559" ph="/// Load and deserialize the process definition ... " />
-                <marker date="1482942328470" expanded="true" signature="6728:7624" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="6791:7614" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="6928:7148" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="7397:7559" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="7634:7817" ph="/// Find the definition ... " />
-                <marker date="1482942328470" expanded="true" signature="7964:8059" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="8068:8332" ph="/// Update Process Definition ... " />
-                <marker date="1482942328470" expanded="true" signature="8426:8822" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="8489:8812" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="8832:8956" ph="/// Create Security Account Records ... " />
-                <marker date="1482942328470" expanded="true" signature="9022:9225" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="9085:9215" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="9235:9347" ph="/// Save Runtime Process ... " />
-                <marker date="1482942328470" expanded="true" signature="9410:9827" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="9473:9817" ph="{...}" />
-                <marker date="1482942328470" expanded="true" signature="9602:9803" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+                <marker date="1483075353433" expanded="true" signature="1097:1261" ph="..." />
+                <marker date="1483075353433" expanded="true" signature="1308:9936" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="1315:1422" ph="/// The service that saves, list, remove and load Workflow Definitions ... " />
+                <marker date="1483075353433" expanded="true" signature="1514:9934" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="1529:1637" ph="/// List all Available workflow ... " />
+                <marker date="1483075353433" expanded="true" signature="1739:2402" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="1802:2392" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="1947:2327" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="2411:2519" ph="/// List of all active workflow ... " />
+                <marker date="1483075353433" expanded="true" signature="2621:3404" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="2684:3394" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="2928:3308" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="3414:3707" ph="/// Save process definition ... " />
+                <marker date="1483075353433" expanded="true" signature="3860:4807" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="4128:4603" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="4657:4797" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="4955:5612" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="5009:5600" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="5194:5470" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="5623:5815" ph="/// Set or update status ... " />
+                <marker date="1483075353433" expanded="true" signature="5896:6309" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="5959:6299" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="6319:6656" ph="/// Load and deserialize the process definition ... " />
+                <marker date="1483075353433" expanded="true" signature="6825:7721" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="6888:7711" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="7025:7245" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="7494:7656" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="7731:7914" ph="/// Find the definition ... " />
+                <marker date="1483075353433" expanded="true" signature="8061:8156" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="8165:8429" ph="/// Update Process Definition ... " />
+                <marker date="1483075353433" expanded="true" signature="8527:8923" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="8590:8913" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="8933:9057" ph="/// Create Security Account Records ... " />
+                <marker date="1483075353433" expanded="true" signature="9123:9326" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="9186:9316" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="9336:9448" ph="/// Save Runtime Process ... " />
+                <marker date="1483075353433" expanded="true" signature="9511:9928" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="9574:9918" ph="{...}" />
+                <marker date="1483075353433" expanded="true" signature="9703:9904" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProcessDefinitionPersistence.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionPersistence.cs">
+      <file leaf-file-name="IProcessDefinitionPersisnenceService.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProcessEngine/Persistence/IProcessDefinitionPersisnenceService.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-81">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="144">
+              <caret line="9" column="48" lean-forward="false" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
               <folding>
-                <marker date="1482942328442" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-                <marker date="1482942328442" expanded="true" signature="1097:1138" ph="..." />
-                <marker date="1482942328442" expanded="true" signature="1185:2534" ph="{...}" />
-                <marker date="1482942328442" expanded="true" signature="1192:1262" ph="/// Persistent Process Definition ... " />
-                <marker date="1482942328442" expanded="true" signature="1308:2532" ph="{...}" />
-                <marker date="1482942328442" expanded="true" signature="1323:1374" ph="/// Id ... " />
-                <marker date="1482942328442" expanded="true" signature="1420:1476" ph="/// Version ... " />
-                <marker date="1482942328442" expanded="true" signature="1526:1598" ph="/// Process Definition Name ... " />
-                <marker date="1482942328442" expanded="true" signature="1648:1726" ph="/// Process Defnition Description ... " />
-                <marker date="1482942328442" expanded="true" signature="1783:1838" ph="/// Status ... " />
-                <marker date="1482942328442" expanded="true" signature="1887:1957" ph="/// MD5 of the definition ... " />
-                <marker date="1482942328442" expanded="true" signature="2006:2075" ph="/// Serialized JSON body ... " />
-                <marker date="1482942328442" expanded="true" signature="2142:2204" ph="/// Last Modified ... " />
-                <marker date="1482942328442" expanded="true" signature="2264:2320" ph="/// Flow Id ... " />
-                <marker date="1482942328442" expanded="true" signature="2372:2442" ph="/// List of accounts that ... " />
+                <marker date="1483075353469" expanded="true" signature="6:89" ph="..." />
+                <marker date="1483075353469" expanded="true" signature="136:2533" ph="{...}" />
+                <marker date="1483075353469" expanded="true" signature="143:236" ph="/// Service Interface for Process Definition Persistence ... " />
+                <marker date="1483075353469" expanded="true" signature="294:2531" ph="{...}" />
+                <marker date="1483075353469" expanded="true" signature="309:417" ph="/// List all Available workflow ... " />
+                <marker date="1483075353469" expanded="true" signature="523:631" ph="/// List of all active workflow ... " />
+                <marker date="1483075353469" expanded="true" signature="737:1030" ph="/// Save process definition ... " />
+                <marker date="1483075353469" expanded="true" signature="1187:1379" ph="/// Set or update status ... " />
+                <marker date="1483075353469" expanded="true" signature="1464:1801" ph="/// Load and deserialize the process definition ... " />
+                <marker date="1483075353469" expanded="true" signature="1975:2239" ph="/// Update Process Definition ... " />
+                <marker date="1483075353469" expanded="true" signature="2341:2465" ph="/// Create Security Account Records ... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProcessDefStatusEnum.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefStatusEnum.cs">
+      <file leaf-file-name="AssemblyInfo.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProcessEngine/Properties/AssemblyInfo.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1482942328411" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-                <marker date="1482942328411" expanded="true" signature="1136:1469" ph="{...}" />
-                <marker date="1482942328411" expanded="true" signature="1143:1212" ph="/// Status of Process Definition ... " />
-                <marker date="1482942328411" expanded="true" signature="1249:1467" ph="{...}" />
-                <marker date="1482942328411" expanded="true" signature="1264:1341" ph="/// The deployment is not active ... " />
-                <marker date="1482942328411" expanded="true" signature="1371:1444" ph="/// The deployment is active ... " />
+                <marker date="1482942671402" expanded="true" signature="6:101" ph="..." />
+                <marker date="1482942671402" expanded="true" signature="103:290" ph="/* General Information about an assembly is controlled through the following ... */" />
+                <marker date="1482942671402" expanded="true" signature="409:619" ph="/* Setting ComVisible to false makes the types in this assembly not visible ... */" />
+                <marker date="1482942671402" expanded="true" signature="794:1121" ph="/* Version information for an assembly consists of the following four values: ... */" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProcessRuntimePersistence.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessRuntimePersistence.cs">
+      <file leaf-file-name="AssemblyInfo.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PropertySet/Properties/AssemblyInfo.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1482942328381" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-                <marker date="1482942328381" expanded="true" signature="1097:1138" ph="..." />
-                <marker date="1482942328381" expanded="true" signature="1185:2407" ph="{...}" />
-                <marker date="1482942328381" expanded="true" signature="1192:1266" ph="/// Process Runtime Persistence Class ... " />
-                <marker date="1482942328381" expanded="true" signature="1309:2405" ph="{...}" />
-                <marker date="1482942328381" expanded="true" signature="1324:1383" ph="/// Process Id ... " />
-                <marker date="1482942328381" expanded="true" signature="1429:1496" ph="/// Last Modified Date ... " />
-                <marker date="1482942328381" expanded="true" signature="1555:1618" ph="/// Process Status ... " />
-                <marker date="1482942328381" expanded="true" signature="1667:1745" ph="/// Associated Process Swdinirion ... " />
-                <marker date="1482942328381" expanded="true" signature="1838:1916" ph="/// Associated Propery Collection ... " />
-                <marker date="1482942328381" expanded="true" signature="2010:2097" ph="/// Id of Suspended Step. Can contain Null ... " />
-                <marker date="1482942328381" expanded="true" signature="2158:2222" ph="/// Id of Next Step ... " />
-                <marker date="1482942328381" expanded="true" signature="2278:2341" ph="/// List of Errors ... " />
+                <marker date="1482942869220" expanded="true" signature="6:101" ph="..." />
+                <marker date="1482942869220" expanded="true" signature="103:290" ph="/* General Information about an assembly is controlled through the following ... */" />
+                <marker date="1482942869220" expanded="true" signature="407:617" ph="/* Setting ComVisible to false makes the types in this assembly not visible ... */" />
+                <marker date="1482942869220" expanded="true" signature="792:1119" ph="/* Version information for an assembly consists of the following four values: ... */" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProcessRuntimePersistenceService.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessRuntimePersistenceService.cs">
+      <file leaf-file-name="ProcessRuntime.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProcessEngine/Runtime/ProcessRuntime.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-144">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="362">
+              <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
               <folding>
-                <marker date="1482942328346" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-                <marker date="1482942328346" expanded="true" signature="1097:1290" ph="..." />
-                <marker date="1482942328346" expanded="true" signature="1337:8328" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="1411:8326" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="1549:1817" ph="/// Create and persist runtime processor ... " />
-                <marker date="1482942328346" expanded="true" signature="1921:3285" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="2191:3208" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="2772:3120" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="3382:4062" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="3445:4052" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="3586:3717" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="4072:4358" ph="/// Unfreeze the process ... " />
-                <marker date="1482942328346" expanded="true" signature="4553:5601" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="4704:5566" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="5216:5446" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="5742:5811" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="5954:6744" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="6017:6733" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="6158:6280" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="6814:8320" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="7493:7609" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="7666:7747" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="7859:8037" ph="{...}" />
-                <marker date="1482942328346" expanded="true" signature="8134:8310" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+                <marker date="1482942329921" expanded="true" signature="1097:1193" ph="..." />
+                <marker date="1482942329921" expanded="true" signature="1328:17857" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="1335:1576" ph="/// Every instance of Process runtime is single-threaded object ... " />
+                <marker date="1482942329921" expanded="true" signature="1653:17855" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="1973:2266" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="2544:2752" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="2996:3055" ph="/// Process Id ... " />
+                <marker date="1482942329921" expanded="true" signature="3096:3158" ph="/// Process State ... " />
+                <marker date="1482942329921" expanded="true" signature="3227:3305" ph="/// Process was suspended in step ... " />
+                <marker date="1482942329921" expanded="true" signature="3379:3461" ph="/// Last Executed Step in the process ... " />
+                <marker date="1482942329921" expanded="true" signature="3536:3612" ph="/// Start Steps in the workflow ... " />
+                <marker date="1482942329921" expanded="true" signature="3725:3788" ph="/// List of errors ... " />
+                <marker date="1482942329921" expanded="true" signature="3853:4100" ph="/// Process Runtime Constructor ... " />
+                <marker date="1482942329921" expanded="true" signature="4253:4415" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="4425:4698" ph="/// Constructor ... " />
+                <marker date="1482942329921" expanded="true" signature="4912:5102" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="5145:5306" ph="/// Try to compile all compilabe artifacts ... " />
+                <marker date="1482942329921" expanded="true" signature="5358:5763" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="5522:5678" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="5772:6136" ph="/// Execute Single Step in the workflow ... " />
+                <marker date="1482942329921" expanded="true" signature="6249:6698" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="6394:6530" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="6586:6686" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="6710:6881" ph="/// Continue the process execution from Suspended state ... " />
+                <marker date="1482942329921" expanded="true" signature="6981:7303" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="7044:7230" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="7415:7682" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="7692:7865" ph="/// On Execute step ... " />
+                <marker date="1482942329921" expanded="true" signature="7985:9236" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="8101:8368" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="8672:8870" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="8886:9146" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="8964:9130" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="9166:9226" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="9246:9320" ph="/// After Execute Hook Method ... " />
+                <marker date="1482942329921" expanded="true" signature="9366:9386" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="9396:9471" ph="/// Before Execute hook method ... " />
+                <marker date="1482942329921" expanded="true" signature="9518:9567" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="9577:12355" ph="Status Actions" />
+                <marker date="1482942329921" expanded="true" signature="9608:9764" ph="/// OnStart Action ensures that the step is the start step ... " />
+                <marker date="1482942329921" expanded="true" signature="9868:10329" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="10055:10216" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="10339:10545" ph="/// OnReady ensures that passed step has links from previously executed step ... " />
+                <marker date="1482942329921" expanded="true" signature="10649:10900" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="10910:11103" ph="/// Execution of Completed workflow doesnt' perform any actions ... " />
+                <marker date="1482942329921" expanded="true" signature="11211:11407" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="11417:11589" ph="/// Execution of Failed workflow does not  ... " />
+                <marker date="1482942329921" expanded="true" signature="11694:11891" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="11900:12064" ph="/// Execution from suspended state ... " />
+                <marker date="1482942329921" expanded="true" signature="12172:12336" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="12364:13460" ph="Post Status Actions" />
+                <marker date="1482942329921" expanded="true" signature="12485:12577" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="12675:13047" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="13142:13440" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="13469:13683" ph="/// Step Execution Read moves the workflow to its next step. ... " />
+                <marker date="1482942329921" expanded="true" signature="13813:14972" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="13957:14699" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="14241:14502" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="14523:14685" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="14982:15133" ph="/// The flow is suspended; ... " />
+                <marker date="1482942329921" expanded="true" signature="15201:15361" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="15435:15495" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="15568:15628" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="15725:15829" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="15839:16085" ph="/// Try to get next step to continue execution ... " />
+                <marker date="1482942329921" expanded="true" signature="16197:17245" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="16414:16564" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="16619:16919" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="16974:17198" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="17035:17184" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="17255:17391" ph="/// Equality by Id ... " />
+                <marker date="1482942329921" expanded="true" signature="17440:17512" ph="{...}" />
+                <marker date="1482942329921" expanded="true" signature="17521:17849" ph="Private Classes" />
+                <marker date="1482942329921" expanded="true" signature="17584:17830" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -301,14 +441,34 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDbContext.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine.Persistence/IProcessDefinitionPersisnenceService.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine/Persistence/ProcessDefinitionPersistence.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionPersistence.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/package.config" />
+        <option value="$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/app.config" />
+        <option value="$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/ProcessEngine.Persistence.Mongo.csproj" />
+        <option value="$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/packages.config" />
+        <option value="$PROJECT_DIR$/ProcessEngine/Persistence/ProcessDefinitionPersistenceBase.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/ProcessDefinitionPersistence.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine.Persistence/Test/TestProcessDefinitionPersistenceBase.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine/Runtime/IProcessRuntime.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine.Persistence/Test/TestProcessDefinitionPersistence.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine/Persistence/Test/TestProcessDefinitionPersistenceBase.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/Test/TestProcessDefinitionPersistence.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine/Test/ProcessBuilderTests.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine/Test/ProcessBuldRuntimeTest.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine/Runtime/CsScriptRuntime.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine/Persistence/IProcessDefinitionPersisnenceService.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionPersisnenceService.cs" />
+        <option value="$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/MongoProcessDefinitionPersistenceService.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="261" />
-    <option name="y" value="128" />
-    <option name="width" value="1786" />
-    <option name="height" value="1137" />
+    <option name="x" value="148" />
+    <option name="y" value="17" />
+    <option name="width" value="2218" />
+    <option name="height" value="1343" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -336,11 +496,7 @@
               <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ProcessEngine (4 projects)" />
-              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PropertySet" />
+              <option name="myItemId" value="ProcessEngine (5 projects)" />
               <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
             </PATH_ELEMENT>
           </PATH>
@@ -350,11 +506,11 @@
               <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ProcessEngine (4 projects)" />
+              <option name="myItemId" value="ProcessEngine (5 projects)" />
               <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ProcessEngine.Persistence" />
+              <option name="myItemId" value="ProcessEngine.Persistence.Mongo" />
               <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
             </PATH_ELEMENT>
           </PATH>
@@ -364,7 +520,29 @@
               <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ProcessEngine (4 projects)" />
+              <option name="myItemId" value="ProcessEngine (5 projects)" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProcessEngine.Persistence.Mongo" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Test" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProcessEngine (5 projects)" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProcessDeployer" />
               <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
             </PATH_ELEMENT>
           </PATH>
@@ -373,6 +551,9 @@
         <option name="show-all-items" value="false" />
       </pane>
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="IPSCo&#9;null&#9;null" />
   </component>
   <component name="RunManager" selected=".NET Project.Default">
     <configuration default="true" type="DotNetProject" factoryName=".NET Project">
@@ -406,6 +587,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f596745c-2834-4dbe-abd7-4afbb730fe42" name="Default" comment="" />
@@ -414,11 +598,12 @@
       <option name="presentableId" value="Default" />
       <updated>1482962119626</updated>
       <workItem from="1482962122204" duration="558000" />
+      <workItem from="1483041775716" duration="16924000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="558000" />
+    <option name="totallyTimeSpent" value="17482000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -430,40 +615,512 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="261" y="128" width="1786" height="1137" extended-state="0" />
-    <editor active="false" />
+    <frame x="148" y="17" width="2218" height="1343" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Change Signature" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1951631" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Errors in solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="UnitTesting" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Errors in solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UnitTesting" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29836512" sideWeight="0.49824715" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3998378" sideWeight="0.50175285" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Change Signature" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17302452" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32927817" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32927817" sideWeight="0.49824715" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ProcessEngine/Test/ProcessBuilderTests.cs</url>
+          <line>307</line>
+          <properties startOffset="11982" endOffset="12024" documentPath="$PROJECT_DIR$/ProcessEngine/Test/ProcessBuilderTests.cs" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ProcessEngine/Test/ProcessBuldRuntimeTest.cs</url>
+          <line>630</line>
+          <properties startOffset="32180" endOffset="32233" documentPath="$PROJECT_DIR$/ProcessEngine/Test/ProcessBuldRuntimeTest.cs" />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ProcessEngine/Runtime/ProcessRuntime.cs</url>
+          <line>137</line>
+          <properties startOffset="5623" endOffset="5623" documentPath="$PROJECT_DIR$/ProcessEngine/Runtime/ProcessRuntime.cs" />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="6" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/PropertySetPersistenceService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1482942328305" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482942328305" expanded="true" signature="1097:1272" ph="..." />
+            <marker date="1482942328305" expanded="true" signature="1368:9098" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="1639:2460" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="2471:2634" ph="/// Store the collection ... " />
+            <marker date="1482942328305" expanded="true" signature="2723:3181" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="3009:3171" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="3192:3399" ph="/// Save or Update Collection ... " />
+            <marker date="1482942328305" expanded="true" signature="3533:3865" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="3874:4101" ph="/// Find and re-load the collection ... " />
+            <marker date="1482942328305" expanded="true" signature="4173:4618" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="4249:4608" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="4629:4799" ph="/// Deserialize schemas and collection elements ... " />
+            <marker date="1482942328305" expanded="true" signature="4909:6497" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="5203:6458" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="5707:5820" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="5905:6382" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="6728:7679" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="6902:7198" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="7034:7182" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="7215:7619" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="7886:9091" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="8091:8630" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="8336:8575" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="8680:9081" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="8793:8841" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDbContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1482962226215" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482962226215" expanded="true" signature="1098:1328" ph="..." />
+            <marker date="1482962226215" expanded="true" signature="1382:1500" ph="/// Persistent Db Context ... " />
+            <marker date="1482962226215" expanded="true" signature="1544:5452" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="1559:2528" ph="Constructors" />
+            <marker date="1482962226215" expanded="true" signature="1613:1633" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="1706:1726" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="1821:1841" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="1966:1986" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="2130:2150" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="2324:2344" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="2489:2509" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="3121:5446" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionAccount.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1483041778682" expanded="true" signature="6:110" ph="..." />
+            <marker date="1483041778682" expanded="true" signature="157:1565" ph="{...}" />
+            <marker date="1483041778682" expanded="true" signature="164:227" ph="/// Persistence Link class ... " />
+            <marker date="1483041778682" expanded="true" signature="269:1563" ph="{...}" />
+            <marker date="1483041778682" expanded="true" signature="284:468" ph="/// Gets or sets the process definition identifier. ... " />
+            <marker date="1483041778682" expanded="true" signature="564:742" ph="/// Gets or sets the process definition version. ... " />
+            <marker date="1483041778682" expanded="true" signature="842:1014" ph="/// Gets or sets the account data identifier. ... " />
+            <marker date="1483041778682" expanded="true" signature="1105:1267" ph="/// Gets or sets the process definition. ... " />
+            <marker date="1483041778682" expanded="true" signature="1360:1500" ph="/// Gets or sets the account. ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Persistence/AccountData.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1483041778704" expanded="true" signature="60:1086" ph="{...}" />
+            <marker date="1483041778704" expanded="true" signature="67:146" ph="/// Class that represents security account ... " />
+            <marker date="1483041778704" expanded="true" signature="175:1084" ph="{...}" />
+            <marker date="1483041778704" expanded="true" signature="190:336" ph="/// Gets or sets the identifier. ... " />
+            <marker date="1483041778704" expanded="true" signature="382:534" ph="/// Gets or sets the source system. ... " />
+            <marker date="1483041778704" expanded="true" signature="592:726" ph="/// Gets or sets the name. ... " />
+            <marker date="1483041778704" expanded="true" signature="776:1033" ph="/// Gets or sets the type of the account. ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Persistence/ProcessDefinitionDigest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1483042089639" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1483042089639" expanded="true" signature="1158:1227" ph="/// Digest of Process Definition ... " />
+            <marker date="1483042089639" expanded="true" signature="1268:1594" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionPersisnenceService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1483075353433" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1483075353433" expanded="true" signature="1097:1261" ph="..." />
+            <marker date="1483075353433" expanded="true" signature="1308:9936" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="1315:1422" ph="/// The service that saves, list, remove and load Workflow Definitions ... " />
+            <marker date="1483075353433" expanded="true" signature="1514:9934" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="1529:1637" ph="/// List all Available workflow ... " />
+            <marker date="1483075353433" expanded="true" signature="1739:2402" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="1802:2392" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="1947:2327" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="2411:2519" ph="/// List of all active workflow ... " />
+            <marker date="1483075353433" expanded="true" signature="2621:3404" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="2684:3394" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="2928:3308" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="3414:3707" ph="/// Save process definition ... " />
+            <marker date="1483075353433" expanded="true" signature="3860:4807" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="4128:4603" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="4657:4797" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="4955:5612" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="5009:5600" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="5194:5470" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="5623:5815" ph="/// Set or update status ... " />
+            <marker date="1483075353433" expanded="true" signature="5896:6309" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="5959:6299" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="6319:6656" ph="/// Load and deserialize the process definition ... " />
+            <marker date="1483075353433" expanded="true" signature="6825:7721" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="6888:7711" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="7025:7245" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="7494:7656" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="7731:7914" ph="/// Find the definition ... " />
+            <marker date="1483075353433" expanded="true" signature="8061:8156" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="8165:8429" ph="/// Update Process Definition ... " />
+            <marker date="1483075353433" expanded="true" signature="8527:8923" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="8590:8913" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="8933:9057" ph="/// Create Security Account Records ... " />
+            <marker date="1483075353433" expanded="true" signature="9123:9326" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="9186:9316" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="9336:9448" ph="/// Save Runtime Process ... " />
+            <marker date="1483075353433" expanded="true" signature="9511:9928" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="9574:9918" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="9703:9904" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionPersistence.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1483042471259" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1483042471259" expanded="true" signature="1172:1507" ph="{...}" />
+            <marker date="1483042471259" expanded="true" signature="1179:1249" ph="/// Persistent Process Definition ... " />
+            <marker date="1483042471259" expanded="true" signature="1295:1505" ph="{...}" />
+            <marker date="1483042471259" expanded="true" signature="1330:1505" ph="{...}" />
+            <marker date="1483042471259" expanded="true" signature="1345:1415" ph="/// List of accounts that ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Persistence/ProcessDefStatusEnum.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1482942328411" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482942328411" expanded="true" signature="1143:1212" ph="/// Status of Process Definition ... " />
+            <marker date="1482942328411" expanded="true" signature="1249:1467" ph="{...}" />
+            <marker date="1482942328411" expanded="true" signature="1264:1341" ph="/// The deployment is not active ... " />
+            <marker date="1482942328411" expanded="true" signature="1371:1444" ph="/// The deployment is active ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessRuntimePersistence.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1482942328381" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482942328381" expanded="true" signature="1097:1138" ph="..." />
+            <marker date="1482942328381" expanded="true" signature="1192:1266" ph="/// Process Runtime Persistence Class ... " />
+            <marker date="1482942328381" expanded="true" signature="1309:2405" ph="{...}" />
+            <marker date="1482942328381" expanded="true" signature="1324:1383" ph="/// Process Id ... " />
+            <marker date="1482942328381" expanded="true" signature="1429:1496" ph="/// Last Modified Date ... " />
+            <marker date="1482942328381" expanded="true" signature="1555:1618" ph="/// Process Status ... " />
+            <marker date="1482942328381" expanded="true" signature="1667:1745" ph="/// Associated Process Swdinirion ... " />
+            <marker date="1482942328381" expanded="true" signature="1838:1916" ph="/// Associated Propery Collection ... " />
+            <marker date="1482942328381" expanded="true" signature="2010:2097" ph="/// Id of Suspended Step. Can contain Null ... " />
+            <marker date="1482942328381" expanded="true" signature="2158:2222" ph="/// Id of Next Step ... " />
+            <marker date="1482942328381" expanded="true" signature="2278:2341" ph="/// List of Errors ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessRuntimePersistenceService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1482942328346" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482942328346" expanded="true" signature="1097:1290" ph="..." />
+            <marker date="1482942328346" expanded="true" signature="1411:8326" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="1549:1817" ph="/// Create and persist runtime processor ... " />
+            <marker date="1482942328346" expanded="true" signature="1921:3285" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="2191:3208" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="2772:3120" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="3382:4062" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="3445:4052" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="3586:3717" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="4072:4358" ph="/// Unfreeze the process ... " />
+            <marker date="1482942328346" expanded="true" signature="4553:5601" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="4704:5566" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="5216:5446" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="5742:5811" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="5954:6744" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="6017:6733" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="6158:6280" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="6814:8320" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="7493:7609" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="7666:7747" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="7859:8037" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="8134:8310" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/PersistentSchemaElement.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Persistence/ProcessDefinitionDigest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1483042089639" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1483042089639" expanded="true" signature="1158:1227" ph="/// Digest of Process Definition ... " />
+            <marker date="1483042089639" expanded="true" signature="1268:1594" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Persistence/ProcessDefStatusEnum.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1482942328411" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482942328411" expanded="true" signature="1143:1212" ph="/// Status of Process Definition ... " />
+            <marker date="1482942328411" expanded="true" signature="1249:1467" ph="{...}" />
+            <marker date="1482942328411" expanded="true" signature="1264:1341" ph="/// The deployment is not active ... " />
+            <marker date="1482942328411" expanded="true" signature="1371:1444" ph="/// The deployment is active ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessRuntimePersistence.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1482942328381" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482942328381" expanded="true" signature="1097:1138" ph="..." />
+            <marker date="1482942328381" expanded="true" signature="1192:1266" ph="/// Process Runtime Persistence Class ... " />
+            <marker date="1482942328381" expanded="true" signature="1309:2405" ph="{...}" />
+            <marker date="1482942328381" expanded="true" signature="1324:1383" ph="/// Process Id ... " />
+            <marker date="1482942328381" expanded="true" signature="1429:1496" ph="/// Last Modified Date ... " />
+            <marker date="1482942328381" expanded="true" signature="1555:1618" ph="/// Process Status ... " />
+            <marker date="1482942328381" expanded="true" signature="1667:1745" ph="/// Associated Process Swdinirion ... " />
+            <marker date="1482942328381" expanded="true" signature="1838:1916" ph="/// Associated Propery Collection ... " />
+            <marker date="1482942328381" expanded="true" signature="2010:2097" ph="/// Id of Suspended Step. Can contain Null ... " />
+            <marker date="1482942328381" expanded="true" signature="2158:2222" ph="/// Id of Next Step ... " />
+            <marker date="1482942328381" expanded="true" signature="2278:2341" ph="/// List of Errors ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessRuntimePersistenceService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1482942328346" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482942328346" expanded="true" signature="1097:1290" ph="..." />
+            <marker date="1482942328346" expanded="true" signature="1411:8326" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="1549:1817" ph="/// Create and persist runtime processor ... " />
+            <marker date="1482942328346" expanded="true" signature="1921:3285" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="2191:3208" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="2772:3120" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="3382:4062" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="3445:4052" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="3586:3717" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="4072:4358" ph="/// Unfreeze the process ... " />
+            <marker date="1482942328346" expanded="true" signature="4553:5601" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="4704:5566" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="5216:5446" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="5742:5811" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="5954:6744" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="6017:6733" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="6158:6280" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="6814:8320" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="7493:7609" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="7666:7747" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="7859:8037" ph="{...}" />
+            <marker date="1482942328346" expanded="true" signature="8134:8310" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/PropertySetPersistenceService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1482942328305" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482942328305" expanded="true" signature="1097:1272" ph="..." />
+            <marker date="1482942328305" expanded="true" signature="1368:9098" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="1639:2460" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="2471:2634" ph="/// Store the collection ... " />
+            <marker date="1482942328305" expanded="true" signature="2723:3181" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="3009:3171" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="3192:3399" ph="/// Save or Update Collection ... " />
+            <marker date="1482942328305" expanded="true" signature="3533:3865" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="3874:4101" ph="/// Find and re-load the collection ... " />
+            <marker date="1482942328305" expanded="true" signature="4173:4618" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="4249:4608" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="4629:4799" ph="/// Deserialize schemas and collection elements ... " />
+            <marker date="1482942328305" expanded="true" signature="4909:6497" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="5203:6458" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="5707:5820" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="5905:6382" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="6728:7679" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="6902:7198" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="7034:7182" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="7215:7619" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="7886:9091" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="8091:8630" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="8336:8575" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="8680:9081" ph="{...}" />
+            <marker date="1482942328305" expanded="true" signature="8793:8841" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDbContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="848">
+          <caret line="74" column="70" lean-forward="false" selection-start-line="74" selection-start-column="70" selection-end-line="74" selection-end-column="70" />
+          <folding>
+            <marker date="1482962226215" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482962226215" expanded="true" signature="1098:1328" ph="..." />
+            <marker date="1482962226215" expanded="true" signature="1382:1500" ph="/// Persistent Db Context ... " />
+            <marker date="1482962226215" expanded="true" signature="1544:5452" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="1559:2528" ph="Constructors" />
+            <marker date="1482962226215" expanded="true" signature="1613:1633" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="1706:1726" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="1821:1841" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="1966:1986" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="2130:2150" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="2324:2344" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="2489:2509" ph="{...}" />
+            <marker date="1482962226215" expanded="true" signature="3121:5446" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessDeployer/Deployer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="34" column="92" lean-forward="false" selection-start-line="34" selection-start-column="92" selection-end-line="34" selection-end-column="92" />
+          <folding>
+            <marker date="1482941899287" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482941899287" expanded="true" signature="1097:1242" ph="..." />
+            <marker date="1482941899287" expanded="true" signature="1279:4194" ph="{...}" />
+            <marker date="1482941899287" expanded="true" signature="1307:4192" ph="{...}" />
+            <marker date="1482941899287" expanded="true" signature="1607:1958" ph="{...}" />
+            <marker date="1482941899287" expanded="true" signature="1673:1948" ph="{...}" />
+            <marker date="1482941899287" expanded="true" signature="1810:1932" ph="{...}" />
+            <marker date="1482941899287" expanded="true" signature="1967:2034" ph="/// List of assemblies ... " />
+            <marker date="1482941899287" expanded="true" signature="2091:2322" ph="{...}" />
+            <marker date="1482941899287" expanded="true" signature="2108:2312" ph="{...}" />
+            <marker date="1482941899287" expanded="true" signature="2476:4015" ph="{...}" />
+            <marker date="1482941899287" expanded="true" signature="2595:2739" ph="{...}" />
+            <marker date="1482941899287" expanded="true" signature="3529:3745" ph="{...}" />
+            <marker date="1482941899287" expanded="true" signature="3806:3923" ph="{...}" />
+            <marker date="1482941899287" expanded="true" signature="4107:4186" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Persistence/AccountData.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1483041778704" expanded="true" signature="60:1086" ph="{...}" />
+            <marker date="1483041778704" expanded="true" signature="67:146" ph="/// Class that represents security account ... " />
+            <marker date="1483041778704" expanded="true" signature="175:1084" ph="{...}" />
+            <marker date="1483041778704" expanded="true" signature="190:336" ph="/// Gets or sets the identifier. ... " />
+            <marker date="1483041778704" expanded="true" signature="382:534" ph="/// Gets or sets the source system. ... " />
+            <marker date="1483041778704" expanded="true" signature="592:726" ph="/// Gets or sets the name. ... " />
+            <marker date="1483041778704" expanded="true" signature="776:1033" ph="/// Gets or sets the type of the account. ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionAccount.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1483041778682" expanded="true" signature="6:110" ph="..." />
+            <marker date="1483041778682" expanded="true" signature="157:1565" ph="{...}" />
+            <marker date="1483041778682" expanded="true" signature="164:227" ph="/// Persistence Link class ... " />
+            <marker date="1483041778682" expanded="true" signature="269:1563" ph="{...}" />
+            <marker date="1483041778682" expanded="true" signature="284:468" ph="/// Gets or sets the process definition identifier. ... " />
+            <marker date="1483041778682" expanded="true" signature="564:742" ph="/// Gets or sets the process definition version. ... " />
+            <marker date="1483041778682" expanded="true" signature="842:1014" ph="/// Gets or sets the account data identifier. ... " />
+            <marker date="1483041778682" expanded="true" signature="1105:1267" ph="/// Gets or sets the process definition. ... " />
+            <marker date="1483041778682" expanded="true" signature="1360:1500" ph="/// Gets or sets the account. ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionPersistence.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="27" column="1" lean-forward="false" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+          <folding>
+            <marker date="1483042471259" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1483042471259" expanded="true" signature="1172:1507" ph="{...}" />
+            <marker date="1483042471259" expanded="true" signature="1179:1249" ph="/// Persistent Process Definition ... " />
+            <marker date="1483042471259" expanded="true" signature="1295:1505" ph="{...}" />
+            <marker date="1483042471259" expanded="true" signature="1330:1505" ph="{...}" />
+            <marker date="1483042471259" expanded="true" signature="1345:1415" ph="/// List of accounts that ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/PersistentPropertyCollection.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -483,7 +1140,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/PersistentPropertyElement.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-96">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <marker date="1482942328610" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
@@ -518,265 +1175,671 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/PersistentSchemaElement.cs">
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/packages.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="16" column="11" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/app.config">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="22" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/ProcessEngine.Persistence.Mongo.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1456">
+          <caret line="91" column="39" lean-forward="false" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/ProcessEngine.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="866">
+          <caret line="83" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/package.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/packages.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="15" column="85" lean-forward="false" selection-start-line="15" selection-start-column="85" selection-end-line="15" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Persistence/ProcessDefinitionPersistenceBase.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="46" column="22" lean-forward="false" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
           <folding>
-            <marker date="1482942328578" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-            <marker date="1482942328578" expanded="true" signature="1136:1874" ph="{...}" />
-            <marker date="1482942328578" expanded="true" signature="1179:1872" ph="{...}" />
-            <marker date="1482942328578" expanded="true" signature="1455:1565" ph="/// Copy elements ... " />
-            <marker date="1482942328578" expanded="true" signature="1632:1866" ph="{...}" />
+            <marker date="1483047742317" expanded="true" signature="60:1377" ph="{...}" />
+            <marker date="1483047742317" expanded="true" signature="67:184" ph="/// Base class for Porcess Definition Persistence that does not include accounts ... " />
+            <marker date="1483047742317" expanded="true" signature="234:1375" ph="{...}" />
+            <marker date="1483047742317" expanded="true" signature="249:300" ph="/// Id ... " />
+            <marker date="1483047742317" expanded="true" signature="355:411" ph="/// Version ... " />
+            <marker date="1483047742317" expanded="true" signature="470:542" ph="/// Process Definition Name ... " />
+            <marker date="1483047742317" expanded="true" signature="601:679" ph="/// Process Defnition Description ... " />
+            <marker date="1483047742317" expanded="true" signature="745:800" ph="/// Status ... " />
+            <marker date="1483047742317" expanded="true" signature="858:928" ph="/// MD5 of the definition ... " />
+            <marker date="1483047742317" expanded="true" signature="986:1055" ph="/// Serialized JSON body ... " />
+            <marker date="1483047742317" expanded="true" signature="1131:1193" ph="/// Last Modified ... " />
+            <marker date="1483047742317" expanded="true" signature="1262:1318" ph="/// Flow Id ... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionDigest.cs">
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/ProcessDefinitionPersistence.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="50" lean-forward="false" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="50" />
+          <folding>
+            <marker date="1483048174144" expanded="true" signature="6:96" ph="..." />
+            <marker date="1483048174144" expanded="true" signature="149:389" ph="{...}" />
+            <marker date="1483048174144" expanded="true" signature="230:384" ph="{...}" />
+            <marker date="1483048174144" expanded="true" signature="245:313" ph="/// Associated Accounts ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/MSBuild/14.0/Bin/Microsoft.Common.CurrentVersion.targets">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="1831" column="81" lean-forward="true" selection-start-line="1831" selection-start-column="81" selection-end-line="1831" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Runtime/IProcessRuntime.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding>
+            <marker date="1483050510247" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1483050510247" expanded="true" signature="1097:1138" ph="..." />
+            <marker date="1483050510247" expanded="true" signature="1181:2795" ph="{...}" />
+            <marker date="1483050510247" expanded="true" signature="1188:1254" ph="/// Process Runtime interface ... " />
+            <marker date="1483050510247" expanded="true" signature="1305:2793" ph="{...}" />
+            <marker date="1483050510247" expanded="true" signature="1320:1379" ph="/// Process Id ... " />
+            <marker date="1483050510247" expanded="true" signature="1414:1476" ph="/// Process State ... " />
+            <marker date="1483050510247" expanded="true" signature="1526:1604" ph="/// Process was suspended in step ... " />
+            <marker date="1483050510247" expanded="true" signature="1659:1741" ph="/// Last Executed Step in the process ... " />
+            <marker date="1483050510247" expanded="true" signature="1797:1873" ph="/// Start Steps in the workflow ... " />
+            <marker date="1483050510247" expanded="true" signature="1938:2001" ph="/// List of errors ... " />
+            <marker date="1483050510247" expanded="true" signature="2057:2421" ph="/// Execute Single Step in the workflow ... " />
+            <marker date="1483050510247" expanded="true" signature="2530:2701" ph="/// Continue the process execution from Suspended state ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/Test/TestProcessDefinitionPersistence.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="100" column="71" lean-forward="false" selection-start-line="100" selection-start-column="71" selection-end-line="100" selection-end-column="71" />
+          <folding>
+            <marker date="1483052992734" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1483052992734" expanded="true" signature="1098:1128" ph="..." />
+            <marker date="1483052992734" expanded="true" signature="1180:4313" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="1289:4311" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="1339:1360" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="1411:1758" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="1474:1748" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="1832:1979" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="2062:2815" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="2230:2786" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="2288:2501" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="2559:2767" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="2891:3042" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="3113:3259" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="3312:3440" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="3518:3671" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="3758:3913" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="3993:4144" ph="{...}" />
+            <marker date="1483052992734" expanded="true" signature="4223:4305" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/app.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Persistence/Test/TestProcessDefinitionPersistenceBase.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="141" column="34" lean-forward="false" selection-start-line="141" selection-start-column="34" selection-end-line="141" selection-end-column="34" />
+          <folding>
+            <marker date="1483064152584" expanded="true" signature="6:206" ph="..." />
+            <marker date="1483064152584" expanded="true" signature="258:7957" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="265:321" ph="/// Base test class ... " />
+            <marker date="1483064152584" expanded="true" signature="384:7955" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="501:829" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="946:1195" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="1338:2022" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="2138:3421" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="2315:2811" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="2365:2558" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="2608:2796" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="3474:3495" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="3605:4494" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="4586:5396" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="5513:5849" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="5968:6344" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="6221:6332" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="6459:7081" ph="{...}" />
+            <marker date="1483064152584" expanded="true" signature="7143:7869" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/Test/TestProcessDefinitionPersistence.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="80" column="51" lean-forward="false" selection-start-line="80" selection-start-column="51" selection-end-line="80" selection-end-column="51" />
+          <folding>
+            <marker date="1483073716709" expanded="true" signature="6:202" ph="..." />
+            <marker date="1483073716709" expanded="true" signature="260:4921" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="367:4919" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="520:637" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="706:773" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="817:838" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="888:1054" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="1120:1502" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="1585:2962" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="1864:2360" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="1914:2107" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="2157:2345" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="3026:3409" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="3485:3636" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="3707:3853" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="3906:4034" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="4112:4265" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="4352:4507" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="4587:4738" ph="{...}" />
+            <marker date="1483073716709" expanded="true" signature="4817:4913" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Test/ProcessBuilderTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="310" column="55" lean-forward="false" selection-start-line="310" selection-start-column="55" selection-end-line="310" selection-end-column="55" />
+          <folding>
+            <marker date="1483073878726" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1483073878726" expanded="true" signature="1097:1219" ph="..." />
+            <marker date="1483073878726" expanded="true" signature="1259:12850" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="1316:12518" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="1377:1626" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="1692:1971" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="1753:1959" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="2036:2314" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="2096:2302" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="2385:3077" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="3146:3730" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="3415:3480" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="3533:3599" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="3652:3716" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="3804:4388" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="4074:4139" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="4192:4258" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="4311:4375" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="4455:5037" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="4723:4788" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="4841:4907" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="4960:5024" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="5111:5600" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="5685:6062" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="6123:6478" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="6554:6991" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="6889:6978" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="7060:7497" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="7395:7484" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="7570:7949" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="7848:7937" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="8031:8404" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="8309:8391" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="8483:8855" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="8761:8843" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="8940:9308" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="9218:9295" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="9389:9758" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="9667:9746" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="9839:10757" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="10838:11868" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="11959:12510" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="12558:12848" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="12603:12623" ph="{...}" />
+            <marker date="1483073878726" expanded="true" signature="12711:12842" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PropertySet/IPropertySetCollection.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="28" column="41" lean-forward="false" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
+          <folding>
+            <marker date="1482941588642" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482941588642" expanded="true" signature="1157:3943" ph="{...}" />
+            <marker date="1482941588642" expanded="true" signature="1164:1238" ph="/// The collection of Value Providers ... " />
+            <marker date="1482941588642" expanded="true" signature="1309:3941" ph="{...}" />
+            <marker date="1482941588642" expanded="true" signature="1324:1444" ph="/// Gets the Properties Schema Set. ... " />
+            <marker date="1482941588642" expanded="true" signature="1497:1749" ph="/// Adds the specified name. ... " />
+            <marker date="1482941588642" expanded="true" signature="1832:2135" ph="/// Adds the specified name. ... " />
+            <marker date="1482941588642" expanded="true" signature="2228:2480" ph="/// Adds the specified name. ... " />
+            <marker date="1482941588642" expanded="true" signature="2560:2863" ph="/// Adds the specified name. ... " />
+            <marker date="1482941588642" expanded="true" signature="2952:3202" ph="/// Adds the specified name. ... " />
+            <marker date="1482941588642" expanded="true" signature="3270:3488" ph="/// Sets the specified name. ... " />
+            <marker date="1482941588642" expanded="true" signature="3558:3783" ph="/// Gets the value of the specified property. ... " />
+            <marker date="1482941588642" expanded="true" signature="3823:3909" ph="/// Runs the validation on the collection ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Properties/CompanyInfo.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CompanyInfo.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PropertySet/Properties/AssemblyInfo.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1482942328501" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-            <marker date="1482942328501" expanded="true" signature="1151:1596" ph="{...}" />
-            <marker date="1482942328501" expanded="true" signature="1158:1227" ph="/// Digest of Process Definition ... " />
-            <marker date="1482942328501" expanded="true" signature="1268:1594" ph="{...}" />
+            <marker date="1482942869220" expanded="true" signature="6:101" ph="..." />
+            <marker date="1482942869220" expanded="true" signature="103:290" ph="/* General Information about an assembly is controlled through the following ... */" />
+            <marker date="1482942869220" expanded="true" signature="407:617" ph="/* Setting ComVisible to false makes the types in this assembly not visible ... */" />
+            <marker date="1482942869220" expanded="true" signature="792:1119" ph="/* Version information for an assembly consists of the following four values: ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Properties/AssemblyInfo.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1482942671402" expanded="true" signature="6:101" ph="..." />
+            <marker date="1482942671402" expanded="true" signature="103:290" ph="/* General Information about an assembly is controlled through the following ... */" />
+            <marker date="1482942671402" expanded="true" signature="409:619" ph="/* Setting ComVisible to false makes the types in this assembly not visible ... */" />
+            <marker date="1482942671402" expanded="true" signature="794:1121" ph="/* Version information for an assembly consists of the following four values: ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/ICompilable.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="29" column="29" lean-forward="false" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+          <folding>
+            <marker date="1482942030152" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482942030152" expanded="true" signature="1125:1443" ph="{...}" />
+            <marker date="1482942030152" expanded="true" signature="1132:1193" ph="/// Compilable Artifacts ... " />
+            <marker date="1482942030152" expanded="true" signature="1226:1441" ph="{...}" />
+            <marker date="1482942030152" expanded="true" signature="1241:1389" ph="/// Try to compile the script ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Test/ProcessBuldRuntimeTest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="630" column="0" lean-forward="false" selection-start-line="630" selection-start-column="0" selection-end-line="630" selection-end-column="0" />
+          <folding>
+            <marker date="1483074436643" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1483074436643" expanded="true" signature="1097:1385" ph="..." />
+            <marker date="1483074436643" expanded="true" signature="1425:48717" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="1485:48715" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="1556:3915" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="3984:4777" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="4865:6034" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="6112:7559" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="7628:8214" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="8292:8920" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="8835:8908" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="8987:9958" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="10042:11166" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="11248:12517" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="12605:14084" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="13344:13587" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="14165:15724" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="14860:15103" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="15805:17452" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="16500:16742" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="17518:18316" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="18394:19189" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="19256:20096" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="20106:28311" ph="Step Handler Tests" />
+            <marker date="1483074436643" expanded="true" signature="20203:21171" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="21247:22274" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="22344:23313" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="23389:24463" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="24534:25794" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="25881:27002" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="27087:28292" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="28321:47735" ph="Process Runtime Tests" />
+            <marker date="1483074436643" expanded="true" signature="28436:30363" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="29854:29944" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="30440:32850" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="32912:35062" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="35139:37351" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="37417:39371" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="39248:39359" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="39432:40617" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="40682:42204" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="42280:44744" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="44825:47714" ph="{...}" />
+            <marker date="1483074436643" expanded="true" signature="47794:48709" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Runtime/ProcessRuntime.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+          <folding>
+            <marker date="1482942329921" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482942329921" expanded="true" signature="1097:1193" ph="..." />
+            <marker date="1482942329921" expanded="true" signature="1328:17857" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="1335:1576" ph="/// Every instance of Process runtime is single-threaded object ... " />
+            <marker date="1482942329921" expanded="true" signature="1653:17855" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="1973:2266" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="2544:2752" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="2996:3055" ph="/// Process Id ... " />
+            <marker date="1482942329921" expanded="true" signature="3096:3158" ph="/// Process State ... " />
+            <marker date="1482942329921" expanded="true" signature="3227:3305" ph="/// Process was suspended in step ... " />
+            <marker date="1482942329921" expanded="true" signature="3379:3461" ph="/// Last Executed Step in the process ... " />
+            <marker date="1482942329921" expanded="true" signature="3536:3612" ph="/// Start Steps in the workflow ... " />
+            <marker date="1482942329921" expanded="true" signature="3725:3788" ph="/// List of errors ... " />
+            <marker date="1482942329921" expanded="true" signature="3853:4100" ph="/// Process Runtime Constructor ... " />
+            <marker date="1482942329921" expanded="true" signature="4253:4415" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="4425:4698" ph="/// Constructor ... " />
+            <marker date="1482942329921" expanded="true" signature="4912:5102" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="5145:5306" ph="/// Try to compile all compilabe artifacts ... " />
+            <marker date="1482942329921" expanded="true" signature="5358:5763" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="5522:5678" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="5772:6136" ph="/// Execute Single Step in the workflow ... " />
+            <marker date="1482942329921" expanded="true" signature="6249:6698" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="6394:6530" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="6586:6686" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="6710:6881" ph="/// Continue the process execution from Suspended state ... " />
+            <marker date="1482942329921" expanded="true" signature="6981:7303" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="7044:7230" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="7415:7682" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="7692:7865" ph="/// On Execute step ... " />
+            <marker date="1482942329921" expanded="true" signature="7985:9236" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="8101:8368" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="8672:8870" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="8886:9146" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="8964:9130" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="9166:9226" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="9246:9320" ph="/// After Execute Hook Method ... " />
+            <marker date="1482942329921" expanded="true" signature="9366:9386" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="9396:9471" ph="/// Before Execute hook method ... " />
+            <marker date="1482942329921" expanded="true" signature="9518:9567" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="9577:12355" ph="Status Actions" />
+            <marker date="1482942329921" expanded="true" signature="9608:9764" ph="/// OnStart Action ensures that the step is the start step ... " />
+            <marker date="1482942329921" expanded="true" signature="9868:10329" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="10055:10216" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="10339:10545" ph="/// OnReady ensures that passed step has links from previously executed step ... " />
+            <marker date="1482942329921" expanded="true" signature="10649:10900" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="10910:11103" ph="/// Execution of Completed workflow doesnt' perform any actions ... " />
+            <marker date="1482942329921" expanded="true" signature="11211:11407" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="11417:11589" ph="/// Execution of Failed workflow does not  ... " />
+            <marker date="1482942329921" expanded="true" signature="11694:11891" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="11900:12064" ph="/// Execution from suspended state ... " />
+            <marker date="1482942329921" expanded="true" signature="12172:12336" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="12364:13460" ph="Post Status Actions" />
+            <marker date="1482942329921" expanded="true" signature="12485:12577" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="12675:13047" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="13142:13440" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="13469:13683" ph="/// Step Execution Read moves the workflow to its next step. ... " />
+            <marker date="1482942329921" expanded="true" signature="13813:14972" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="13957:14699" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="14241:14502" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="14523:14685" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="14982:15133" ph="/// The flow is suspended; ... " />
+            <marker date="1482942329921" expanded="true" signature="15201:15361" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="15435:15495" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="15568:15628" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="15725:15829" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="15839:16085" ph="/// Try to get next step to continue execution ... " />
+            <marker date="1482942329921" expanded="true" signature="16197:17245" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="16414:16564" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="16619:16919" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="16974:17198" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="17035:17184" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="17255:17391" ph="/// Equality by Id ... " />
+            <marker date="1482942329921" expanded="true" signature="17440:17512" ph="{...}" />
+            <marker date="1482942329921" expanded="true" signature="17521:17849" ph="Private Classes" />
+            <marker date="1482942329921" expanded="true" signature="17584:17830" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Runtime/StepRuntime.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding>
+            <marker date="1482942329013" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1482942329013" expanded="true" signature="1097:1229" ph="..." />
+            <marker date="1482942329013" expanded="true" signature="1272:11336" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="1279:1332" ph="/// Step Runtime ... " />
+            <marker date="1482942329013" expanded="true" signature="1373:11334" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="1819:1888" ph="/// &quot;Compiled&quot; indicator ... " />
+            <marker date="1482942329013" expanded="true" signature="1950:2053" ph="/// Constructor ... " />
+            <marker date="1482942329013" expanded="true" signature="2104:2699" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="2204:2689" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="2708:2854" ph="/// Try to compile the step ... " />
+            <marker date="1482942329013" expanded="true" signature="2906:3966" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="3007:3118" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="3160:3409" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="3450:3693" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="3976:4131" ph="/// Validating Step conditions on entry ... " />
+            <marker date="1482942329013" expanded="true" signature="4228:4399" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="4408:4560" ph="/// Validate Step conditions on exit ... " />
+            <marker date="1482942329013" expanded="true" signature="4656:4824" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="4834:4994" ph="/// Executes the step asynchrnously. ... " />
+            <marker date="1482942329013" expanded="true" signature="5082:5155" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="5165:7276" ph="Private Methods" />
+            <marker date="1482942329013" expanded="true" signature="5197:5453" ph="/// Validates the on enter on exit criteria. ... " />
+            <marker date="1482942329013" expanded="true" signature="5626:6260" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="5919:6005" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="6270:6537" ph="/// Tries to validate required variables. ... " />
+            <marker date="1482942329013" expanded="true" signature="6671:7257" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="6773:7166" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="6807:7025" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="7069:7152" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="7286:11327" ph="private handlers implementations" />
+            <marker date="1482942329013" expanded="true" signature="7335:7461" ph="/// IOC service handler ... " />
+            <marker date="1482942329013" expanded="true" signature="7516:8061" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="7629:7687" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="7780:7894" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="7951:8051" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="8070:8197" ph="/// Task Service Handler ... " />
+            <marker date="1482942329013" expanded="true" signature="8253:8755" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="8358:8416" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="8508:8589" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="8645:8745" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="8764:8892" ph="/// Load Assembly Handler ... " />
+            <marker date="1482942329013" expanded="true" signature="8942:9488" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="9043:9101" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="9193:9322" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="9378:9478" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="9497:9617" ph="/// Empty handler ... " />
+            <marker date="1482942329013" expanded="true" signature="9667:10038" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="9769:9872" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="9928:10028" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="10047:10110" ph="/// Script Handler ... " />
+            <marker date="1482942329013" expanded="true" signature="10161:11308" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="10276:10385" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="10478:11158" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="10512:10783" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="10829:10973" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="11010:11144" ph="{...}" />
+            <marker date="1482942329013" expanded="true" signature="11215:11298" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Runtime/CsScriptRuntime.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding>
+            <marker date="1483074981705" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1483074981705" expanded="true" signature="1097:1311" ph="..." />
+            <marker date="1483074981705" expanded="true" signature="1354:3608" ph="{...}" />
+            <marker date="1483074981705" expanded="true" signature="1361:1427" ph="/// Process CS Script runtime ... " />
+            <marker date="1483074981705" expanded="true" signature="1460:3606" ph="{...}" />
+            <marker date="1483074981705" expanded="true" signature="1559:1703" ph="/// Constructor ... " />
+            <marker date="1483074981705" expanded="true" signature="1755:1797" ph="{...}" />
+            <marker date="1483074981705" expanded="true" signature="1807:1955" ph="/// Try to compile the script ... " />
+            <marker date="1483074981705" expanded="true" signature="2007:2931" ph="{...}" />
+            <marker date="1483074981705" expanded="true" signature="2940:3141" ph="/// Execute script Async ... " />
+            <marker date="1483074981705" expanded="true" signature="3212:3600" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessEngine/Persistence/IProcessDefinitionPersisnenceService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="48" lean-forward="false" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+          <folding>
+            <marker date="1483075353469" expanded="true" signature="6:89" ph="..." />
+            <marker date="1483075353469" expanded="true" signature="136:2533" ph="{...}" />
+            <marker date="1483075353469" expanded="true" signature="143:236" ph="/// Service Interface for Process Definition Persistence ... " />
+            <marker date="1483075353469" expanded="true" signature="294:2531" ph="{...}" />
+            <marker date="1483075353469" expanded="true" signature="309:417" ph="/// List all Available workflow ... " />
+            <marker date="1483075353469" expanded="true" signature="523:631" ph="/// List of all active workflow ... " />
+            <marker date="1483075353469" expanded="true" signature="737:1030" ph="/// Save process definition ... " />
+            <marker date="1483075353469" expanded="true" signature="1187:1379" ph="/// Set or update status ... " />
+            <marker date="1483075353469" expanded="true" signature="1464:1801" ph="/// Load and deserialize the process definition ... " />
+            <marker date="1483075353469" expanded="true" signature="1975:2239" ph="/// Update Process Definition ... " />
+            <marker date="1483075353469" expanded="true" signature="2341:2465" ph="/// Create Security Account Records ... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionPersisnenceService.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="714">
+          <caret line="63" column="100" lean-forward="false" selection-start-line="63" selection-start-column="100" selection-end-line="63" selection-end-column="100" />
           <folding>
-            <marker date="1482942328470" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-            <marker date="1482942328470" expanded="true" signature="1097:1261" ph="..." />
-            <marker date="1482942328470" expanded="true" signature="1308:9835" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="1315:1422" ph="/// The service that saves, list, remove and load Workflow Definitions ... " />
-            <marker date="1482942328470" expanded="true" signature="1475:9833" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="1490:1598" ph="/// List all Available workflow ... " />
-            <marker date="1482942328470" expanded="true" signature="1671:2334" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="1734:2324" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="1879:2259" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="2343:2451" ph="/// List of all active workflow ... " />
-            <marker date="1482942328470" expanded="true" signature="2524:3307" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="2587:3297" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="2831:3211" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="3317:3610" ph="/// Save process definition ... " />
-            <marker date="1482942328470" expanded="true" signature="3763:4710" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="4031:4506" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="4560:4700" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="4858:5515" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="4912:5503" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="5097:5373" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="5526:5718" ph="/// Set or update status ... " />
-            <marker date="1482942328470" expanded="true" signature="5799:6212" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="5862:6202" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="6222:6559" ph="/// Load and deserialize the process definition ... " />
-            <marker date="1482942328470" expanded="true" signature="6728:7624" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="6791:7614" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="6928:7148" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="7397:7559" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="7634:7817" ph="/// Find the definition ... " />
-            <marker date="1482942328470" expanded="true" signature="7964:8059" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="8068:8332" ph="/// Update Process Definition ... " />
-            <marker date="1482942328470" expanded="true" signature="8426:8822" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="8489:8812" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="8832:8956" ph="/// Create Security Account Records ... " />
-            <marker date="1482942328470" expanded="true" signature="9022:9225" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="9085:9215" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="9235:9347" ph="/// Save Runtime Process ... " />
-            <marker date="1482942328470" expanded="true" signature="9410:9827" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="9473:9817" ph="{...}" />
-            <marker date="1482942328470" expanded="true" signature="9602:9803" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
+            <marker date="1483075353433" expanded="true" signature="1097:1261" ph="..." />
+            <marker date="1483075353433" expanded="true" signature="1308:9936" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="1315:1422" ph="/// The service that saves, list, remove and load Workflow Definitions ... " />
+            <marker date="1483075353433" expanded="true" signature="1514:9934" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="1529:1637" ph="/// List all Available workflow ... " />
+            <marker date="1483075353433" expanded="true" signature="1739:2402" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="1802:2392" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="1947:2327" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="2411:2519" ph="/// List of all active workflow ... " />
+            <marker date="1483075353433" expanded="true" signature="2621:3404" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="2684:3394" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="2928:3308" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="3414:3707" ph="/// Save process definition ... " />
+            <marker date="1483075353433" expanded="true" signature="3860:4807" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="4128:4603" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="4657:4797" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="4955:5612" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="5009:5600" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="5194:5470" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="5623:5815" ph="/// Set or update status ... " />
+            <marker date="1483075353433" expanded="true" signature="5896:6309" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="5959:6299" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="6319:6656" ph="/// Load and deserialize the process definition ... " />
+            <marker date="1483075353433" expanded="true" signature="6825:7721" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="6888:7711" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="7025:7245" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="7494:7656" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="7731:7914" ph="/// Find the definition ... " />
+            <marker date="1483075353433" expanded="true" signature="8061:8156" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="8165:8429" ph="/// Update Process Definition ... " />
+            <marker date="1483075353433" expanded="true" signature="8527:8923" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="8590:8913" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="8933:9057" ph="/// Create Security Account Records ... " />
+            <marker date="1483075353433" expanded="true" signature="9123:9326" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="9186:9316" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="9336:9448" ph="/// Save Runtime Process ... " />
+            <marker date="1483075353433" expanded="true" signature="9511:9928" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="9574:9918" ph="{...}" />
+            <marker date="1483075353433" expanded="true" signature="9703:9904" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionPersistence.cs">
+    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence.Mongo/MongoProcessDefinitionPersistenceService.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-81">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="672">
+          <caret line="42" column="100" lean-forward="false" selection-start-line="42" selection-start-column="100" selection-end-line="42" selection-end-column="100" />
           <folding>
-            <marker date="1482942328442" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-            <marker date="1482942328442" expanded="true" signature="1097:1138" ph="..." />
-            <marker date="1482942328442" expanded="true" signature="1185:2534" ph="{...}" />
-            <marker date="1482942328442" expanded="true" signature="1192:1262" ph="/// Persistent Process Definition ... " />
-            <marker date="1482942328442" expanded="true" signature="1308:2532" ph="{...}" />
-            <marker date="1482942328442" expanded="true" signature="1323:1374" ph="/// Id ... " />
-            <marker date="1482942328442" expanded="true" signature="1420:1476" ph="/// Version ... " />
-            <marker date="1482942328442" expanded="true" signature="1526:1598" ph="/// Process Definition Name ... " />
-            <marker date="1482942328442" expanded="true" signature="1648:1726" ph="/// Process Defnition Description ... " />
-            <marker date="1482942328442" expanded="true" signature="1783:1838" ph="/// Status ... " />
-            <marker date="1482942328442" expanded="true" signature="1887:1957" ph="/// MD5 of the definition ... " />
-            <marker date="1482942328442" expanded="true" signature="2006:2075" ph="/// Serialized JSON body ... " />
-            <marker date="1482942328442" expanded="true" signature="2142:2204" ph="/// Last Modified ... " />
-            <marker date="1482942328442" expanded="true" signature="2264:2320" ph="/// Flow Id ... " />
-            <marker date="1482942328442" expanded="true" signature="2372:2442" ph="/// List of accounts that ... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefStatusEnum.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1482942328411" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-            <marker date="1482942328411" expanded="true" signature="1136:1469" ph="{...}" />
-            <marker date="1482942328411" expanded="true" signature="1143:1212" ph="/// Status of Process Definition ... " />
-            <marker date="1482942328411" expanded="true" signature="1249:1467" ph="{...}" />
-            <marker date="1482942328411" expanded="true" signature="1264:1341" ph="/// The deployment is not active ... " />
-            <marker date="1482942328411" expanded="true" signature="1371:1444" ph="/// The deployment is active ... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessRuntimePersistence.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1482942328381" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-            <marker date="1482942328381" expanded="true" signature="1097:1138" ph="..." />
-            <marker date="1482942328381" expanded="true" signature="1185:2407" ph="{...}" />
-            <marker date="1482942328381" expanded="true" signature="1192:1266" ph="/// Process Runtime Persistence Class ... " />
-            <marker date="1482942328381" expanded="true" signature="1309:2405" ph="{...}" />
-            <marker date="1482942328381" expanded="true" signature="1324:1383" ph="/// Process Id ... " />
-            <marker date="1482942328381" expanded="true" signature="1429:1496" ph="/// Last Modified Date ... " />
-            <marker date="1482942328381" expanded="true" signature="1555:1618" ph="/// Process Status ... " />
-            <marker date="1482942328381" expanded="true" signature="1667:1745" ph="/// Associated Process Swdinirion ... " />
-            <marker date="1482942328381" expanded="true" signature="1838:1916" ph="/// Associated Propery Collection ... " />
-            <marker date="1482942328381" expanded="true" signature="2010:2097" ph="/// Id of Suspended Step. Can contain Null ... " />
-            <marker date="1482942328381" expanded="true" signature="2158:2222" ph="/// Id of Next Step ... " />
-            <marker date="1482942328381" expanded="true" signature="2278:2341" ph="/// List of Errors ... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessRuntimePersistenceService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-144">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1482942328346" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-            <marker date="1482942328346" expanded="true" signature="1097:1290" ph="..." />
-            <marker date="1482942328346" expanded="true" signature="1337:8328" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="1411:8326" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="1549:1817" ph="/// Create and persist runtime processor ... " />
-            <marker date="1482942328346" expanded="true" signature="1921:3285" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="2191:3208" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="2772:3120" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="3382:4062" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="3445:4052" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="3586:3717" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="4072:4358" ph="/// Unfreeze the process ... " />
-            <marker date="1482942328346" expanded="true" signature="4553:5601" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="4704:5566" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="5216:5446" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="5742:5811" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="5954:6744" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="6017:6733" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="6158:6280" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="6814:8320" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="7493:7609" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="7666:7747" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="7859:8037" ph="{...}" />
-            <marker date="1482942328346" expanded="true" signature="8134:8310" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/PropertySetPersistenceService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1482942328305" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-            <marker date="1482942328305" expanded="true" signature="1097:1272" ph="..." />
-            <marker date="1482942328305" expanded="true" signature="1319:9100" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="1368:9098" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="1639:2460" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="2471:2634" ph="/// Store the collection ... " />
-            <marker date="1482942328305" expanded="true" signature="2723:3181" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="3009:3171" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="3192:3399" ph="/// Save or Update Collection ... " />
-            <marker date="1482942328305" expanded="true" signature="3533:3865" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="3874:4101" ph="/// Find and re-load the collection ... " />
-            <marker date="1482942328305" expanded="true" signature="4173:4618" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="4249:4608" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="4629:4799" ph="/// Deserialize schemas and collection elements ... " />
-            <marker date="1482942328305" expanded="true" signature="4909:6497" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="5203:6458" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="5707:5820" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="5905:6382" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="6728:7679" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="6902:7198" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="7034:7182" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="7215:7619" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="7886:9091" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="8091:8630" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="8336:8575" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="8680:9081" ph="{...}" />
-            <marker date="1482942328305" expanded="true" signature="8793:8841" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/AccountData.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1482962195440" expanded="true" signature="60:1086" ph="{...}" />
-            <marker date="1482962195440" expanded="true" signature="67:146" ph="/// Class that represents security account ... " />
-            <marker date="1482962195440" expanded="true" signature="175:1084" ph="{...}" />
-            <marker date="1482962195440" expanded="true" signature="190:336" ph="/// Gets or sets the identifier. ... " />
-            <marker date="1482962195440" expanded="true" signature="382:534" ph="/// Gets or sets the source system. ... " />
-            <marker date="1482962195440" expanded="true" signature="592:726" ph="/// Gets or sets the name. ... " />
-            <marker date="1482962195440" expanded="true" signature="776:1033" ph="/// Gets or sets the type of the account. ... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDefinitionAccount.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1482962207403" expanded="true" signature="6:110" ph="..." />
-            <marker date="1482962207403" expanded="true" signature="157:1565" ph="{...}" />
-            <marker date="1482962207403" expanded="true" signature="164:227" ph="/// Persistence Link class ... " />
-            <marker date="1482962207403" expanded="true" signature="269:1563" ph="{...}" />
-            <marker date="1482962207403" expanded="true" signature="284:468" ph="/// Gets or sets the process definition identifier. ... " />
-            <marker date="1482962207403" expanded="true" signature="564:742" ph="/// Gets or sets the process definition version. ... " />
-            <marker date="1482962207403" expanded="true" signature="842:1014" ph="/// Gets or sets the account data identifier. ... " />
-            <marker date="1482962207403" expanded="true" signature="1105:1267" ph="/// Gets or sets the process definition. ... " />
-            <marker date="1482962207403" expanded="true" signature="1360:1500" ph="/// Gets or sets the account. ... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessEngine.Persistence/ProcessDbContext.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="848">
-          <caret line="74" column="70" lean-forward="true" selection-start-line="74" selection-start-column="70" selection-end-line="74" selection-end-column="70" />
-          <folding>
-            <marker date="1482962226215" expanded="true" signature="0:1090" ph="/* The MIT License (MIT) ... */" />
-            <marker date="1482962226215" expanded="true" signature="1098:1328" ph="..." />
-            <marker date="1482962226215" expanded="true" signature="1375:5454" ph="{...}" />
-            <marker date="1482962226215" expanded="true" signature="1382:1500" ph="/// Persistent Db Context ... " />
-            <marker date="1482962226215" expanded="true" signature="1544:5452" ph="{...}" />
-            <marker date="1482962226215" expanded="true" signature="1559:2528" ph="Constructors" />
-            <marker date="1482962226215" expanded="true" signature="1613:1633" ph="{...}" />
-            <marker date="1482962226215" expanded="true" signature="1706:1726" ph="{...}" />
-            <marker date="1482962226215" expanded="true" signature="1821:1841" ph="{...}" />
-            <marker date="1482962226215" expanded="true" signature="1966:1986" ph="{...}" />
-            <marker date="1482962226215" expanded="true" signature="2130:2150" ph="{...}" />
-            <marker date="1482962226215" expanded="true" signature="2324:2344" ph="{...}" />
-            <marker date="1482962226215" expanded="true" signature="2489:2509" ph="{...}" />
-            <marker date="1482962226215" expanded="true" signature="3121:5446" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="6:258" ph="..." />
+            <marker date="1483075476506" expanded="true" signature="311:8695" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="408:8693" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="627:745" ph="/// Constructor ... " />
+            <marker date="1483075476506" expanded="true" signature="826:977" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="1080:1519" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="1212:1498" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="1622:2274" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="1917:2236" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="2284:2599" ph="/// Ceate process definition ... " />
+            <marker date="1483075476506" expanded="true" signature="2729:3920" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="2997:3158" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="3404:3870" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="3930:4214" ph="/// update status ... " />
+            <marker date="1483075476506" expanded="true" signature="4295:4852" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="4862:5178" ph="/// Implement Fidnd method ... " />
+            <marker date="1483075476506" expanded="true" signature="5335:5913" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="5618:5872" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="5923:6243" ph="/// Update the workflow. The only things that can be updated are name and description ... " />
+            <marker date="1483075476506" expanded="true" signature="6341:7432" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="6817:6943" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="6977:7233" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="7442:7557" ph="/// Create account records ... " />
+            <marker date="1483075476506" expanded="true" signature="7623:7643" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="7698:7793" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="7853:7954" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="8040:8687" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="8206:8407" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="8282:8393" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="8455:8677" ph="{...}" />
+            <marker date="1483075476506" expanded="true" signature="8538:8663" ph="{...}" />
           </folding>
         </state>
       </provider>

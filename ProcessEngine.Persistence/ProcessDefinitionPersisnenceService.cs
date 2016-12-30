@@ -33,13 +33,13 @@ namespace KlaudWerk.ProcessEngine.Persistence
     /// <summary>
     /// The service that saves, list, remove and load Workflow Definitions
     /// </summary>
-    public class ProcessDefinitionPersisnenceService
+    public class ProcessDefinitionPersisnenceService : IProcessDefinitionPersisnenceService
     {
         /// <summary>
         /// List all Available workflow
         /// </summary>
         /// <returns></returns>
-        public IReadOnlyList<ProcessDefinitionDigest> LisAlltWorkflows()
+        public IReadOnlyList<ProcessDefinitionDigest> LisAlltWorkflows(params AccountData[] accounts)
         {
             using (var ctx = new ProcessDbContext())
             {
@@ -61,7 +61,7 @@ namespace KlaudWerk.ProcessEngine.Persistence
         /// List of all active workflow
         /// </summary>
         /// <returns></returns>
-        public IReadOnlyList<ProcessDefinitionDigest> ActivetWorkflows()
+        public IReadOnlyList<ProcessDefinitionDigest> ActivetWorkflows(params AccountData[] accounts)
         {
             using (var ctx = new ProcessDbContext())
             {
@@ -211,7 +211,7 @@ namespace KlaudWerk.ProcessEngine.Persistence
         /// <param name="version"></param>
         /// <param name="action"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void Update(Guid id, int version, Action<ProcessDefinitionPersistence> action)
+        public void Update(Guid id, int version, Action<ProcessDefinitionPersistenceBase> action)
         {
             using (var ctx = new ProcessDbContext())
             {
