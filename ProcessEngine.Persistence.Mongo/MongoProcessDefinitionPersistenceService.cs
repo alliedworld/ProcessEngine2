@@ -24,10 +24,21 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
             _database = database;
             _collection = _database.GetCollection<ProcessDefinitionPersistence>(CollectionName);
         }
-
+        /// <summary>
+        /// List of all workflows
+        /// </summary>
+        /// <param name="accounts"></param>
+        /// <returns></returns>
         public IReadOnlyList<ProcessDefinitionDigest> LisAlltWorkflows(params AccountData[] accounts)
         {
-            return _collection.Find(p => true).ToList()
+            FilterDefinition<ProcessDefinitionPersistence> filterDefinition=null;
+            if (accounts != null && accounts.Length > 0)
+            {
+                filterDefinition = Builders<ProcessDefinitionPersistence>.Filter.In("Accounts", accounts);
+            }
+            return
+                (filterDefinition==null?
+                _collection.Find(p => true):_collection.Find(filterDefinition)).ToList()
             .Select(d => new ProcessDefinitionDigest
             {
                 Id = d.Id,
@@ -40,11 +51,27 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
             }).ToList();
         }
 
+        /// <summary>
+        /// List of all active workflows
+        /// </summary>
+        /// <param name="accounts"></param>
+        /// <returns></returns>
         public IReadOnlyList<ProcessDefinitionDigest> ActivetWorkflows(params AccountData[] accounts)
         {
-            var filter =
-                Builders<ProcessDefinitionPersistence>.Filter.Eq(r => r.Status, (int) ProcessDefStatusEnum.Active);
-            return _collection.Find(filter)
+            FilterDefinition<ProcessDefinitionPersistence> filterDefinition=null;
+            if (accounts != null && accounts.Length > 0)
+            {
+                filterDefinition = Builders<ProcessDefinitionPersistence>.Filter.And(
+                    Builders<ProcessDefinitionPersistence>.Filter.Eq(r => r.Status, (int) ProcessDefStatusEnum.Active),
+                    Builders<ProcessDefinitionPersistence>.Filter.In("Accounts", accounts)
+                );
+            }
+            else
+            {
+                filterDefinition =
+                    Builders<ProcessDefinitionPersistence>.Filter.Eq(r => r.Status, (int) ProcessDefStatusEnum.Active);
+            }
+            return _collection.Find(filterDefinition)
                 .ToList()
                 .Select(d => new ProcessDefinitionDigest
                 {

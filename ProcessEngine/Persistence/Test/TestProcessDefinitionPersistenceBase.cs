@@ -161,9 +161,15 @@ namespace KlaudWerk.ProcessEngine.Persistence.Test
 
         protected ProcessDefinition BuildProcessdefinition()
         {
-            var factory = new ProcessBuilderFactory();
-            var builder = factory.CreateProcess(id: "com.klaudwerk.workflow.renewal",
+            return BuildProcessdefinition(id: "com.klaudwerk.workflow.renewal",
                 name: "Renewal", description: "Policy Renewal");
+        }
+
+        protected ProcessDefinition BuildProcessdefinition(string id,string name,string description)
+        {
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id:id,
+                name: name, description: description);
             IReadOnlyList<ProcessValidationResult> result;
             bool isValid=builder.Variables().Name("PolicyNumber").Type(VariableTypeEnum.String).Done()
                 .Start("s_1").SetName("Start").Vars().Name("PolicyNumber").OnExit().Done().Done()

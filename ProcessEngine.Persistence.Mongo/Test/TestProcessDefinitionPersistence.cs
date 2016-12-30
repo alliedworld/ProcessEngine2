@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using KlaudWerk.ProcessEngine.Definition;
 using KlaudWerk.ProcessEngine.Persistence;
 using KlaudWerk.ProcessEngine.Persistence.Test;
 using MongoDB.Driver;
@@ -81,6 +82,133 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo.Test
             Assert.AreEqual(2,pds[0].Accounts.Count);
         }
 
+        [Test]
+        public void TestRetrieveActiveProcessDefitinionsListsForAccounts()
+        {
+            AccountData[] accounts = new[]
+            {
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Underwriters",
+                    SourceSystem = "ActiveDirectory"
+                },
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Modeler",
+                    SourceSystem = "ActiveDirectory"
+                },
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Role1",
+                    SourceSystem = "ActiveDirectory"
+                },
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Role2",
+                    SourceSystem = "ActiveDirectory"
+                },
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "None",
+                    SourceSystem = "ActiveDirectory"
+                }
+            };
+            var collection = _database.GetCollection<ProcessDefinitionPersistence>(MongoProcessDefinitionPersistenceService.CollectionName);
+            IProcessDefinitionPersisnenceService service=InstService();
+            ProcessDefinition pd1 = BuildProcessdefinition();
+            ProcessDefinition pd2 = BuildProcessdefinition(id:"mongo.flow",name:"pd_1",description:"second flow");
+            service.Create(pd1,ProcessDefStatusEnum.Active, 1, accounts[0],accounts[1]);
+            service.Create(pd2,ProcessDefStatusEnum.Active, 1, accounts[2],accounts[3]);
+            //List Underwriter should return one definition
+            IReadOnlyList<ProcessDefinitionDigest> digest = service.ActivetWorkflows(accounts[0]);
+            Assert.IsNotNull(digest);
+            Assert.AreEqual(1,digest.Count);
+            Assert.AreEqual(pd1.Name,digest[0].Name);
+
+            digest = service.ActivetWorkflows(accounts[1],accounts[3]);
+            Assert.IsNotNull(digest);
+            Assert.AreEqual(2,digest.Count);
+            Assert.AreEqual(1,digest.Count(c=>c.Name==pd1.Name));
+            Assert.AreEqual(1,digest.Count(c=>c.Name==pd2.Name));
+
+            digest = service.ActivetWorkflows(accounts[4]);
+            Assert.IsNotNull(digest);
+            Assert.AreEqual(0,digest.Count);
+        }
+
+        [Test]
+        public void TestRetrieveProcessDefinitionListsForAccounts()
+        {
+            AccountData[] accounts = new[]
+            {
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Underwriters",
+                    SourceSystem = "ActiveDirectory"
+                },
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Modeler",
+                    SourceSystem = "ActiveDirectory"
+                },
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Role1",
+                    SourceSystem = "ActiveDirectory"
+                },
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Role2",
+                    SourceSystem = "ActiveDirectory"
+                },
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "None",
+                    SourceSystem = "ActiveDirectory"
+                }
+            };
+            var collection = _database.GetCollection<ProcessDefinitionPersistence>(MongoProcessDefinitionPersistenceService.CollectionName);
+            IProcessDefinitionPersisnenceService service=InstService();
+            ProcessDefinition pd1 = BuildProcessdefinition();
+            ProcessDefinition pd2 = BuildProcessdefinition(id:"mongo.flow",name:"pd_1",description:"second flow");
+            service.Create(pd1,ProcessDefStatusEnum.Active, 1, accounts[0],accounts[1]);
+            service.Create(pd2,ProcessDefStatusEnum.NotActive, 1, accounts[2],accounts[3]);
+            //List Underwriter should return one definition
+            IReadOnlyList<ProcessDefinitionDigest> digest = service.LisAlltWorkflows(accounts[0]);
+            Assert.IsNotNull(digest);
+            Assert.AreEqual(1,digest.Count);
+            Assert.AreEqual(pd1.Name,digest[0].Name);
+
+            digest = service.LisAlltWorkflows(accounts[1],accounts[3]);
+            Assert.IsNotNull(digest);
+            Assert.AreEqual(2,digest.Count);
+            Assert.AreEqual(1,digest.Count(c=>c.Name==pd1.Name));
+            Assert.AreEqual(1,digest.Count(c=>c.Name==pd2.Name));
+
+            digest = service.LisAlltWorkflows(accounts[4]);
+            Assert.IsNotNull(digest);
+            Assert.AreEqual(0,digest.Count);
+        }
         [Test]
         public void TestFindCreatedDefinition()
         {
