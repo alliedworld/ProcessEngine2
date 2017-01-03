@@ -23,6 +23,7 @@ THE SOFTWARE.
   */
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using KlaudWerk.ProcessEngine.Definition;
 using KlaudWerk.ProcessEngine.Runtime;
@@ -112,10 +113,17 @@ namespace KlaudWerk.ProcessEngine.Persistence
                 JsonProcessDefinition = JsonConvert.SerializeObject(definition),
                 Accounts = accountsList
             };
-            using (var ctx = new ProcessDbContext())
+            try
             {
-                SetupAccounts(ctx, ctx.ProcessDefinition.Add(pd), accounts);
-                ctx.SaveChanges();
+                using (var ctx = new ProcessDbContext())
+                {
+                    SetupAccounts(ctx, ctx.ProcessDefinition.Add(pd), accounts);
+                    ctx.SaveChanges();
+                }
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new ArgumentException(ex.Message);
             }
         }
 
