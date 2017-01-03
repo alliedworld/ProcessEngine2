@@ -22,6 +22,7 @@ namespace KlaudWerk.ProcessEngine.Persistence.Test
             Assert.IsNotNull(flows);
             Assert.AreEqual(1, flows.Count);
             Assert.AreEqual(processDefinition.Name, flows[0].Name);
+            Assert.AreEqual(processDefinition.FlowId,flows[0].FlowId);
         }
 
         protected virtual ProcessDefinition OnCreateProcessDefinition(IProcessDefinitionPersisnenceService service)

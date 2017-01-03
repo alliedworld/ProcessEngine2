@@ -1,4 +1,4 @@
-/**
+﻿/**
 The MIT License (MIT)
 
 Copyright (c) 2016 Igor Polouektov
@@ -21,26 +21,34 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
   */
-namespace KlaudWerk.ProcessEngine.Persistence
+
+using System;
+using System.Collections.Generic;
+
+namespace Klaudwerk.PropertySet.Persistence
 {
-    public class PersistentSchemaElement
+    /// <summary>
+    /// Persisted collection of property elements
+    /// </summary>
+    public class PersistentPropertyCollection
     {
-        public int Id { get; set; }
-        public virtual string SchemaBody { get; set; }
-        public virtual string SchemaType { get; set; }
-        public virtual string SchemaName { get; set; }
-        public virtual int SerializationHint { get; set; }
+        /// <summary>
+        /// Gets or sets the unique collection id.
+        /// </summary>
+        /// <value>The id.</value>
+        public virtual Guid Id { get; set; }
 
         /// <summary>
-        /// Copy elements
+        /// Gets or sets the version.
         /// </summary>
-        /// <param name="sourcElement"></param>
-        public void CopyFrom(PersistentSchemaElement sourcElement)
-        {
-            SchemaName = sourcElement.SchemaName;
-            SchemaType = sourcElement.SchemaType;
-            SchemaBody = sourcElement.SchemaBody;
-            SerializationHint = sourcElement.SerializationHint;
-        }
+        /// <value>The version.</value>
+        public virtual int Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets the elements.
+        /// </summary>
+        /// <value>The elements.</value>
+        public virtual List<PersistentPropertyElement> Elements { get; set; }
+        public virtual List<PersistentSchemaElement> Schemas { get; set; }
     }
 }

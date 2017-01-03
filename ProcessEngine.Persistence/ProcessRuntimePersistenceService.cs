@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Klaudwerk.PropertySet;
+using Klaudwerk.PropertySet.Persistence;
 using KlaudWerk.ProcessEngine.Definition;
 using KlaudWerk.ProcessEngine.Runtime;
 using Newtonsoft.Json;
@@ -113,7 +114,7 @@ namespace KlaudWerk.ProcessEngine.Persistence
                 var definition =
                     JsonConvert.DeserializeObject<ProcessDefinition>(rtp.ProcessDefinition.JsonProcessDefinition);
                 definition.Id = rtp.ProcessDefinition.Id;
-                collection=PropertySetPersistenceService.DeserializeCollection(rtp.PropertyCollection);
+                collection = rtp.PropertyCollection.Deserialize();
                 if (!string.IsNullOrEmpty(rtp.NextStepId))
                 {
                     StepDefinition stepDef = definition.Steps.SingleOrDefault(s => s.StepId == rtp.NextStepId);

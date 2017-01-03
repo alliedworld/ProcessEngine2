@@ -31,6 +31,7 @@ namespace KlaudWerk.ProcessEngine.Persistence
     public class ProcessDefinitionDigest
     {
         public Guid Id { get; set; }
+        public string FlowId { get; set; }
         public int Version { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

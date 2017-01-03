@@ -116,9 +116,6 @@
     <Compile Include="ProcessDefinitionPersistence.cs" />
     <Compile Include="Properties\CompanyInfo.cs" />
     <Compile Include="ManualTask\ManualTaskPersistence.cs" />
-    <Compile Include="PersistentPropertyCollection.cs" />
-    <Compile Include="PersistentPropertyElement.cs" />
-    <Compile Include="PersistentSchemaElement.cs" />
     <Compile Include="ProcessDbContext.cs" />
     <Compile Include="ProcessDefinitionPersisnenceService.cs" />
     <Compile Include="ProcessRuntimePersistence.cs" />

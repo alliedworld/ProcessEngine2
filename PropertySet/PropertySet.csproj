@@ -82,6 +82,10 @@
     <Compile Include="IValueSerializer.cs" />
     <Compile Include="LongSchema.cs" />
     <Compile Include="ObjectSchema.cs" />
+    <Compile Include="Persistence\PersistentPropertyCollection.cs" />
+    <Compile Include="Persistence\PersistentPropertyElement.cs" />
+    <Compile Include="Persistence\PersistentSchemaElement.cs" />
+    <Compile Include="Persistence\PropertyCollectionExt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertySchemaFactory.cs" />
     <Compile Include="PropertySchemaSet.cs" />

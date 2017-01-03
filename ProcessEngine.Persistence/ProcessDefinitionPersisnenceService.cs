@@ -47,6 +47,7 @@ namespace KlaudWerk.ProcessEngine.Persistence
                     r => new ProcessDefinitionDigest
                         {
                             Id=r.Id,
+                            FlowId = r.FlowId,
                             Name = r.Name,
                             Description = r.Description,
                             Md5 = r.Md5,
@@ -71,6 +72,7 @@ namespace KlaudWerk.ProcessEngine.Persistence
                         r => new ProcessDefinitionDigest
                         {
                             Id=r.Id,
+                            FlowId = r.FlowId,
                             Name = r.Name,
                             Description = r.Description,
                             Md5 = r.Md5,

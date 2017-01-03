@@ -42,6 +42,7 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
             .Select(d => new ProcessDefinitionDigest
             {
                 Id = d.Id,
+                FlowId = d.FlowId,
                 Description = d.Description,
                 Name = d.Name,
                 LastUpdated = d.LastModified,
@@ -76,6 +77,7 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
                 .Select(d => new ProcessDefinitionDigest
                 {
                     Id = d.Id,
+                    FlowId = d.FlowId,
                     Description = d.Description,
                     Name = d.Name,
                     LastUpdated = d.LastModified,
@@ -154,10 +156,28 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
         public bool TryFind(Guid id, int version, out ProcessDefinition definition, out ProcessDefStatusEnum status,
             out AccountData[] accounts)
         {
+            var filter=Builders<ProcessDefinitionPersistence>.Filter.And(
+                Builders<ProcessDefinitionPersistence>.Filter.Eq(r => r.Id, id),
+                Builders<ProcessDefinitionPersistence>.Filter.Eq(r => r.Version, version)
+            );
+            return TryFind(filter, out definition, out status, out accounts);
+        }
+
+        /// <summary>
+        /// Try find a workflow definition
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="definition"></param>
+        /// <param name="status"></param>
+        /// <param name="accounts"></param>
+        /// <returns></returns>
+        public bool TryFind(FilterDefinition<ProcessDefinitionPersistence> filter,out ProcessDefinition definition, out ProcessDefStatusEnum status,
+            out AccountData[] accounts)
+        {
             status=ProcessDefStatusEnum.NotActive;
             definition = null;
             accounts=new AccountData[]{};
-            ProcessDefinitionPersistence pd = _collection.Find(r => r.Id == id && r.Version==version).SingleOrDefault();
+            ProcessDefinitionPersistence pd = _collection.Find(filter).SingleOrDefault();
             if (pd != null)
             {
                 definition = JsonConvert.DeserializeObject<ProcessDefinition>(FromBase64(pd.JsonProcessDefinition));
@@ -165,8 +185,8 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
                 accounts = pd.Accounts?.ToArray();
             }
             return pd != null;
-        }
 
+        }
         /// <summary>
         /// Update the workflow. The only things that can be updated are name and description
         /// </summary>

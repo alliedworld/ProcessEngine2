@@ -106,7 +106,9 @@
     <Compile Include="Persistence\ProcessDefinitionDigest.cs" />
     <Compile Include="Persistence\ProcessDefinitionPersistenceBase.cs" />
     <Compile Include="Persistence\ProcessDefStatusEnum.cs" />
+    <Compile Include="Persistence\ProcessRuntimePersistenceBase.cs" />
     <Compile Include="Persistence\Test\TestProcessDefinitionPersistenceBase.cs" />
+    <Compile Include="Persistence\Test\TestProcessRuntimePersistenceBase.cs" />
     <Compile Include="Properties\CompanyInfo.cs" />
     <Compile Include="Definition\ActionDefinition.cs" />
     <Compile Include="Definition\IProcessDefinitionRegistry.cs" />

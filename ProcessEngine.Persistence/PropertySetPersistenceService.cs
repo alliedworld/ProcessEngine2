@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Klaudwerk.PropertySet;
+using Klaudwerk.PropertySet.Persistence;
 using Klaudwerk.PropertySet.Serialization;
 using KlaudWerk.PropertySet.Serialization;
 
@@ -60,7 +61,7 @@ namespace KlaudWerk.ProcessEngine.Persistence
         {
             List<PersistentSchemaElement> schemaElements;
             List<PersistentPropertyElement> dataElements;
-            CreatePersistentSchemaElements(collection, out schemaElements, out dataElements);
+            collection.CreatePersistentSchemaElements(out schemaElements, out dataElements);
             using (ProcessDbContext ctx = new ProcessDbContext())
             {
                 UpdateOrCreatePropertyCollection(collectionId, ctx, schemaElements, dataElements);
@@ -79,7 +80,7 @@ namespace KlaudWerk.ProcessEngine.Persistence
         {
             List<PersistentSchemaElement> schemaElements;
             List<PersistentPropertyElement> dataElements;
-            CreatePersistentSchemaElements(collection, out schemaElements, out dataElements);
+            collection.CreatePersistentSchemaElements(out schemaElements, out dataElements);
             return UpdateOrCreatePropertyCollection(collectionId, ctx, schemaElements, dataElements);
         }
         /// <summary>
@@ -95,49 +96,14 @@ namespace KlaudWerk.ProcessEngine.Persistence
                 var persistancePropertyCollection = ctx.PropertySet.Find(collectionId);
                 if (persistancePropertyCollection == null)
                     throw new ArgumentException($"Cannot find the property collection id={collectionId}");
-                return DeserializeCollection(persistancePropertyCollection);
+                return persistancePropertyCollection.Deserialize();
             }
         }
 
 
-        /// <summary>
-        /// Deserialize schemas and collection elements
-        /// </summary>
-        /// <param name="collection"></param>
-        /// <returns></returns>
-        internal static IPropertySetCollection DeserializeCollection(PersistentPropertyCollection collection)
-        {
-            PropertySchemaSet schemaSet=new PropertySchemaSet(new PropertySchemaFactory());
-            PropertySetCollection restored = new PropertySetCollection(schemaSet);
-            //restore schemas
-            foreach (PersistentPropertyElement element in collection.Elements)
-            {
-                PersistentSchemaElement schemaElement = collection.Schemas.First(s => s.SchemaName == element.Name);
-                var valueSchema = JsonSchemaDeserializer.Deserialize(schemaElement.SchemaType, schemaElement.SchemaBody);
-                SerializationTypeHint hint =(SerializationTypeHint) schemaElement.SerializationHint;
-                Func<PersistentPropertyElement, object> valueRetriever;
-                if (!_serializationMap.TryGetValue(hint, out valueRetriever))
-                {
-                      throw new ArgumentException($"{element.Name} {hint}");
-                }
-                object val =  valueRetriever(element);
-                switch (hint)
-                {
-                    case SerializationTypeHint.JsonString:
-                        val = valueSchema.Serializer.Deserialize(val.ToString());
-                        break;
-                    case SerializationTypeHint.BinaryObject:
-                    case SerializationTypeHint.Object:
-                        byte[] data = (byte[]) val;
-                        val=valueSchema.Serializer.Deserialize(data);
-                        break;
-                }
-                restored.Add(element.Name, val, valueSchema);
-            }
-            return restored;
-        }
 
-        private static PersistentPropertyCollection UpdateOrCreatePropertyCollection(Guid collectionId, ProcessDbContext ctx, List<PersistentSchemaElement> schemaElements,
+
+        protected virtual PersistentPropertyCollection UpdateOrCreatePropertyCollection(Guid collectionId, ProcessDbContext ctx, List<PersistentSchemaElement> schemaElements,
             List<PersistentPropertyElement> dataElements)
         {
             PersistentPropertyCollection persistancePropertyCollection = ctx.PropertySet.Find(collectionId);
@@ -161,36 +127,5 @@ namespace KlaudWerk.ProcessEngine.Persistence
             }
             return persistancePropertyCollection;
         }
-
-        private static void CreatePersistentSchemaElements(IPropertySetCollection collection, out List<PersistentSchemaElement> schemaElements,
-            out List<PersistentPropertyElement> dataElements)
-        {
-            schemaElements = new List<PersistentSchemaElement>();
-            dataElements = new List<PersistentPropertyElement>();
-            foreach (var schema in collection.Schemas.Schemas)
-            {
-                SchemaJsonSerializationVisitor visitor = new SchemaJsonSerializationVisitor();
-                schema.Value.Accept(visitor);
-                PersistentSchemaElement se = new PersistentSchemaElement
-                {
-                    SchemaName = schema.Key,
-                    SchemaType = visitor.SchemaType.ToString(),
-                    SchemaBody = visitor.JsonValue,
-                    SerializationHint = (int) visitor.Hint
-                };
-                schemaElements.Add(se);
-            }
-            foreach (string k in collection.Keys)
-            {
-                PersistentPropertyElement element = new PersistentPropertyElement
-                {
-                    Name = k
-                };
-                ValueSerializationTarget target = new ValueSerializationTarget(element);
-                collection.Schemas.GetSchema(k).Serializer.Serialize(collection[k], target);
-                dataElements.Add(element);
-            }
-        }
-
     }
 }
