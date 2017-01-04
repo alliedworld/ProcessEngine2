@@ -112,6 +112,7 @@
     <Compile Include="MongoProcessDefinitionPersistenceService.cs" />
     <Compile Include="MongoProcessRuntimePersistence.cs" />
     <Compile Include="MongoProcessRuntimePersistenceService.cs" />
+    <Compile Include="MongoTaskRuntimeService.cs" />
     <Compile Include="ProcessDefinitionPersistence.cs" />
     <Compile Include="Test\TestProcessDefinitionPersistence.cs" />
     <Compile Include="Test\TestProcessRuntimePersistence.cs" />

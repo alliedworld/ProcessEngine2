@@ -25,6 +25,8 @@ THE SOFTWARE.
 using System;
 using System.Threading.Tasks;
 using Klaudwerk.PropertySet;
+using KlaudWerk.ProcessEngine.Persistence;
+using KlaudWerk.ProcessEngine.Runtime;
 
 namespace KlaudWerk.ProcessEngine
 {
@@ -37,7 +39,18 @@ namespace KlaudWerk.ProcessEngine
         /// Variable values associated with the workflow
         /// </summary>
         IPropertySetCollection PropertySet { get; }
+        /// <summary>
+        /// Caller identity
+        /// </summary>
+        AccountData Caller { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
         int ProcessEnvId { get; set; }
+        /// <summary>
+        /// Executing Step Runtime
+        /// </summary>
+        StepRuntime Step { get; set; }
         /// <summary>
         /// Id of the process
         /// </summary>
@@ -53,7 +66,6 @@ namespace KlaudWerk.ProcessEngine
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
         Task<ExecutionResult> IocServiceAsync(string iocName);
-
         /// <summary>
         /// Executes the Task service asynchronous.
         /// </summary>
@@ -123,5 +135,8 @@ namespace KlaudWerk.ProcessEngine
         {
             throw new NotImplementedException();
         }
+
+        public StepRuntime Step { get; set; }
+        public AccountData Caller { get; set; }
     }
 }

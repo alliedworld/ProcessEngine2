@@ -44,7 +44,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
         public Guid Id => _stepDef.Id;
         public bool IsStart => _stepDef.IsStart;
         public bool IsEnd => _stepDef.IsEnd;
-
+        public StepDefinition StepDefinition => _stepDef;
         /// <summary>
         /// "Compiled" indicator
         /// </summary>
