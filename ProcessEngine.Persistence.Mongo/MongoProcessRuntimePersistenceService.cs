@@ -145,10 +145,35 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
             runtime = Create(rtp.Id, definition, rtp.SuspendedStepId, (ProcessStateEnum) rtp.Status);
             return true;
         }
-
+        /// <summary>
+        /// Continue the execution after freeze
+        /// </summary>
+        /// <param name="real"></param>
+        /// <param name="result"></param>
+        /// <param name="env"></param>
+        /// <exception cref="NotImplementedException"></exception>
         private void OnContinue(IProcessRuntime real,  Tuple<ExecutionResult, StepRuntime> result, IProcessRuntimeEnvironment env)
         {
-            throw new NotImplementedException();
+            var persistedCollection = CreatePersistentPropertyCollection(real, env.PropertySet);
+            var filter = Builders<MongoProcessRuntimePersistence>.Filter.Eq(r=>r.Id, real.Id);
+            var updater = Builders<MongoProcessRuntimePersistence>.Update
+                .Set(r => r.Status, (int) real.State)
+                .Set(r => r.PropertyCollection, persistedCollection)
+                .CurrentDate(r => r.LastUpdated);
+            if (result.Item1.Status == StepExecutionStatusEnum.Ready)
+            {
+                updater=updater.Set(r => r.NextStepId, result.Item2.StepId);
+            }
+            if (result.Item1.Status == StepExecutionStatusEnum.Suspend)
+            {
+                updater=updater.Set(r => r.NextStepId, null).Set(r=>r.SuspendedStepId,result.Item2.StepId);
+            }
+            UpdateResult updateResult = _collection.UpdateOne(filter,updater);
+            if (updateResult.ModifiedCount != 1)
+            {
+                throw new ArgumentException($"Cannot modify the process Id={real.Id}");
+            }
+
         }
 
         /// <summary>

@@ -27,6 +27,9 @@ using KlaudWerk.ProcessEngine.Definition;
 
 namespace KlaudWerk.ProcessEngine.Runtime
 {
+    /// <summary>
+    /// Process Runtime Service
+    /// </summary>
     public interface IProcessRuntimeService
     {
         IProcessRuntime Create(ProcessDefinition pd,IPropertySetCollection collection);
