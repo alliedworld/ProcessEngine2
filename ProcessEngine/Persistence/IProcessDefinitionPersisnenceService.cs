@@ -13,13 +13,13 @@ namespace KlaudWerk.ProcessEngine.Persistence
         /// List all Available workflow
         /// </summary>
         /// <returns></returns>
-        IReadOnlyList<ProcessDefinitionDigest> LisAlltWorkflows(params AccountData[] accounts);
+        IReadOnlyList<ProcessDefinitionDigest> LisAlltWorkflows(params string[] accounts);
 
         /// <summary>
         /// List of all active workflow
         /// </summary>
         /// <returns></returns>
-        IReadOnlyList<ProcessDefinitionDigest> ActivetWorkflows(params AccountData[] accounts);
+        IReadOnlyList<ProcessDefinitionDigest> ActivetWorkflows(params string[] accounts);
 
         /// <summary>
         /// Save process definition
@@ -60,8 +60,9 @@ namespace KlaudWerk.ProcessEngine.Persistence
         /// <param name="id"></param>
         /// <param name="version"></param>
         /// <param name="action"></param>
+        /// <param name="accounts"></param>
         /// <exception cref="NotImplementedException"></exception>
-        void Update(Guid id, int version, Action<ProcessDefinitionPersistenceBase> action);
+        void Update(Guid id, int version, Action<ProcessDefinitionPersistenceBase> action, AccountData[] accounts=null);
 
         /// <summary>
         /// Create Security Account Records

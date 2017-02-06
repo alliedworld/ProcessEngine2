@@ -39,8 +39,9 @@ namespace KlaudWerk.ProcessEngine.Runtime
         /// <returns></returns>
         public virtual IProcessRuntime Create(ProcessDefinition pd,IPropertySetCollection collection)
         {
-            IEnumerable<StepRuntime> stepRuntimes = pd.Steps.Select(sd => new StepRuntime(sd));
             IEnumerable<LinkRuntime> linkRuntimes = pd.Links.Select(ld => new LinkRuntime(ld));
+            IEnumerable<StepRuntime> stepRuntimes = pd.Steps.Select(sd => new StepRuntime(sd,linkRuntimes.Where(l=>l.SourceStepId==sd.Id).ToArray()));
+            
             foreach (VariableDefinition variableDefinition in pd.Variables)
                 variableDefinition.SetupVariable(collection);
             return new ProcessRuntime(Guid.NewGuid(), linkRuntimes,stepRuntimes);
@@ -56,10 +57,10 @@ namespace KlaudWerk.ProcessEngine.Runtime
         /// <returns></returns>
         protected virtual ProcessRuntime Create(Guid id, ProcessDefinition pd, string step, ProcessStateEnum status)
         {
-            IEnumerable<StepRuntime> stepRuntimes = pd.Steps.Select(sd => new StepRuntime(sd));
-            IEnumerable<LinkRuntime> linkRuntimes = pd.Links.Select(ld => new LinkRuntime(ld));
+            IEnumerable<LinkRuntime> linkRuntimes = pd.Links.Select(ld => new LinkRuntime(ld)).ToList();
+            IEnumerable<StepRuntime> stepRuntimes = pd.Steps.Select(sd => new StepRuntime(sd, linkRuntimes.Where(l => l.SourceStepId == sd.Id).ToArray()));
             StepDefinition stepDef = pd.Steps.SingleOrDefault(s => s.StepId == step);
-            StepRuntime suspended = stepDef == null ? null : new StepRuntime(stepDef);
+            StepRuntime suspended = stepDef == null ? null : new StepRuntime(stepDef, linkRuntimes.Where(l => l.SourceStepId == stepDef.Id).ToArray());
             return new ProcessRuntime(id, linkRuntimes,stepRuntimes,
                 suspended,status);
 

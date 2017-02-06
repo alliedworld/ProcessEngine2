@@ -38,6 +38,9 @@ namespace Klaudwerk.PropertySet
     {
         private readonly Type _requestedType;
         #region Overrides of SchemaBase<object>
+
+        public override string TypeName => "object";
+
         [DataMember]
         public override object DefaultValue
         {

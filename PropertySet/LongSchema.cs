@@ -31,6 +31,8 @@ namespace Klaudwerk.PropertySet
     [DataContract]
     public class LongSchema:SchemaBase<long?>
     {
+        public override string TypeName => "long";
+
         [DataMember]
         public override long? DefaultValue
         {

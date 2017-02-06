@@ -322,14 +322,14 @@ namespace KlaudWerk.ProcessEngine.Runtime
             arg.Process.SuspendedInStep = arg.Step;
             arg.Process.OnSuspend(arg.Step);
             return new Tuple<ExecutionResult, StepRuntime>(
-                new ExecutionResult(StepExecutionStatusEnum.Suspend), arg.Step);
+                new ExecutionResult(StepExecutionStatusEnum.Suspend,arg.Result.CorrelationId,arg.Result.ErrorMessages), arg.Step);
         }
         private static Tuple<ExecutionResult, StepRuntime> OnPostFailed(StateActionParams arg)
         {
             arg.Process.OnStepExecutionFailed(arg.Step, arg.Result.ErrorMessages);
             arg.Process.State=ProcessStateEnum.Failed;
             return new Tuple<ExecutionResult, StepRuntime>
-                (new ExecutionResult(StepExecutionStatusEnum.Failed), arg.Step);
+                (new ExecutionResult(StepExecutionStatusEnum.Failed,null,arg.Result.ErrorMessages), arg.Step);
         }
 
         #endregion
@@ -347,8 +347,12 @@ namespace KlaudWerk.ProcessEngine.Runtime
             {
                 StepRuntime next;
                 if (TryGetNextStep(rt, env, out next))
+                {
+                    SuspendedInStep = null;
+                    State = ProcessStateEnum.Ready;
                     return new Tuple<ExecutionResult, StepRuntime>(
                         new ExecutionResult(StepExecutionStatusEnum.Ready), next);
+                }
                 if (rt.IsEnd)
                 {
                     SuspendedInStep = null;

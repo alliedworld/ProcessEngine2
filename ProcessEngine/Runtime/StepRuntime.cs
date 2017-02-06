@@ -44,6 +44,8 @@ namespace KlaudWerk.ProcessEngine.Runtime
         public Guid Id => _stepDef.Id;
         public bool IsStart => _stepDef.IsStart;
         public bool IsEnd => _stepDef.IsEnd;
+        public StepDefinition StepDefinition => _stepDef;
+        public LinkRuntime[] OutLinks { get; }
 
         /// <summary>
         /// "Compiled" indicator
@@ -53,9 +55,10 @@ namespace KlaudWerk.ProcessEngine.Runtime
         /// Constructor
         /// </summary>
         /// <param name="stepDef"></param>
-        public StepRuntime(StepDefinition stepDef)
+        public StepRuntime(StepDefinition stepDef,LinkRuntime[] outgoingLinks)
         {
             _stepDef = stepDef;
+            OutLinks = outgoingLinks;
             switch (_stepDef.StepHandler.StepHandlerType)
             {
                 case StepHandlerTypeEnum.None: _handler = new EmptyHandler(); break;
@@ -198,6 +201,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
 
             public async Task<ExecutionResult> ExecuteAsync(IProcessRuntimeEnvironment env)
             {
+                env.CurrentStep = _step;
                 return await env.IocServiceAsync(_step._stepDef.StepHandler.IocName);
             }
 
@@ -220,6 +224,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
             }
             public async Task<ExecutionResult> ExecuteAsync(IProcessRuntimeEnvironment env)
             {
+                env.CurrentStep = _step;
                 return await env.TaskServiceAsync();
             }
             public bool TryCompile(out string[] errors)
@@ -241,6 +246,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
             }
             public async Task<ExecutionResult> ExecuteAsync(IProcessRuntimeEnvironment env)
             {
+                env.CurrentStep = _step;
                 return await env.LoadExecuteAssemplyAsync(_step._stepDef.StepHandler.ClassFullName);
             }
             public bool TryCompile(out string[] errors)

@@ -36,6 +36,8 @@ namespace Klaudwerk.PropertySet
     [DataContract]
     public class DateTimeSchema:SchemaBase<DateTime?>
     {
+        public override string TypeName => "DateTime";
+
         [DataMember]
         public override DateTime? DefaultValue
         {

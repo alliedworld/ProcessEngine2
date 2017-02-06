@@ -35,6 +35,8 @@ namespace Klaudwerk.PropertySet
     [DataContract]
     public class StringSchema:SchemaBase<string>
     {
+        public override string TypeName => "String";
+
         [DataMember]
         public override string DefaultValue
         {

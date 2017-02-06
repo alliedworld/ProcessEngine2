@@ -58,7 +58,10 @@ namespace KlaudWerk.ProcessEngine.Builder
         /// </value>
         public string Description { get; }
 
-
+        /// <summary>
+        /// Gloabal "Due In Days" value
+        /// </summary>
+        public int? DueInDays { get; private set; }
         /// <summary>
         /// Gets the start steps defined in the process.
         /// </summary>
@@ -121,6 +124,17 @@ namespace KlaudWerk.ProcessEngine.Builder
             Description = description;
         }
 
+        /// <summary>
+        /// Set global "Due in Days" value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public ProcessBuilder SetDueInDays(int value)
+        {
+
+            DueInDays = value;
+            return this;
+        }
         /// <summary>
         /// Create Start Step,
         /// </summary>

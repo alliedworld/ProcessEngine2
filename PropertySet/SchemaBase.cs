@@ -43,7 +43,16 @@ namespace Klaudwerk.PropertySet
         /// Gets the type of the property.
         /// </summary>
         /// <value>The type.</value>
-        public Type Type { get { return typeof (T); } }
+        public Type Type {
+            get
+            {
+                return typeof (T);
+            } }
+
+        /// <summary>
+        /// Nmae of the schema type
+        /// </summary>
+        public abstract string TypeName { get; }
 
         /// <summary>
         /// Gets the default value.

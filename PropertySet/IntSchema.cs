@@ -54,6 +54,8 @@ namespace Klaudwerk.PropertySet
             set;
         }
 
+        public override string TypeName => "Int";
+
         [DataMember]
         public override int? DefaultValue
         {

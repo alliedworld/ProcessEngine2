@@ -101,6 +101,11 @@
     <Compile Include="Builder\VariableBuilder.cs" />
     <Compile Include="Builder\VariableMapBuilder.cs" />
     <Compile Include="Builder\VariableTypeEnum.cs" />
+    <Compile Include="IAssemblyServiceExecution.cs" />
+    <Compile Include="IExecutionService.cs" />
+    <Compile Include="IIocServiceExecution.cs" />
+    <Compile Include="IProcessRuntimeEnvironment.cs" />
+    <Compile Include="ITaskServiceExecution.cs" />
     <Compile Include="Persistence\AccountData.cs" />
     <Compile Include="Persistence\IProcessDefinitionPersisnenceService.cs" />
     <Compile Include="Persistence\ProcessDefinitionDigest.cs" />

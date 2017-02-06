@@ -39,6 +39,10 @@ namespace Klaudwerk.PropertySet
         /// <value>The type.</value>
         Type Type { get; }
         /// <summary>
+        /// Nmae of the schema type
+        /// </summary>
+        string TypeName { get; }
+        /// <summary>
         /// Gets the default value.
         /// </summary>
         /// <value>The default value.</value>

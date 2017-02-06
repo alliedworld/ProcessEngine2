@@ -136,7 +136,7 @@ namespace Klaudwerk.PropertySet
 
             public IEnumerable<object> PossibleValues
             {
-                get { return _real.PossibleValues.Cast<object>(); }
+                get { return _real.PossibleValues==null? null: _real.PossibleValues.Cast<object>(); }
                 set
                 {
                     _real.PossibleValues = value == null ? null : value.Cast<T?>();
@@ -167,6 +167,8 @@ namespace Klaudwerk.PropertySet
                 get { return _real.HasDefault; }
                 set { _real.HasDefault = value; }
             }
+
+            public string TypeName => _real.TypeName;
 
             public object DefaultValue
             {
@@ -255,6 +257,8 @@ namespace Klaudwerk.PropertySet
                 get { return _real.HasDefault; }
                 set { _real.HasDefault = value; }
             }
+
+            public string TypeName => _real.TypeName;
 
             public object DefaultValue
             {

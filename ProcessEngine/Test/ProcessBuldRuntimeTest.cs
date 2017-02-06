@@ -206,7 +206,7 @@ namespace KlaudWerk.ProcessEngine.Test
             StepDefinition sd = new StepDefinition(Guid.NewGuid(), "step_id", string.Empty, String.Empty, true, false,
                 null, null, onEntry, onEExit, null, null,
                 new StepHandlerDefinition(StepHandlerTypeEnum.None, null,string.Empty,string.Empty));
-            StepRuntime runtime=new StepRuntime(sd);
+            StepRuntime runtime=new StepRuntime(sd, new LinkRuntime[] { });
             string[] errors;
             Assert.IsTrue(runtime.TryCompile(out errors));
         }
@@ -230,7 +230,7 @@ namespace KlaudWerk.ProcessEngine.Test
             StepDefinition sd = new StepDefinition(Guid.NewGuid(), "step_id", string.Empty, String.Empty, true, false,
                 null, null, onEntry, onExit, null, null,new StepHandlerDefinition(StepHandlerTypeEnum.None, null,
                     string.Empty,string.Empty));
-            StepRuntime runtime=new StepRuntime(sd);
+            StepRuntime runtime=new StepRuntime(sd,new LinkRuntime[] {});
             string[] errors;
             Assert.IsTrue(runtime.TryCompile(out errors));
             Assert.IsFalse(runtime.ValidateOnEnter(env).Result.Valid);
@@ -257,7 +257,7 @@ namespace KlaudWerk.ProcessEngine.Test
             StepDefinition sd = new StepDefinition(Guid.NewGuid(), "step_id", string.Empty, String.Empty, true, false,
                 null, null, onEntry, onExit, null, null,
                 new StepHandlerDefinition(StepHandlerTypeEnum.None, null,string.Empty,string.Empty));
-            StepRuntime runtime=new StepRuntime(sd);
+            StepRuntime runtime=new StepRuntime(sd, new LinkRuntime[] { });
             string[] errors;
             Assert.IsTrue(runtime.TryCompile(out errors));
             Assert.IsTrue(runtime.ValidateOnEnter(env).Result.Valid);
@@ -287,7 +287,7 @@ namespace KlaudWerk.ProcessEngine.Test
             StepDefinition sd = new StepDefinition(Guid.NewGuid(), "step_id", string.Empty, String.Empty, true, false,
                 null, null, null, null, null, vars,
                 new StepHandlerDefinition(StepHandlerTypeEnum.None, null,string.Empty,string.Empty));
-            StepRuntime runtime = new StepRuntime(sd);
+            StepRuntime runtime = new StepRuntime(sd, new LinkRuntime[] { });
             string[] errors;
             Assert.IsTrue(runtime.TryCompile(out errors));
             Assert.IsTrue(runtime.ValidateOnEnter(env).Result.Valid);
@@ -313,7 +313,7 @@ namespace KlaudWerk.ProcessEngine.Test
             StepDefinition sd = new StepDefinition(Guid.NewGuid(), "step_id", string.Empty, String.Empty, true, false,
                 null, null, null, null, null, vars,
                 new StepHandlerDefinition(StepHandlerTypeEnum.None, null,string.Empty,string.Empty));
-            StepRuntime runtime = new StepRuntime(sd);
+            StepRuntime runtime = new StepRuntime(sd, new LinkRuntime[] { });
             string[] errors;
             Assert.IsTrue(runtime.TryCompile(out errors));
             var res=runtime.ValidateOnEnter(env).Result;
@@ -343,7 +343,7 @@ namespace KlaudWerk.ProcessEngine.Test
             StepDefinition sd = new StepDefinition(Guid.NewGuid(), "step_id", string.Empty, String.Empty, true, false,
                 null, null, null, null, null, vars,
                 new StepHandlerDefinition(StepHandlerTypeEnum.None, null,string.Empty,string.Empty));
-            StepRuntime runtime = new StepRuntime(sd);
+            StepRuntime runtime = new StepRuntime(sd, new LinkRuntime[] { });
             string[] errors;
             Assert.IsTrue(runtime.TryCompile(out errors));
             var res=runtime.ValidateOnEnter(env).Result;
@@ -430,7 +430,7 @@ namespace KlaudWerk.ProcessEngine.Test
             StepDefinition sd = new StepDefinition(Guid.NewGuid(), "step_id", string.Empty, String.Empty, true, false,
                 null, null, null, null, null, null,
                 new StepHandlerDefinition(StepHandlerTypeEnum.None, null,string.Empty,string.Empty));
-            StepRuntime runtime = new StepRuntime(sd);
+            StepRuntime runtime = new StepRuntime(sd, new LinkRuntime[] { });
             string[] errors;
             Assert.IsTrue(runtime.TryCompile(out errors));
             var result = runtime.ExecuteAsync(env).Result;
@@ -447,7 +447,7 @@ namespace KlaudWerk.ProcessEngine.Test
             StepDefinition sd = new StepDefinition(Guid.NewGuid(), "step_id", string.Empty, String.Empty, true, false,
                 null, null, null, null, null, null,
                 new StepHandlerDefinition(StepHandlerTypeEnum.IoC, null,"IocMethod",string.Empty));
-            StepRuntime runtime = new StepRuntime(sd);
+            StepRuntime runtime = new StepRuntime(sd, new LinkRuntime[] { });
             string[] errors;
             Assert.IsTrue(runtime.TryCompile(out errors));
             var result = runtime.ExecuteAsync(mEnv.Object).Result;
@@ -466,7 +466,7 @@ namespace KlaudWerk.ProcessEngine.Test
             StepDefinition sd = new StepDefinition(Guid.NewGuid(), "step_id", string.Empty, String.Empty, true, false,
                 null, null, null, null, null, null,
                 new StepHandlerDefinition(StepHandlerTypeEnum.Task, null,string.Empty,string.Empty));
-            StepRuntime runtime = new StepRuntime(sd);
+            StepRuntime runtime = new StepRuntime(sd, new LinkRuntime[] { });
             string[] errors;
             Assert.IsTrue(runtime.TryCompile(out errors));
             var result = runtime.ExecuteAsync(mEnv.Object).Result;
@@ -485,7 +485,7 @@ namespace KlaudWerk.ProcessEngine.Test
             StepDefinition sd = new StepDefinition(Guid.NewGuid(), "step_id", string.Empty, String.Empty, true, false,
                 null, null, null, null, null, null,
                 new StepHandlerDefinition(StepHandlerTypeEnum.Service, null,string.Empty,"AsmToExecute"));
-            StepRuntime runtime = new StepRuntime(sd);
+            StepRuntime runtime = new StepRuntime(sd, new LinkRuntime[] { });
             string[] errors;
             Assert.IsTrue(runtime.TryCompile(out errors));
             var result = runtime.ExecuteAsync(mEnv.Object).Result;
@@ -511,7 +511,7 @@ namespace KlaudWerk.ProcessEngine.Test
             StepDefinition sd = new StepDefinition(Guid.NewGuid(), "step_id", string.Empty, String.Empty, true, false,
                 null, null, null, null, null, null,
                 new StepHandlerDefinition(StepHandlerTypeEnum.Script, script,string.Empty,string.Empty));
-            StepRuntime runtime = new StepRuntime(sd);
+            StepRuntime runtime = new StepRuntime(sd, new LinkRuntime[] { });
             string[] errors;
             Assert.IsTrue(runtime.TryCompile(out errors));
             var result = runtime.ExecuteAsync(env).Result;
@@ -536,7 +536,7 @@ namespace KlaudWerk.ProcessEngine.Test
             StepDefinition sd = new StepDefinition(Guid.NewGuid(), "step_id", string.Empty, String.Empty, true, false,
                 null, null, null, null, null, null,
                 new StepHandlerDefinition(StepHandlerTypeEnum.Script, script,string.Empty,string.Empty));
-            StepRuntime runtime = new StepRuntime(sd);
+            StepRuntime runtime = new StepRuntime(sd, new LinkRuntime[] { });
             string[] errors;
             Assert.IsFalse(runtime.TryCompile(out errors));
             Assert.IsNotNull(errors);
@@ -559,7 +559,7 @@ namespace KlaudWerk.ProcessEngine.Test
             StepDefinition sd = new StepDefinition(Guid.NewGuid(), "step_id", string.Empty, String.Empty, true, false,
                 null, null, null, null, null, null,
                 new StepHandlerDefinition(StepHandlerTypeEnum.Script, script,string.Empty,string.Empty));
-            StepRuntime runtime = new StepRuntime(sd);
+            StepRuntime runtime = new StepRuntime(sd, new LinkRuntime[] { });
             string[] errors;
             Assert.True(runtime.TryCompile(out errors));
             var result = runtime.ExecuteAsync(env).Result;

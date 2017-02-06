@@ -54,6 +54,8 @@ namespace Klaudwerk.PropertySet
             set;
         }
 
+        public override string TypeName => "Char";
+
         [DataMember]
         public override char? DefaultValue
         {

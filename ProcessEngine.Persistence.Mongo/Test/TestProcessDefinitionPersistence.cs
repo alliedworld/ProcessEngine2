@@ -130,18 +130,18 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo.Test
             service.Create(pd1,ProcessDefStatusEnum.Active, 1, accounts[0],accounts[1]);
             service.Create(pd2,ProcessDefStatusEnum.Active, 1, accounts[2],accounts[3]);
             //List Underwriter should return one definition
-            IReadOnlyList<ProcessDefinitionDigest> digest = service.ActivetWorkflows(accounts[0]);
+            IReadOnlyList<ProcessDefinitionDigest> digest = service.ActivetWorkflows(accounts[0].Name);
             Assert.IsNotNull(digest);
             Assert.AreEqual(1,digest.Count);
             Assert.AreEqual(pd1.Name,digest[0].Name);
 
-            digest = service.ActivetWorkflows(accounts[1],accounts[3]);
+            digest = service.ActivetWorkflows(accounts[1].Name,accounts[3].Name);
             Assert.IsNotNull(digest);
             Assert.AreEqual(2,digest.Count);
             Assert.AreEqual(1,digest.Count(c=>c.Name==pd1.Name));
             Assert.AreEqual(1,digest.Count(c=>c.Name==pd2.Name));
 
-            digest = service.ActivetWorkflows(accounts[4]);
+            digest = service.ActivetWorkflows(accounts[4].Name);
             Assert.IsNotNull(digest);
             Assert.AreEqual(0,digest.Count);
         }
@@ -194,18 +194,18 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo.Test
             service.Create(pd1,ProcessDefStatusEnum.Active, 1, accounts[0],accounts[1]);
             service.Create(pd2,ProcessDefStatusEnum.NotActive, 1, accounts[2],accounts[3]);
             //List Underwriter should return one definition
-            IReadOnlyList<ProcessDefinitionDigest> digest = service.LisAlltWorkflows(accounts[0]);
+            IReadOnlyList<ProcessDefinitionDigest> digest = service.LisAlltWorkflows(accounts[0].Name);
             Assert.IsNotNull(digest);
             Assert.AreEqual(1,digest.Count);
             Assert.AreEqual(pd1.Name,digest[0].Name);
 
-            digest = service.LisAlltWorkflows(accounts[1],accounts[3]);
+            digest = service.LisAlltWorkflows(accounts[1].Name,accounts[3].Name);
             Assert.IsNotNull(digest);
             Assert.AreEqual(2,digest.Count);
             Assert.AreEqual(1,digest.Count(c=>c.Name==pd1.Name));
             Assert.AreEqual(1,digest.Count(c=>c.Name==pd2.Name));
 
-            digest = service.LisAlltWorkflows(accounts[4]);
+            digest = service.LisAlltWorkflows(accounts[4].Name);
             Assert.IsNotNull(digest);
             Assert.AreEqual(0,digest.Count);
         }

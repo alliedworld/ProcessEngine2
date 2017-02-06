@@ -55,12 +55,12 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
         /// </summary>
         /// <param name="accounts"></param>
         /// <returns></returns>
-        public IReadOnlyList<ProcessDefinitionDigest> LisAlltWorkflows(params AccountData[] accounts)
+        public IReadOnlyList<ProcessDefinitionDigest> LisAlltWorkflows(params string[] accounts)
         {
             FilterDefinition<ProcessDefinitionPersistence> filterDefinition=null;
             if (accounts != null && accounts.Length > 0)
             {
-                filterDefinition = Builders<ProcessDefinitionPersistence>.Filter.In("Accounts", accounts);
+                filterDefinition = Builders<ProcessDefinitionPersistence>.Filter.In("Accounts.Name", accounts);
             }
             return
                 (filterDefinition==null?
@@ -83,14 +83,14 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
         /// </summary>
         /// <param name="accounts"></param>
         /// <returns></returns>
-        public IReadOnlyList<ProcessDefinitionDigest> ActivetWorkflows(params AccountData[] accounts)
+        public IReadOnlyList<ProcessDefinitionDigest> ActivetWorkflows(params string[] accounts)
         {
             FilterDefinition<ProcessDefinitionPersistence> filterDefinition=null;
             if (accounts != null && accounts.Length > 0)
             {
                 filterDefinition = Builders<ProcessDefinitionPersistence>.Filter.And(
                     Builders<ProcessDefinitionPersistence>.Filter.Eq(r => r.Status, (int) ProcessDefStatusEnum.Active),
-                    Builders<ProcessDefinitionPersistence>.Filter.In("Accounts", accounts)
+                    Builders<ProcessDefinitionPersistence>.Filter.In("Accounts.Name", accounts)
                 );
             }
             else
@@ -220,7 +220,7 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
         /// <param name="version"></param>
         /// <param name="action"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void Update(Guid id, int version, Action<ProcessDefinitionPersistenceBase> action)
+        public void Update(Guid id, int version, Action<ProcessDefinitionPersistenceBase> action, AccountData[] accounts=null)
         {
             UpdateProcessDefPersistence u=new UpdateProcessDefPersistence();
             action(u);
@@ -238,6 +238,12 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
                 if (updatedef == null)
                     updatedef = Builders<ProcessDefinitionPersistence>.Update.Set(r => r.Description, u.Description);
                 else updatedef.Set(r => r.Description, u.Description);
+            }
+            if (accounts != null)
+            {
+                if (updatedef == null)
+                    updatedef = Builders<ProcessDefinitionPersistence>.Update.Set(r => r.Accounts, new List<AccountData>(accounts));
+                else updatedef.Set(r => r.Accounts, new List<AccountData>(accounts));
             }
             updatedef = updatedef?.CurrentDate(r => r.LastModified);
             if (updatedef == null)

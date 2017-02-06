@@ -138,7 +138,9 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
             if (!string.IsNullOrEmpty(rtp.NextStepId))
             {
                 StepDefinition stepDef = definition.Steps.SingleOrDefault(s => s.StepId == rtp.NextStepId);
-                nextStep = stepDef == null ? null : new StepRuntime(stepDef);
+                StepDefinitionId sid=new StepDefinitionId(stepDef.Id,stepDef.StepId);
+                LinkDefinition[] links = definition.Links.Where(l => l.Source == sid).ToArray();
+                nextStep = new StepRuntime(stepDef,links.Select(l=>new LinkRuntime(l)).ToArray());
             }
             runtime = Create(rtp.Id, definition, rtp.SuspendedStepId, (ProcessStateEnum) rtp.Status);
             return true;

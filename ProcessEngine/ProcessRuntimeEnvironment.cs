@@ -23,59 +23,40 @@ THE SOFTWARE.
   */
 
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Klaudwerk.PropertySet;
+using Klaudwerk.PropertySet.Test;
+using KlaudWerk.ProcessEngine.Runtime;
+using KlaudWerk.ProcessEngine.Test;
 
 namespace KlaudWerk.ProcessEngine
 {
-    /// <summary>
-    /// Process Runtime Environment Interface
-    /// </summary>
-    public interface IProcessRuntimeEnvironment
-    {
-        /// <summary>
-        /// Variable values associated with the workflow
-        /// </summary>
-        IPropertySetCollection PropertySet { get; }
-        int ProcessEnvId { get; set; }
-        /// <summary>
-        /// Id of the process
-        /// </summary>
-        Guid ProcessId { get; }
-        /// <summary>
-        /// Id of the transition that needs to be taken
-        /// </summary>
-        string Transition { get; }
-        /// <summary>
-        /// Execute the IOC service asynchronous.
-        /// </summary>
-        /// <param name="iocName">Name of the ioc.</param>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        Task<ExecutionResult> IocServiceAsync(string iocName);
-
-        /// <summary>
-        /// Executes the Task service asynchronous.
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        Task<ExecutionResult> TaskServiceAsync();
-
-        /// <summary>
-        /// Loads the execute assemply asynchronous.
-        /// </summary>
-        /// <param name="classFullName">Full name of the class.</param>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        Task<ExecutionResult> LoadExecuteAssemplyAsync(string classFullName);
-    }
-
     /// <summary>
     /// Process Runtime Environment
     /// </summary>
     public class ProcessRuntimeEnvironment : IProcessRuntimeEnvironment
     {
 
+        private readonly IPropertySetCollection _params=
+            new ValueSetCollectionTest.MockPropertySetCollection(new PropertySchemaSet(new PropertySchemaFactory()));
+
+        private IExecutionService _taskExecution;
+        private IIocServiceExecution _iocServiceExecution;
+        private IAssemblyServiceExecution _assemblyServiceExecution;
+        /// <summary>
+        /// Current Step
+        /// </summary>
+        public StepRuntime CurrentStep { get; set; }
+
+        /// <summary>
+        /// Caller claim principal
+        /// </summary>
+        public ClaimsPrincipal Principal { get; set; }
+
+        /// <summary>
+        /// Variable values associated with the workflow
+        /// </summary>
         public IPropertySetCollection PropertySet { get; }
 
         public int ProcessEnvId { get; set; }
@@ -86,7 +67,8 @@ namespace KlaudWerk.ProcessEngine
         /// Initializes a new instance of the <see cref="ProcessRuntimeEnvironment"/> class.
         /// </summary>
         /// <param name="propertySet">The property set.</param>
-        public ProcessRuntimeEnvironment(IPropertySetCollection propertySet)
+        public ProcessRuntimeEnvironment(
+            IPropertySetCollection propertySet)
         {
             PropertySet = propertySet;
         }
@@ -100,7 +82,11 @@ namespace KlaudWerk.ProcessEngine
         /// <exception cref="NotImplementedException"></exception>
         public virtual Task<ExecutionResult> IocServiceAsync(string iocName)
         {
-            throw new NotImplementedException();
+            IExecutionService servce;
+            return (_iocServiceExecution == null || (servce = _iocServiceExecution.GetServce(iocName))==null)?
+                Task.FromResult(new ExecutionResult(StepExecutionStatusEnum.Failed, null,
+                    $"No IOC Service registered for {iocName}")):
+                servce.ExecuteAsync(this);
         }
 
         /// <summary>
@@ -110,7 +96,9 @@ namespace KlaudWerk.ProcessEngine
         /// <exception cref="NotImplementedException"></exception>
         public virtual Task<ExecutionResult> TaskServiceAsync()
         {
-            throw new NotImplementedException();
+            return _taskExecution==null? Task.FromResult(new ExecutionResult(StepExecutionStatusEnum.Failed, null,
+                    "No Task Service registered.")) :
+                _taskExecution.ExecuteAsync(this);
         }
 
         /// <summary>
@@ -121,7 +109,52 @@ namespace KlaudWerk.ProcessEngine
         /// <exception cref="NotImplementedException"></exception>
         public virtual Task<ExecutionResult> LoadExecuteAssemplyAsync(string classFullName)
         {
-            throw new NotImplementedException();
+            IExecutionService servce;
+            Exception error=null;
+            return (_assemblyServiceExecution == null || !_assemblyServiceExecution.TryLoadClass(classFullName,out servce,out error))?
+                Task.FromResult(new ExecutionResult(StepExecutionStatusEnum.Failed, null,
+                    string.Format("Cannot load class {0}. Error:{1}",classFullName,error?.Message ?? ""))) :
+                servce.ExecuteAsync(this);
+        }
+        public T Get<T>(string name) where T : class
+        {
+            return _params.Get<T>(name);
+        }
+
+        public IProcessRuntimeEnvironment Set<T>(string name, T value) where T:class 
+        {
+            _params.Set(name,value);
+            return this;
+        }
+
+        /// <summary>
+        /// Set IOC execution service
+        /// </summary>
+        /// <param name="execution"></param>
+        public IProcessRuntimeEnvironment SetIocExecution(IIocServiceExecution execution)
+        {
+            _iocServiceExecution = execution;
+            return this;
+        }
+
+        /// <summary>
+        /// Set Task Execution service
+        /// </summary>
+        /// <param name="execution"></param>
+        public IProcessRuntimeEnvironment SetTaskExecution(IExecutionService execution)
+        {
+            _taskExecution = execution;
+            return this;
+        }
+
+        /// <summary>
+        /// Set Assembly Execution service
+        /// </summary>
+        /// <param name="execution"></param>
+        public IProcessRuntimeEnvironment SetAssemblyExecution(IAssemblyServiceExecution execution)
+        {
+            _assemblyServiceExecution = execution;
+            return this;
         }
     }
 }

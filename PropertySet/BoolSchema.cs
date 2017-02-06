@@ -32,6 +32,8 @@ namespace Klaudwerk.PropertySet
     public class BoolSchema:SchemaBase<bool?>
     {
         private static readonly bool?[] _possibleValues = new bool?[] {true, false};
+        public override string TypeName => "bool";
+
         [DataMember]
         public override bool? DefaultValue
         {

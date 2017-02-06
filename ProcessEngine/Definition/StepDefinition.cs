@@ -81,7 +81,7 @@ namespace KlaudWerk.ProcessEngine.Definition
         ///   <c>true</c> if this instance is end; otherwise, <c>false</c>.
         /// </value>
         [DataMember(Name = "is_end_step")]
-        public bool IsEnd { get; }
+        public bool IsEnd { get; set; }
         /// <summary>
         /// Gets a value indicating whether this instance is start.
         /// </summary>

@@ -40,7 +40,7 @@ namespace KlaudWerk.ProcessEngine.Persistence
         /// List all Available workflow
         /// </summary>
         /// <returns></returns>
-        public IReadOnlyList<ProcessDefinitionDigest> LisAlltWorkflows(params AccountData[] accounts)
+        public IReadOnlyList<ProcessDefinitionDigest> LisAlltWorkflows(params string[] accounts)
         {
             using (var ctx = new ProcessDbContext())
             {
@@ -63,7 +63,7 @@ namespace KlaudWerk.ProcessEngine.Persistence
         /// List of all active workflow
         /// </summary>
         /// <returns></returns>
-        public IReadOnlyList<ProcessDefinitionDigest> ActivetWorkflows(params AccountData[] accounts)
+        public IReadOnlyList<ProcessDefinitionDigest> ActivetWorkflows(params string[] accounts)
         {
             using (var ctx = new ProcessDbContext())
             {
@@ -221,7 +221,7 @@ namespace KlaudWerk.ProcessEngine.Persistence
         /// <param name="version"></param>
         /// <param name="action"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void Update(Guid id, int version, Action<ProcessDefinitionPersistenceBase> action)
+        public void Update(Guid id, int version, Action<ProcessDefinitionPersistenceBase> action, AccountData[] accounts=null)
         {
             using (var ctx = new ProcessDbContext())
             {
@@ -229,6 +229,10 @@ namespace KlaudWerk.ProcessEngine.Persistence
                 if (pd == null)
                     throw new ArgumentException($"Process Definition id={id} version={version} not found.");
                 action(pd);
+                if (accounts != null)
+                {
+                    SetupAccounts(ctx,pd,accounts);
+                }
                 ctx.SaveChanges();
             }
         }
