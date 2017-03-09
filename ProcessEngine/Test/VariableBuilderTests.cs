@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
   */
 using System;
+using System.Runtime.Remoting;
 using KlaudWerk.ProcessEngine.Builder;
 using NUnit.Framework;
 
@@ -86,6 +87,85 @@ namespace KlaudWerk.ProcessEngine.Test
             Assert.AreEqual("DEFAULT",builderProcessVariable.VariableConstraints.Default);
             Assert.AreEqual(10,builderProcessVariable.VariableConstraints.Min);
             Assert.AreEqual(100,builderProcessVariable.VariableConstraints.Max);
+        }
+
+        [Test]
+        public void TestSettingPossibleValueOnVariable()
+        {
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id: "p_001", name: "Renewal", description: "Policy Renewal");
+            builder.Variables()
+                .Name("List")
+                .Type(VariableTypeEnum.String)
+                .Constraints()
+                .PossibeValues("1", "2", "3", "4").Done().Done();
+            Assert.IsNotNull(builder.ProcessVariables);
+            Assert.AreEqual(1, builder.ProcessVariables.Count);
+            var vars = builder.ProcessVariables;
+            Assert.IsNotNull(vars[0].VariableConstraints);
+            Assert.IsNotNull(vars[0].VariableConstraints.Values);
+            Assert.AreEqual(4,vars[0].VariableConstraints.Values.Length);
+        }
+
+        [Test]
+        public void TestSetScriptOnVariable()
+        {
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id: "p_001", name: "Renewal", description: "Policy Renewal");
+            builder.Variables()
+                .Name("List")
+                .Type(VariableTypeEnum.Int)
+                .Handler()
+                .Script()
+                .Language(ScriptLanguage.CSharpScript)
+                .Body("return new int[]{1,2,3};").Done().Done().Done();
+
+            Assert.IsNotNull(builder.ProcessVariables);
+            Assert.AreEqual(1, builder.ProcessVariables.Count);
+            var vars = builder.ProcessVariables;
+            Assert.IsNotNull(vars[0].VariableHandler);
+            Assert.AreEqual(StepHandlerTypeEnum.Script, vars[0].VariableHandler.StepHandlerType);
+            Assert.IsNotNull(vars[0].VariableHandler.ScriptBuilder);
+            Assert.AreEqual("return new int[]{1,2,3};",vars[0].VariableHandler.ScriptBuilder.ScriptBody);
+        }
+
+        [Test]
+        public void TestSetIocServiceOnVariableBuilder()
+        {
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id: "p_001", name: "Renewal", description: "Policy Renewal");
+            builder.Variables()
+                .Name("List")
+                .Type(VariableTypeEnum.Int)
+                .Handler()
+                .IocService("IoCService").Done().Done();
+            Assert.IsNotNull(builder.ProcessVariables);
+            Assert.AreEqual(1, builder.ProcessVariables.Count);
+            var vars = builder.ProcessVariables;
+            Assert.IsNotNull(vars[0].VariableHandler);
+            Assert.AreEqual(StepHandlerTypeEnum.IoC, vars[0].VariableHandler.StepHandlerType);
+            Assert.IsNotNull(vars[0].VariableHandler.IocName);
+            Assert.AreEqual("IoCService",vars[0].VariableHandler.IocName);
+        }
+
+        [Test]
+        public void TestSetAssemblyNameToVariableBuilder()
+        {
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id: "p_001", name: "Renewal", description: "Policy Renewal");
+            builder.Variables()
+                .Name("List")
+                .Type(VariableTypeEnum.Int)
+                .Handler()
+                .Service("TypeName, AssemblyName").Done().Done();
+            Assert.IsNotNull(builder.ProcessVariables);
+            Assert.AreEqual(1, builder.ProcessVariables.Count);
+            var vars = builder.ProcessVariables;
+            Assert.IsNotNull(vars[0].VariableHandler);
+            Assert.AreEqual(StepHandlerTypeEnum.Service, vars[0].VariableHandler.StepHandlerType);
+            Assert.IsNotNull(vars[0].VariableHandler.FullClassName);
+            Assert.AreEqual("TypeName, AssemblyName",vars[0].VariableHandler.FullClassName);
+
         }
 
     }

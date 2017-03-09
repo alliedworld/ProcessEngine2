@@ -35,7 +35,7 @@ namespace KlaudWerk.ProcessEngine.Builder
         private string _description;
         private VariableTypeEnum _type;
         private ConstraintBuilder _constraints;
-        private VariableHandlerBuilder _handler;
+        private readonly VariableHandlerBuilder _handler;
         /// <summary>
         /// Public Properties
         /// </summary>

@@ -50,7 +50,7 @@ namespace KlaudWerk.ProcessEngine.Builder
         public HandlerBuilder<T> Service(string fullClassName)
         {
             IocName = string.Empty;
-            FullClassName = string.Empty;
+            FullClassName = fullClassName;
             StepHandlerType = StepHandlerTypeEnum.Service;
             return this;
         }
