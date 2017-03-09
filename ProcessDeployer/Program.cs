@@ -37,6 +37,7 @@ namespace Klaudwerk.ProcessDeployer
     {
         public string Command { get; set; }
         public string FlowId { get; set; }
+        public string RoleString { get; set; }
         public int Version { get; set; }
 
         public override string ToString()
@@ -66,7 +67,51 @@ namespace Klaudwerk.ProcessDeployer
                 {"activate",ActivateWorkflow},
                 {"x",DeactivateWorkflow},
                 {"deactivate",DeactivateWorkflow},
+                {"r+",AddRoles},
+                {"r-",RemoveRoles},
+                {"m",RemoveFlow}
             };
+
+        private static void RemoveFlow(ApplicationArgumments a)
+        {
+            Guid guid = CheckId(a);
+            if (guid == Guid.Empty)
+            {
+                Console.WriteLine("Valid Process Definition GUID required.");
+                return;
+            }
+            if (a.Version == -1)
+            {
+                Console.WriteLine("Version number is required.");
+                return;
+            }
+            Console.WriteLine($"Removing workflow: {guid} {a.Version}");
+            WfDeployer.RemoveWorkflow(guid, a.Version);        }
+
+        private static void RemoveRoles(ApplicationArgumments a)
+        {
+        }
+
+        private static void AddRoles(ApplicationArgumments a)
+        {
+            if (string.IsNullOrEmpty(a.RoleString))
+            {
+                Console.WriteLine("Role string should be provided.");
+                return;
+            }
+            if (string.IsNullOrEmpty(a.FlowId))
+            {
+                Console.WriteLine("Flow Id should be provided.");
+                return;
+            }
+            if (a.Version == -1)
+            {
+                Console.WriteLine("Version should be provided");
+                return;
+            }
+            WfDeployer.AddRole(new Guid(a.FlowId), a.Version, a.RoleString);
+
+        }
 
         public static void PrintHelp(ApplicationArgumments a)
         {
@@ -80,6 +125,9 @@ commands:
  u  or undeploy       - undeploy a workflow
  a  or activate       - activate workflow
  x  or deactivate     - deactivate workflow
+ r+                   - add role
+ r-                   - remove role
+ m                    - remove workflow
 ";
           Console.WriteLine(commands);
         }
@@ -187,8 +235,10 @@ commands:
 
             var parser = new FluentCommandLineParser<ApplicationArgumments>();
             parser.Setup(a => a.Command).As('c', "command").Required().SetDefault("help");
-            parser.Setup(a => a.FlowId).As('f', "flowid").SetDefault("");
+            parser.Setup(a => a.FlowId).As('f', "flowid").SetDefault(string.Empty);
             parser.Setup(a => a.Version).As('v', "version").SetDefault(-1);
+            parser.Setup(a => a.RoleString).As('r', "role").SetDefault(string.Empty);
+
             var result = parser.Parse(args);
             if (!result.HasErrors)
             {

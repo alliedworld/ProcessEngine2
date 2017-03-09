@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using KlaudWerk.ProcessEngine;
 using KlaudWerk.ProcessEngine.Definition;
 using KlaudWerk.ProcessEngine.Persistence;
 using KlaudWerk.ProcessEngine.Persistence.Test;
 using MongoDB.Driver;
+using Newtonsoft.Json;
 using NUnit.Framework;
 
 namespace Klaudwerk.ProcessEngine.Persistence.Mongo.Test
@@ -256,6 +258,187 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo.Test
             OnPossibleToUpdateNameAndDescription(service);
         }
 
+        [Test]
+        public void TestCreateProcessDefinitionWithScriptAndRetrieve()
+        {
+            ProcessDefinition pd = BuildProcessdefinition("id.123", "test_definition", "description");
+            Md5CalcVisitor visitor=new Md5CalcVisitor();
+            pd.Accept(visitor);
+            string md5 = visitor.CalculateMd5();
+            IProcessDefinitionPersisnenceService service = InstService();
+            service.Create(pd,ProcessDefStatusEnum.Active,1);
+            IReadOnlyList<ProcessDefinitionDigest> flows = service.LisAlltWorkflows();
+            Assert.IsNotNull(flows);
+            Assert.AreEqual(1,flows.Count);
+            ProcessDefStatusEnum stat;
+            ProcessDefinition savedPd;
+            AccountData[] accounts;
+            Assert.IsTrue(service.TryFind(flows[0].Id, flows[0].Version, out savedPd, out stat, out accounts));
+
+            Assert.IsNotNull(savedPd);
+            visitor.Reset();
+            savedPd.Accept(visitor);
+            string savedMd5 = visitor.CalculateMd5();
+            Assert.AreEqual(md5, savedMd5);
+
+        }
+        [Test]
+        public void TestAddRolesShouldAddNewRoles()
+        {
+            var collection = _database.GetCollection<ProcessDefinitionPersistence>(MongoProcessDefinitionPersistenceService.CollectionName);
+            IProcessDefinitionPersisnenceService service = InstService();
+            AccountData[] accounts = new[]
+            {
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Underwriter",
+                    SourceSystem = "ActiveDirectory"
+                },
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Modeler",
+                    SourceSystem = "ActiveDirectory"
+                },
+            };
+
+            OnCreateFlowWithAssociatedSecutityAccounts(service, accounts);
+            Assert.AreEqual(1, collection.Count(pd => true));
+            AccountData[] accountsToAdd = new[]
+            {
+                new AccountData
+                {
+                    AccountType = 2,
+                    Id = Guid.NewGuid(),
+                    Name = "London",
+                    SourceSystem = "ActiveDirectory"
+                },
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Administrator",
+                    SourceSystem = "ActiveDirectory"
+                }
+            };
+            IReadOnlyList<ProcessDefinitionDigest> flows = service.LisAlltWorkflows();
+            Assert.IsNotNull(flows);
+            Assert.AreEqual(1,flows.Count);
+            ProcessDefinitionDigest flow = flows.ElementAt(0);
+            service.AddRoles(flow.Id,flow.Version,accountsToAdd);
+            var idFilter 
+                = Builders<ProcessDefinitionPersistence>.Filter.Eq(r=>r.Id,flow.Id);
+            ProcessDefinitionPersistence persistence = collection.FindSync(idFilter).FirstOrDefault();
+            Assert.IsNotNull(persistence);
+            Assert.IsNotNull(persistence.Accounts);
+            Assert.AreEqual(4,persistence.Accounts.Count);
+            Assert.AreEqual(1, persistence.Accounts.Count(a=>a.Name=="London"));
+            Assert.AreEqual(1, persistence.Accounts.Count(a => a.Name == "Administrator"));
+            Assert.AreEqual(1, persistence.Accounts.Count(a => a.Name == "Underwriter"));
+            Assert.AreEqual(1, persistence.Accounts.Count(a => a.Name == "Modeler"));
+        }
+
+        [Test]
+        public void TestAddRolesShouldSkipExistingRoles()
+        {
+            var collection = _database.GetCollection<ProcessDefinitionPersistence>(MongoProcessDefinitionPersistenceService.CollectionName);
+            IProcessDefinitionPersisnenceService service = InstService();
+            AccountData[] accounts = new[]
+            {
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Underwriter",
+                    SourceSystem = "ActiveDirectory"
+                },
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Modeler",
+                    SourceSystem = "ActiveDirectory"
+                },
+            };
+
+            OnCreateFlowWithAssociatedSecutityAccounts(service, accounts);
+            Assert.AreEqual(1, collection.Count(pd => true));
+            AccountData[] accountsToAdd = new[]
+            {
+                new AccountData
+                {
+                    AccountType = 2,
+                    Id = Guid.NewGuid(),
+                    Name = "London",
+                    SourceSystem = "ActiveDirectory"
+                },
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Underwriter",
+                    SourceSystem = "ActiveDirectory"
+                }
+            };
+            IReadOnlyList<ProcessDefinitionDigest> flows = service.LisAlltWorkflows();
+            Assert.IsNotNull(flows);
+            Assert.AreEqual(1, flows.Count);
+            ProcessDefinitionDigest flow = flows.ElementAt(0);
+            service.AddRoles(flow.Id, flow.Version, accountsToAdd);
+            var idFilter
+                = Builders<ProcessDefinitionPersistence>.Filter.Eq(r => r.Id, flow.Id);
+            ProcessDefinitionPersistence persistence = collection.FindSync(idFilter).FirstOrDefault();
+            Assert.IsNotNull(persistence);
+            Assert.IsNotNull(persistence.Accounts);
+            Assert.AreEqual(3, persistence.Accounts.Count);
+            Assert.AreEqual(1, persistence.Accounts.Count(a => a.Name == "London"));
+            Assert.AreEqual(1, persistence.Accounts.Count(a => a.Name == "Underwriter"));
+            Assert.AreEqual(1, persistence.Accounts.Count(a => a.Name == "Modeler"));
+
+        }
+
+        [Test]
+        public void TestRemoveRolesShouldRemoveSpecificRoles()
+        {
+            var collection = _database.GetCollection<ProcessDefinitionPersistence>(MongoProcessDefinitionPersistenceService.CollectionName);
+            IProcessDefinitionPersisnenceService service = InstService();
+            AccountData[] accounts = new[]
+            {
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Underwriter",
+                    SourceSystem = "ActiveDirectory"
+                },
+                new AccountData
+                {
+                    AccountType = 1,
+                    Id = Guid.NewGuid(),
+                    Name = "Modeler",
+                    SourceSystem = "ActiveDirectory"
+                },
+            };
+
+            OnCreateFlowWithAssociatedSecutityAccounts(service, accounts);
+            Assert.AreEqual(1, collection.Count(pd => true));
+            IReadOnlyList<ProcessDefinitionDigest> flows = service.LisAlltWorkflows();
+            Assert.IsNotNull(flows);
+            Assert.AreEqual(1, flows.Count);
+            ProcessDefinitionDigest flow = flows.ElementAt(0);  
+            service.RemoveRoles(flow.Id,flow.Version,accounts[0]);
+            var idFilter
+                = Builders<ProcessDefinitionPersistence>.Filter.Eq(r => r.Id, flow.Id);
+            ProcessDefinitionPersistence persistence = collection.FindSync(idFilter).FirstOrDefault();
+            Assert.IsNotNull(persistence);
+            Assert.IsNotNull(persistence.Accounts);
+            Assert.AreEqual(1, persistence.Accounts.Count);
+            Assert.AreEqual(accounts[1].Name,persistence.Accounts[0].Name);
+
+        }
         protected override IProcessDefinitionPersisnenceService InstService()
         {
             return new MongoProcessDefinitionPersistenceService(_database);

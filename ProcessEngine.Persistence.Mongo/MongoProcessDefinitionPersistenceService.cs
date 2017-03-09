@@ -24,10 +24,13 @@ THE SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using Castle.Components.DictionaryAdapter;
 using KlaudWerk.ProcessEngine.Definition;
 using KlaudWerk.ProcessEngine.Persistence;
+using log4net;
+using log4net.Util;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 
@@ -39,8 +42,22 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
     public class MongoProcessDefinitionPersistenceService:IProcessDefinitionPersisnenceService
     {
         public const string CollectionName = "process_definitions";
+        private static readonly ILog _logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly IMongoDatabase _database;
         private readonly IMongoCollection<ProcessDefinitionPersistence> _collection;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="url">Mongo Url Setting</param>
+        /// <param name="database">Mongo Database</param>
+        public MongoProcessDefinitionPersistenceService(string url, string database)
+        {
+            MongoClient client = new MongoClient(new MongoUrl(url));
+            _database = client.GetDatabase(database);
+            _collection = _database.GetCollection<ProcessDefinitionPersistence>(CollectionName);
+
+        }
         /// <summary>
         /// Constructor
         /// </summary>
@@ -206,6 +223,7 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
             ProcessDefinitionPersistence pd = _collection.Find(filter).SingleOrDefault();
             if (pd != null)
             {
+                string v = FromBase64(pd.JsonProcessDefinition);
                 definition = JsonConvert.DeserializeObject<ProcessDefinition>(FromBase64(pd.JsonProcessDefinition));
                 status = (ProcessDefStatusEnum)pd.Status;
                 accounts = pd.Accounts?.ToArray();
@@ -249,6 +267,73 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
             if (updatedef == null)
                 return;
             _collection.FindOneAndUpdate(filter, updatedef);
+        }
+
+        /// <summary>
+        /// Add new roles to the workflow
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="version"></param>
+        /// <param name="accounts"></param>
+        public void AddRoles(Guid id, int version, params AccountData[] accounts)
+        {
+            var filter = Builders<ProcessDefinitionPersistence>.Filter.And(
+                            Builders<ProcessDefinitionPersistence>.Filter.Eq(r => r.Id, id),
+                            Builders<ProcessDefinitionPersistence>.Filter.Eq(r => r.Version, version)
+                        );
+            ProcessDefinitionPersistence persistence = _collection.FindSync(filter).FirstOrDefault();
+            if(persistence==null)
+                throw new ArgumentException($"Process definition Id={id} Version={version} not found.");
+            List<AccountData> data=new List<AccountData>();
+            data.AddRange(persistence.Accounts);
+            foreach (AccountData accountData in accounts)
+            {
+               if (data.Any(d => d.Id == accountData.Id 
+               || string.Equals(d.Name,accountData.Name,StringComparison.InvariantCultureIgnoreCase)))
+               {
+                    _logger.Debug($"skipping {accountData.Id}:{accountData.Name}");
+                    continue;
+               }
+               data.Add(accountData);
+            }
+            UpdateDefinition<ProcessDefinitionPersistence> updatedef = 
+                Builders<ProcessDefinitionPersistence>.Update.Set(r => r.Accounts, data);
+            _collection.FindOneAndUpdate(filter, updatedef);
+        }
+
+        public void RemoveRoles(Guid id, int version, params AccountData[] accounts)
+        {
+            var filter = Builders<ProcessDefinitionPersistence>.Filter.And(
+                            Builders<ProcessDefinitionPersistence>.Filter.Eq(r => r.Id, id),
+                            Builders<ProcessDefinitionPersistence>.Filter.Eq(r => r.Version, version)
+                        );
+            ProcessDefinitionPersistence persistence = _collection.FindSync(filter).FirstOrDefault();
+            if (persistence == null)
+                throw new ArgumentException($"Process definition Id={id} Version={version} not found.");
+            List<AccountData> data = new List<AccountData>();
+            data.AddRange(persistence.Accounts);
+            foreach (AccountData accountData in accounts)
+            {
+                data.Remove(accountData);
+            }
+            UpdateDefinition<ProcessDefinitionPersistence> updatedef =
+                Builders<ProcessDefinitionPersistence>.Update.Set(r => r.Accounts, data);
+            _collection.FindOneAndUpdate(filter, updatedef);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="version"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        public void Remove(Guid id, int version)
+        {
+            var filter = Builders<ProcessDefinitionPersistence>.Filter.And(
+                Builders<ProcessDefinitionPersistence>.Filter.Eq(r => r.Id, id),
+                Builders<ProcessDefinitionPersistence>.Filter.Eq(r => r.Version, version)
+            );
+            _collection.FindOneAndDelete(filter);
         }
 
         /// <summary>

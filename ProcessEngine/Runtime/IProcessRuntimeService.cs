@@ -48,5 +48,12 @@ namespace KlaudWerk.ProcessEngine.Runtime
         /// <param name="collection"></param>
         /// <returns></returns>
         bool TryUnfreeze(Guid processRuntimeId, out IProcessRuntime runtime, out StepRuntime nextStep, out IPropertySetCollection collection);
+        /// <summary>
+        /// Cancel the process
+        /// </summary>
+        /// <param name="processRuntimeId"></param>
+        /// <param name="reason"></param>
+        /// <returns></returns>
+        bool Cancel(Guid processRuntimeId, string reason);
     }
 }

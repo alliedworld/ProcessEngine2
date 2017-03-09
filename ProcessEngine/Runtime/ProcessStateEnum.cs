@@ -29,6 +29,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
         Ready,
         Failed,
         Suspended,
-        Completed
+        Completed,
+        Cancelled
     }
 }

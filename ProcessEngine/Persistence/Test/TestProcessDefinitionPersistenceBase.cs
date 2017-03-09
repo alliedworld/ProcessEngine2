@@ -173,7 +173,9 @@ namespace KlaudWerk.ProcessEngine.Persistence.Test
                 name: name, description: description);
             IReadOnlyList<ProcessValidationResult> result;
             bool isValid=builder.Variables().Name("PolicyNumber").Type(VariableTypeEnum.String).Done()
-                .Start("s_1").SetName("Start").Vars().Name("PolicyNumber").OnExit().Done().Done()
+                .Start("s_1").SetName("Start")
+                    .Handler().Script().Language(ScriptLanguage.CSharpScript).Body("return 1").Done().Done()
+                    .Vars().Name("PolicyNumber").OnExit().Done().Done()
                 .End("e_1").SetName("End Process").Done()
                 .Link().From("s_1").To("e_1").Name("finish").Done()
                 .TryValidate(out result);

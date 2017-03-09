@@ -250,6 +250,41 @@ namespace KlaudWerk.ProcessEngine.Persistence
             }
         }
 
+        public void AddRoles(Guid id, int version, params AccountData[] accounts)
+        {
+            using (var ctx = new ProcessDbContext())
+            {
+                ProcessDefinitionPersistence pd = ctx.ProcessDefinition.Find(id, version);
+                if (pd == null)
+                    throw new ArgumentException($"Process Definition id={id} version={version} not found.");
+                if (accounts != null)
+                {
+                    SetupAccounts(ctx, pd, accounts);
+                }
+                ctx.SaveChanges();
+            }
+        }
+
+        public void RemoveRoles(Guid id, int version, params AccountData[] accounts)
+        {
+            using (var ctx = new ProcessDbContext())
+            {
+                ProcessDefinitionPersistence pd = ctx.ProcessDefinition.Find(id, version);
+                if (pd == null)
+                    throw new ArgumentException($"Process Definition id={id} version={version} not found.");
+                if (accounts != null)
+                {
+                    SetupAccounts(ctx, pd, accounts);
+                }
+                ctx.SaveChanges();
+            }
+        }
+
+        public void Remove(Guid id, int version)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Save Runtime Process
         /// </summary>

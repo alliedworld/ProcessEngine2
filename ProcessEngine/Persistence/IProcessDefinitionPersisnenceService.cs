@@ -69,5 +69,26 @@ namespace KlaudWerk.ProcessEngine.Persistence
         /// </summary>
         /// <param name="accounts"></param>
         void CreateAccounts(params AccountData[] accounts);
+
+        /// <summary>
+        /// Add new roles
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="version"></param>
+        /// <param name="accounts"></param>
+        void AddRoles(Guid id, int version, params AccountData[] accounts);
+        /// <summary>
+        /// Remove roles
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="version"></param>
+        /// <param name="accounts"></param>
+        void RemoveRoles(Guid id, int version, params AccountData[] accounts);
+        /// <summary>
+        /// Remove Workflow Definition
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="version"></param>
+        void Remove(Guid id, int version);
     }
 }

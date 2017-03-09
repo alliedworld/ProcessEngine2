@@ -5,7 +5,7 @@ namespace KlaudWerk.ProcessEngine.Persistence
     /// <summary>
     /// Class that represents security account
     /// </summary>
-    public class AccountData
+    public class AccountData:IEquatable<AccountData>
     {
         /// <summary>
         /// Gets or sets the identifier.
@@ -39,5 +39,26 @@ namespace KlaudWerk.ProcessEngine.Persistence
         /// The type of the account.
         /// </value>
         public int AccountType { get; set; }
+        /// <summary>
+        /// Equals
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(AccountData other)
+        {
+            if (ReferenceEquals(this, other))
+                return true;
+            if (other == null)
+                return false;
+            return other.Id == Id;
+        }
+        /// <summary>
+        /// Get Hash Code
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
     }
 }

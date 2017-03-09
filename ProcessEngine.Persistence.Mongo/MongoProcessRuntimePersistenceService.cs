@@ -23,6 +23,7 @@ THE SOFTWARE.
   */
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Klaudwerk.PropertySet;
 using Klaudwerk.PropertySet.Persistence;
@@ -145,6 +146,25 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
             runtime = Create(rtp.Id, definition, rtp.SuspendedStepId, (ProcessStateEnum) rtp.Status);
             return true;
         }
+
+        /// <summary>
+        /// Cancel the process
+        /// </summary>
+        /// <param name="processRuntimeId"></param>
+        /// <param name="reason"></param>
+        /// <returns></returns>
+        public override bool Cancel(Guid processRuntimeId, string reason)
+        {
+            var filter = Builders<MongoProcessRuntimePersistence>.Filter.Eq(r => r.Id, processRuntimeId);
+            var updater = Builders<MongoProcessRuntimePersistence>.Update
+                .Set(p => p.Status, (int) ProcessStateEnum.Cancelled)
+                .Set(p => p.NextStepId, string.Empty)
+                .Set(p => p.SuspendedStepId, string.Empty)
+                .CurrentDate(p => p.LastUpdated);
+            MongoProcessRuntimePersistence item = _collection.FindOneAndUpdate(filter, updater);
+            return item != null;
+        }
+
         /// <summary>
         /// Continue the execution after freeze
         /// </summary>

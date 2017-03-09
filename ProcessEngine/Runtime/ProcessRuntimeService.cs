@@ -88,5 +88,9 @@ namespace KlaudWerk.ProcessEngine.Runtime
             throw new NotImplementedException();
         }
 
+        public virtual bool Cancel(Guid processRuntimeId, string reason)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

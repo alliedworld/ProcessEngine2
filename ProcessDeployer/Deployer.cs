@@ -24,6 +24,8 @@ THE SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Castle.Windsor;
+using Castle.Windsor.Configuration.Interpreters;
 using KlaudWerk.ProcessEngine.Definition;
 using KlaudWerk.ProcessEngine.Persistence;
 
@@ -31,8 +33,16 @@ namespace Klaudwerk.ProcessDeployer
 {
     public class Deployer
     {
+        private static WindsorContainer _container=new WindsorContainer(new XmlInterpreter());
         private readonly List<IProcessDefinitionRegistry> _registries=new List<IProcessDefinitionRegistry>();
-        private readonly ProcessDefinitionPersisnenceService _persistence=new ProcessDefinitionPersisnenceService();
+
+        private readonly IProcessDefinitionPersisnenceService
+            _persistence = GetPersistence();
+
+        private static IProcessDefinitionPersisnenceService GetPersistence()
+        {
+            return _container.Resolve<IProcessDefinitionPersisnenceService>("IProcessDefinitionPersisnenceService");
+        }
 
         public IEnumerable<IProcessDefinitionRegistry> Registries
         {
@@ -96,6 +106,29 @@ namespace Klaudwerk.ProcessDeployer
         public void SetWorkflowStatus(Guid guid, int version, ProcessDefStatusEnum status)
         {
             _persistence.SetStatus(guid, version, status);
+        }
+
+        public void AddRole(Guid flowId, int version, string roleString)
+        {
+            // parse the role string
+            string[] tokens = roleString.Split('&');
+            if (tokens.Length < 4)
+            {
+                throw new ArgumentException("Role string should have following format: <typenumber>&<id>&<name>&<sourcesystem>?");
+            }
+            AccountData account=new AccountData
+            {
+                AccountType = Int32.Parse(tokens[0]),
+                Id = new Guid(tokens[1]),
+                Name = tokens[2],
+                SourceSystem = tokens[3]
+            };
+            _persistence.AddRoles(flowId,version, new [] {account});
+        }
+
+        public void RemoveWorkflow(Guid guid, int aVersion)
+        {
+            _persistence.Remove(guid, aVersion);
         }
     }
 }

@@ -96,6 +96,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Core" />
+    <ProjectReference Include="..\ProcessEngine.Persistence\ProcessEngine.Persistence.csproj">
+      <Project>{8030dadc-0110-4dde-a176-32ef96de9306}</Project>
+      <Name>ProcessEngine.Persistence</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProcessEngine\ProcessEngine.csproj">
       <Project>{F091AC1F-58CF-4DD4-B513-48FE57AD4F35}</Project>
       <Name>ProcessEngine</Name>
@@ -112,7 +116,6 @@
     <Compile Include="MongoProcessDefinitionPersistenceService.cs" />
     <Compile Include="MongoProcessRuntimePersistence.cs" />
     <Compile Include="MongoProcessRuntimePersistenceService.cs" />
-    <Compile Include="MongoTaskRuntimeService.cs" />
     <Compile Include="ProcessDefinitionPersistence.cs" />
     <Compile Include="Test\TestProcessDefinitionPersistence.cs" />
     <Compile Include="Test\TestProcessRuntimePersistence.cs" />

@@ -40,7 +40,7 @@ namespace KlaudWerk.ProcessEngine.Definition
         /// The script.
         /// </value>
         [DataMember(Name="script")]
-        public string Script { get; }
+        public string Script { get; set; }
         /// <summary>
         /// Gets the language.
         /// </summary>
@@ -48,7 +48,7 @@ namespace KlaudWerk.ProcessEngine.Definition
         /// The language.
         /// </value>
         [DataMember(Name="lang")]
-        public ScriptLanguage Lang { get; }
+        public ScriptLanguage Lang { get; set; }
         /// <summary>
         /// Gets the imports.
         /// </summary>
@@ -56,7 +56,7 @@ namespace KlaudWerk.ProcessEngine.Definition
         /// The imports.
         /// </value>
         [DataMember(Name="imports")]
-        public string[] Imports { get; }
+        public string[] Imports { get; set; }
         /// <summary>
         /// Gets the references.
         /// </summary>
@@ -64,7 +64,7 @@ namespace KlaudWerk.ProcessEngine.Definition
         /// The references.
         /// </value>
         [DataMember(Name="refs")]
-        public string[] References { get; }
+        public string[] References { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ScriptDefinition"/> class.

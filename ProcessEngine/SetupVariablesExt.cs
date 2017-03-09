@@ -46,8 +46,8 @@ namespace KlaudWerk.ProcessEngine
                     collection.Add(vd.Name, charSchema);
                     break;
                 case VariableTypeEnum.Decimal:
-                    var decimalSchema = collection.Schemas.SchemaFactory.Create(typeof(decimal));
-                    collection.Add(vd.Name, decimalSchema);
+                    var doubleSchema = collection.Schemas.SchemaFactory.Create(typeof(double));
+                    collection.Add(vd.Name, doubleSchema);
                     break;
                 case VariableTypeEnum.Int:
                     var intSchema = collection.Schemas.SchemaFactory.Create(typeof(int));

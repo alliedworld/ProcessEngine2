@@ -145,6 +145,12 @@ namespace Klaudwerk.PropertySet.Persistence
             _element.DoubleValue = value;
         }
 
+        public void Set(decimal? value)
+        {
+            SerializationHint = SerializationTypeHint.Double;
+            _element.DoubleValue =(double?) value;
+        }
+
         public void Set(bool? value)
         {
             SerializationHint = SerializationTypeHint.Bool;

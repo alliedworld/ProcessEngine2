@@ -112,6 +112,7 @@
     <Compile Include="Persistence\ProcessDefinitionPersistenceBase.cs" />
     <Compile Include="Persistence\ProcessDefStatusEnum.cs" />
     <Compile Include="Persistence\ProcessRuntimePersistenceBase.cs" />
+    <Compile Include="Persistence\TaskData.cs" />
     <Compile Include="Persistence\Test\TestProcessDefinitionPersistenceBase.cs" />
     <Compile Include="Persistence\Test\TestProcessRuntimePersistenceBase.cs" />
     <Compile Include="Properties\CompanyInfo.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="StepExecutionStatusEnum.cs" />
     <Compile Include="StepHandlerTypeEnum.cs" />
     <Compile Include="StepTypeEnum.cs" />
+    <Compile Include="TaskStatus.cs" />
     <Compile Include="Test\ProcessBuilderTests.cs" />
     <Compile Include="Test\ProcessBuilderValidationTests.cs" />
     <Compile Include="Test\ProcessBuldRuntimeTest.cs" />
