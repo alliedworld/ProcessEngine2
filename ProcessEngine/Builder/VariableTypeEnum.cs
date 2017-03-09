@@ -32,6 +32,9 @@ namespace KlaudWerk.ProcessEngine.Builder
         Decimal,
         Boolean,
         Object,
-        Json
+        Json,
+        UsersList,
+        GroupsList,
+        RolesList,
     }
 }

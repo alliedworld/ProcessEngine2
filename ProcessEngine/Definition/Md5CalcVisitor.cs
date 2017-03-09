@@ -82,7 +82,7 @@ namespace KlaudWerk.ProcessEngine.Definition
 
         public void Visit(VariableDefinition variableDefinition)
         {
-            _sb.Append($"{variableDefinition.ClassName}|{variableDefinition.Description}|{variableDefinition.Name}|{variableDefinition.VariableType}");
+            _sb.Append($"{variableDefinition.Description}|{variableDefinition.Name}|{variableDefinition.VariableType}");
         }
 
         public void Visit(VariableMapDefinition variableMapDefinition)

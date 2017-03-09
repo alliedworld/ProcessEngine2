@@ -24,28 +24,58 @@ THE SOFTWARE.
 namespace KlaudWerk.ProcessEngine.Builder
 {
     /// <summary>
-    /// Builds the step handler
+    /// Generic Handler Builder class
     /// </summary>
-    public class StepHandlerBuilder
-    {
-        private readonly StepBuilder _parent;
-        public ScriptBuilder<StepHandlerBuilder> ScriptBuilder { get; private set; }
-        public string IocName { get; private set; }
-        public string FullClassName { get; private set; }
-        public StepHandlerTypeEnum StepHandlerType { get; private set; }
+    /// <typeparam name="T"></typeparam>
+    public class HandlerBuilder<T> where T:class {
+        private readonly T _parent;
+        public ScriptBuilder<HandlerBuilder<T>> ScriptBuilder { get; protected set; }
+        public string IocName { get; protected set; }
+        public string FullClassName { get; protected set; }
+        public StepHandlerTypeEnum StepHandlerType { get; protected set; }
 
-        public StepHandlerBuilder(StepBuilder parent)
+        public HandlerBuilder(T parent)
         {
             _parent = parent;
-            StepHandlerType=StepHandlerTypeEnum.None;
+            StepHandlerType = StepHandlerTypeEnum.None;
         }
-
-        public StepHandlerBuilder IocService(string name)
+        public HandlerBuilder<T> IocService(string name)
         {
             IocName = name;
             FullClassName = string.Empty;
-            StepHandlerType=StepHandlerTypeEnum.IoC;
+            StepHandlerType = StepHandlerTypeEnum.IoC;
             return this;
+        }
+
+        public HandlerBuilder<T> Service(string fullClassName)
+        {
+            IocName = string.Empty;
+            FullClassName = string.Empty;
+            StepHandlerType = StepHandlerTypeEnum.Service;
+            return this;
+        }
+
+        public ScriptBuilder<HandlerBuilder<T>> Script()
+        {
+            if (ScriptBuilder == null)
+                ScriptBuilder = new ScriptBuilder<HandlerBuilder<T>>(this);
+            StepHandlerType = StepHandlerTypeEnum.Script;
+            return ScriptBuilder;
+        }
+        public T Done()
+        {
+            return _parent;
+        }
+    }
+    /// <summary>
+    /// Builds the step handler
+    /// </summary>
+    public class StepHandlerBuilder:HandlerBuilder<StepBuilder>
+    {
+        private readonly StepBuilder _parent;
+
+        public StepHandlerBuilder(StepBuilder parent):base(parent)
+        {
         }
 
         public StepHandlerBuilder HumanTask()
@@ -54,27 +84,6 @@ namespace KlaudWerk.ProcessEngine.Builder
             FullClassName = string.Empty;
             StepHandlerType=StepHandlerTypeEnum.Task;
             return this;
-        }
-
-        public StepHandlerBuilder Service(string fullClassName)
-        {
-            IocName = string.Empty;
-            FullClassName = string.Empty;
-            StepHandlerType=StepHandlerTypeEnum.Service;
-            return this;
-        }
-
-        public ScriptBuilder<StepHandlerBuilder> Script()
-        {
-            if(ScriptBuilder==null)
-                ScriptBuilder=new ScriptBuilder<StepHandlerBuilder>(this);
-            StepHandlerType=StepHandlerTypeEnum.Script;
-            return ScriptBuilder;
-        }
-
-        public StepBuilder Done()
-        {
-            return _parent;
         }
     }
 }

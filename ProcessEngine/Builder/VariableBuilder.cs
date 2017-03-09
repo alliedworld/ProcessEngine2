@@ -34,8 +34,8 @@ namespace KlaudWerk.ProcessEngine.Builder
         private string _name;
         private string _description;
         private VariableTypeEnum _type;
-        private string _sourceClass;
         private ConstraintBuilder _constraints;
+        private VariableHandlerBuilder _handler;
         /// <summary>
         /// Public Properties
         /// </summary>
@@ -43,13 +43,6 @@ namespace KlaudWerk.ProcessEngine.Builder
         /// The name of the variable.
         /// </value>
         public string VariableName => _name;
-        /// <summary>
-        /// Gets the variable source class.
-        /// </summary>
-        /// <value>
-        /// The variable source class.
-        /// </value>
-        public string VariableSourceClass => _sourceClass;
         /// <summary>
         /// Gets the type of the variable.
         /// </summary>
@@ -71,7 +64,13 @@ namespace KlaudWerk.ProcessEngine.Builder
         /// The variable constraints.
         /// </value>
         public ConstraintBuilder VariableConstraints => _constraints;
-
+        /// <summary>
+        /// Gets the variable handler.
+        /// </summary>
+        /// <value>
+        /// The variable handler.
+        /// </value>
+        public VariableHandlerBuilder VariableHandler => _handler;
         /// <summary>
         /// Initializes a new instance of the <see cref="VariableBuilder"/> class.
         /// </summary>
@@ -80,6 +79,7 @@ namespace KlaudWerk.ProcessEngine.Builder
         {
             _parent = parent;
             _type=VariableTypeEnum.String;
+            _handler = new VariableHandlerBuilder(this);
         }
 
         /// <summary>
@@ -114,18 +114,14 @@ namespace KlaudWerk.ProcessEngine.Builder
             _type = t;
             return this;
         }
-
         /// <summary>
-        /// Set the Sources class name.
+        /// Handler 
         /// </summary>
-        /// <param name="srcClass">The source class.</param>
         /// <returns></returns>
-        public VariableBuilder SourceClass(string srcClass)
+        public VariableHandlerBuilder Handler()
         {
-            _sourceClass = srcClass;
-            return this;
+            return _handler;
         }
-
         /// <summary>
         /// Finish the builder
         /// </summary>
@@ -161,6 +157,20 @@ namespace KlaudWerk.ProcessEngine.Builder
         }
     }
 
+    /// <summary>
+    /// Variable Handler builder can be used to describe a "source" for a variable selection list.
+    /// </summary>
+    /// <seealso cref="KlaudWerk.ProcessEngine.Builder.HandlerBuilder{KlaudWerk.ProcessEngine.Builder.VariableBuilder}" />
+    public class VariableHandlerBuilder : HandlerBuilder<VariableBuilder>
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VariableHandlerBuilder"/> class.
+        /// </summary>
+        /// <param name="parent">The parent.</param>
+        public VariableHandlerBuilder(VariableBuilder parent) : base(parent)
+        {
+        }
+    }
     /// <summary>
     /// Variables Constraint Builder
     /// </summary>

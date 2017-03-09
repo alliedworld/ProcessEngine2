@@ -40,9 +40,8 @@ namespace KlaudWerk.ProcessEngine.Definition
         public string Description { get; set; }
         [DataMember(Name="type")]
         public VariableTypeEnum VariableType { get; set; }
-        [DataMember(Name="class")]
-        public string ClassName { get; set; }
-
+        [DataMember(Name = "handler")]
+        public StepHandlerDefinition HandlerDefinition { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -50,13 +49,15 @@ namespace KlaudWerk.ProcessEngine.Definition
         /// <param name="description"></param>
         /// <param name="variableType"></param>
         /// <param name="className"></param>
-        public VariableDefinition(string name, string description,
-            VariableTypeEnum variableType, string className)
+        public VariableDefinition(
+            string name, string description,
+            VariableTypeEnum variableType, 
+            StepHandlerDefinition handler)
         {
             Name = name;
             Description = description;
             VariableType = variableType;
-            ClassName = className;
+            HandlerDefinition = handler;
         }
         /// <summary>
         ///
