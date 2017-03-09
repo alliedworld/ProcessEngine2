@@ -573,14 +573,14 @@ namespace KlaudWerk.ProcessEngine.Test
         [Test]
         public void TestVariableDefinitionsSetProperiesInCollection()
         {
-            VariableDefinition vdChar=new VariableDefinition("v_char",string.Empty,VariableTypeEnum.Char, string.Empty);
-            VariableDefinition vdInt=new VariableDefinition("v_int",string.Empty,VariableTypeEnum.Int, string.Empty);
-            VariableDefinition vdDecimal=new VariableDefinition("v_decimal",string.Empty,VariableTypeEnum.Decimal, string.Empty);
-            VariableDefinition vdString=new VariableDefinition("v_string",string.Empty,VariableTypeEnum.String, string.Empty);
-            VariableDefinition vdJson=new VariableDefinition("v_json",string.Empty,VariableTypeEnum.Json, string.Empty);
-            VariableDefinition vdObject=new VariableDefinition("v_object",string.Empty,VariableTypeEnum.Char, string.Empty);
-            VariableDefinition vdNone=new VariableDefinition("v_none",string.Empty,VariableTypeEnum.None, string.Empty);
-            VariableDefinition vdBool=new VariableDefinition("v_bool",string.Empty,VariableTypeEnum.Boolean, string.Empty);
+            VariableDefinition vdChar=new VariableDefinition("v_char",string.Empty,VariableTypeEnum.Char, new StepHandlerDefinition());
+            VariableDefinition vdInt=new VariableDefinition("v_int",string.Empty,VariableTypeEnum.Int, new StepHandlerDefinition());
+            VariableDefinition vdDecimal=new VariableDefinition("v_decimal",string.Empty,VariableTypeEnum.Decimal,  new StepHandlerDefinition());
+            VariableDefinition vdString=new VariableDefinition("v_string",string.Empty,VariableTypeEnum.String, new StepHandlerDefinition());
+            VariableDefinition vdJson=new VariableDefinition("v_json",string.Empty,VariableTypeEnum.Json, new StepHandlerDefinition());
+            VariableDefinition vdObject=new VariableDefinition("v_object",string.Empty,VariableTypeEnum.Char, new StepHandlerDefinition());
+            VariableDefinition vdNone=new VariableDefinition("v_none",string.Empty,VariableTypeEnum.None, new StepHandlerDefinition());
+            VariableDefinition vdBool=new VariableDefinition("v_bool",string.Empty,VariableTypeEnum.Boolean, new StepHandlerDefinition());
 
             VariableDefinition[] defs = {vdChar, vdInt, vdDecimal, vdString, vdJson, vdObject, vdNone, vdBool};
 
@@ -610,7 +610,7 @@ namespace KlaudWerk.ProcessEngine.Test
             var builder = factory.CreateProcess(id: "com.klaudwerk.workflow.renewal",
                 name: "Renewal", description: "Policy Renewal");
             ProcessDefinition pd = builder.Variables().Name("v_bool").Type(VariableTypeEnum.Boolean).Done()
-                .Variables().Name("v_int").Type(VariableTypeEnum.Int).Done()
+                .Variables().Name("v_int").Type(VariableTypeEnum.Int).Handler().IocService("container_service").Done().Done()
                 .Variables().Name("v_string").Type(VariableTypeEnum.String).Done()
                 .Start("s_1").SetName("start")
                 .Vars().Name("v_bool").OnExit().Done()
@@ -640,6 +640,59 @@ namespace KlaudWerk.ProcessEngine.Test
             Assert.AreEqual(true,collection.Get<bool?>("v_bool"));
             Assert.AreEqual(455,collection.Get<int?>("v_int"));
             Assert.AreEqual("value",collection.Get<string>("v_string"));
+        }
+
+        [Test]
+        public void SetupFlowTestRequiredVariables()
+        {
+            IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
+            IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(collection);
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id: "com.klaudwerk.workflow.renewal",
+                name: "Renewal", description: "Policy Renewal");
+            ProcessDefinition pd = builder.Variables().Name("v_bool").Type(VariableTypeEnum.Boolean).Done()
+                .Variables().Name("v_int").Type(VariableTypeEnum.Int).Done()
+                .Variables().Name("v_string").Type(VariableTypeEnum.String).Handler().IocService("container_service").Done().Done()
+                .Start("s_1").SetName("start")
+                .Vars().Name("v_bool").Done()
+                .Vars().Name("v_int").Done()
+                .Vars().Name("v_string").Done()
+                .OnEntry().Language(ScriptLanguage.CSharpScript).Body(
+                        " PropertySet.Set(\"v_bool\",(bool?)true);" +
+                        " PropertySet.Set(\"v_int\",(int?)455);" +
+                        " PropertySet.Set(\"v_string\",\"value\");" +
+                        " return 1;").AddReferences("PropertySet, Version=1.0.0.0").Done().Done()
+                .Step("step")
+                .Vars().Name("v_int").OnExit().Done()
+                .Vars().Name("v_string").OnEntry().Done()
+                .Done()
+                .End("e_1").SetName("end").Done()
+                .Link().From("s_1").To("step").Done()
+                .Link().From("step").To("e_1").Done()
+                .Build();
+            ProcessRuntimeService rtb = new ProcessRuntimeService();
+            var processRuntime = rtb.Create(pd, collection);
+            Assert.IsNotNull(processRuntime);
+            string[] errors;
+            Assert.IsTrue(processRuntime.TryCompile(out errors));
+            StepRuntime start = processRuntime.StartSteps[0];
+            var status = processRuntime.Execute(start, env);
+            Assert.IsNotNull(status);
+            Assert.AreEqual(StepExecutionStatusEnum.Ready, status.Item1.Status);
+            StepRuntime nextStep = status.Item2;
+            Assert.IsNotNull(nextStep);
+            Assert.AreEqual("step", nextStep.StepId);
+            // check variables
+            Assert.AreEqual(true, collection.Get<bool?>("v_bool"));
+            Assert.AreEqual(455, collection.Get<int?>("v_int"));
+            Assert.AreEqual("value", collection.Get<string>("v_string"));
+            Assert.IsNotNull(nextStep.StepDefinition.VariablesMap);
+            Assert.AreEqual(2, nextStep.StepDefinition.VariablesMap.Length);
+            Assert.IsNotNull(pd.Variables[2].HandlerDefinition);
+            Assert.AreEqual("container_service", pd.Variables[2].HandlerDefinition.IocName);
+            Assert.AreEqual(VarRequiredEnum.OnExit, nextStep.StepDefinition.VariablesMap[0].Required);
+            Assert.AreEqual(VarRequiredEnum.OnEntry, nextStep.StepDefinition.VariablesMap[1].Required);
         }
 
         [Test]

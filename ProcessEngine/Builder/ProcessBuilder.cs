@@ -494,11 +494,22 @@ namespace KlaudWerk.ProcessEngine.Builder
             return Guid.NewGuid();
         }
 
+        private StepHandlerDefinition BuildVariableHandlerDefinition(VariableHandlerBuilder varHandler)
+        {
+            return new StepHandlerDefinition(stepHandlerType: varHandler.StepHandlerType,
+            script: varHandler.ScriptBuilder == null ? null : BuildScript(varHandler.ScriptBuilder),
+                iocName: varHandler.IocName,
+                classFullName: varHandler.FullClassName);
+
+        }
+
         private VariableDefinition[] BuildVariables()
         {
-            return _variables.Select(variableBuilder => new VariableDefinition(variableBuilder.VariableName,
+            return _variables.Select(
+                variableBuilder =>
+                new VariableDefinition(variableBuilder.VariableName,
                 variableBuilder.VariableDescription, variableBuilder.VariableType,
-                variableBuilder.VariableSourceClass)).ToArray();
+                BuildVariableHandlerDefinition(variableBuilder.VariableHandler))).ToArray();
         }
 
         #endregion
