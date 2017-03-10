@@ -57,6 +57,10 @@ namespace KlaudWerk.ProcessEngine.Runtime
         IReadOnlyList<StepRuntime> StartSteps { get; }
 
         /// <summary>
+        /// List of variables
+        /// </summary>
+        IReadOnlyList<VariableRuntime> Variables { get; }
+            /// <summary>
         /// List of errors
         /// </summary>
         IReadOnlyList<string> Errors { get; }

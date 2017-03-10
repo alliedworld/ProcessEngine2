@@ -55,6 +55,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
 
         private readonly IReadOnlyList<LinkRuntime> _links;
         private readonly IReadOnlyList<StepRuntime> _steps;
+        private readonly IReadOnlyList<VariableRuntime> _variables;
         private StepRuntime _lastExecutedStep;
         private readonly List<string> _errors=new List<string>();
         /// <summary>
@@ -78,23 +79,31 @@ namespace KlaudWerk.ProcessEngine.Runtime
         /// </summary>
         public IReadOnlyList<StepRuntime> StartSteps => _steps.Where(s => s.IsStart).ToImmutableList();
         /// <summary>
+        /// Defined Variables
+        /// </summary>
+        public IReadOnlyList<VariableRuntime> Variables => _variables;
+        /// <summary>
         /// List of errors
         /// </summary>
         public IReadOnlyList<string> Errors => _errors;
+
         /// <summary>
         /// Process Runtime Constructor
         /// </summary>
         /// <param name="id">Id of the process</param>
         /// <param name="links">List of all links</param>
         /// <param name="steps">List of all steps</param>
+        /// <param name="variables">List of all process variables</param>
         public ProcessRuntime(
             Guid id,
             IEnumerable<LinkRuntime> links,
-            IEnumerable<StepRuntime> steps
+            IEnumerable<StepRuntime> steps,
+            IEnumerable<VariableRuntime> variables
             )
         {
             _links = links.ToList();
             _steps = steps.ToList();
+            _variables = variables.ToList();
             State=ProcessStateEnum.NotStarted;
             Id = id;
         }
@@ -105,17 +114,20 @@ namespace KlaudWerk.ProcessEngine.Runtime
         /// <param name="id"></param>
         /// <param name="links"></param>
         /// <param name="steps"></param>
+        /// <param name="variables"></param>
         /// <param name="suspendedInStep"></param>
         /// <param name="status"></param>
         public ProcessRuntime(Guid id,
             IEnumerable<LinkRuntime> links,
             IEnumerable<StepRuntime> steps,
+            IEnumerable<VariableRuntime> variables,
             StepRuntime suspendedInStep,
             ProcessStateEnum status
         )
         {
             _links = links.ToList();
             _steps = steps.ToList();
+            _variables = variables.ToList();
             State = status;
             Id = id;
             SuspendedInStep = suspendedInStep;
@@ -131,6 +143,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
         {
             List<string> err=new List<string>();
             foreach (ICompilable artifact in _links.Cast<ICompilable>()
+                .Concat(_variables)
                 .Concat(_steps))
             {
                 string[] result;
@@ -182,7 +195,13 @@ namespace KlaudWerk.ProcessEngine.Runtime
             return OnStepExecutionReady(SuspendedInStep,env);
 
         }
-
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="rt"></param>
+        /// <param name="env"></param>
+        /// <param name="messages"></param>
+        /// <returns></returns>
         protected virtual bool TryEnter(StepRuntime rt, IProcessRuntimeEnvironment env, out string[] messages)
         {
             messages = EmptyStrArr;

@@ -23,21 +23,55 @@ THE SOFTWARE.
   */
 namespace KlaudWerk.ProcessEngine.Definition
 {
+    /// <summary>
+    /// Visitor Interface for Process Definition
+    /// </summary>
     public interface IProcessDefinitionVisitor
     {
+        /// <summary>
+        /// Visit <see cref="ActionDefinition"/>
+        /// </summary>
+        /// <param name="actionDefinition"></param>
         void Visit(ActionDefinition actionDefinition);
+        /// <summary>
+        /// Visit <see cref="LinkDefinition"/>
+        /// </summary>
+        /// <param name="linkDefinition"></param>
         void Visit(LinkDefinition linkDefinition);
+        /// <summary>
+        /// Visit <see cref="StepDefinition"/>
+        /// </summary>
+        /// <param name="stepDefinition"></param>
         void Visit(StepDefinition stepDefinition);
+        /// <summary>
+        /// Visit <see cref="ScriptDefinition"/>
+        /// </summary>
+        /// <param name="scriptDefinition"></param>
         void Visit(ScriptDefinition scriptDefinition);
+        /// <summary>
+        /// Visit <see cref="SecurityDefinition"/>
+        /// </summary>
+        /// <param name="securityDefinition"></param>
         void Visit(SecurityDefinition securityDefinition);
+        /// <summary>
+        /// Visit <see cref="StepHandlerDefinition"/>
+        /// </summary>
+        /// <param name="stepHandlerDefinition"></param>
         void Visit(StepHandlerDefinition stepHandlerDefinition);
+        /// <summary>
+        /// Visit <see cref="VariableDefinition"/>
+        /// </summary>
+        /// <param name="variableDefinition"></param>
         void Visit(VariableDefinition variableDefinition);
+        /// <summary>
+        /// Visit <see cref="VariableMapDefinition"/>
+        /// </summary>
+        /// <param name="variableMapDefinition"></param>
         void Visit(VariableMapDefinition variableMapDefinition);
+        /// <summary>
+        /// Visit <see cref="ProcessDefinition"/>
+        /// </summary>
+        /// <param name="processDefinition"></param>
         void Visit(ProcessDefinition processDefinition);
-    }
-
-    public interface IProcessDefinitionVisitable
-    {
-        void Accept(IProcessDefinitionVisitor visitor);
     }
 }

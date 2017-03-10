@@ -67,6 +67,14 @@ namespace KlaudWerk.ProcessEngine
         /// <param name="value"></param>
         IProcessRuntimeEnvironment Set<T>(string name, T value) where T : class;
         /// <summary>
+        /// Set list of possible values for a schema
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="values"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        IProcessRuntimeEnvironment SetPossibleValues(string name, params object[] values);
+        /// <summary>
         /// Set IOC execution service
         /// </summary>
         /// <param name="execution"></param>

@@ -128,6 +128,21 @@ namespace KlaudWerk.ProcessEngine
         }
 
         /// <summary>
+        /// Set possible values for a variable
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="values"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public IProcessRuntimeEnvironment SetPossibleValues(string name, params object[] values)
+        {
+            var valueSchema = PropertySet.Schemas.GetSchema(name);
+            valueSchema.PossibleValues = values;
+            return this;
+        }
+
+        /// <summary>
         /// Set IOC execution service
         /// </summary>
         /// <param name="execution"></param>

@@ -41,10 +41,10 @@ namespace KlaudWerk.ProcessEngine.Runtime
         {
             IEnumerable<LinkRuntime> linkRuntimes = pd.Links.Select(ld => new LinkRuntime(ld));
             IEnumerable<StepRuntime> stepRuntimes = pd.Steps.Select(sd => new StepRuntime(sd,linkRuntimes.Where(l=>l.SourceStepId==sd.Id).ToArray()));
-            
+            IEnumerable<VariableRuntime> varRuntimes = pd.Variables.Select(vd => new VariableRuntime(vd)).ToList();
             foreach (VariableDefinition variableDefinition in pd.Variables)
                 variableDefinition.SetupVariable(collection);
-            return new ProcessRuntime(Guid.NewGuid(), linkRuntimes,stepRuntimes);
+            return new ProcessRuntime(Guid.NewGuid(), linkRuntimes,stepRuntimes,varRuntimes);
         }
 
         /// <summary>
@@ -59,9 +59,13 @@ namespace KlaudWerk.ProcessEngine.Runtime
         {
             IEnumerable<LinkRuntime> linkRuntimes = pd.Links.Select(ld => new LinkRuntime(ld)).ToList();
             IEnumerable<StepRuntime> stepRuntimes = pd.Steps.Select(sd => new StepRuntime(sd, linkRuntimes.Where(l => l.SourceStepId == sd.Id).ToArray()));
+            IEnumerable<VariableRuntime> varRuntimes = pd.Variables.Select(vd => new VariableRuntime(vd)).ToList();
             StepDefinition stepDef = pd.Steps.SingleOrDefault(s => s.StepId == step);
             StepRuntime suspended = stepDef == null ? null : new StepRuntime(stepDef, linkRuntimes.Where(l => l.SourceStepId == stepDef.Id).ToArray());
-            return new ProcessRuntime(id, linkRuntimes,stepRuntimes,
+            return new ProcessRuntime(id,
+                linkRuntimes,
+                stepRuntimes,
+                varRuntimes,
                 suspended,status);
 
         }
@@ -88,9 +92,16 @@ namespace KlaudWerk.ProcessEngine.Runtime
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Cancel the process
+        /// </summary>
+        /// <param name="processRuntimeId"></param>
+        /// <param name="reason"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public virtual bool Cancel(Guid processRuntimeId, string reason)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

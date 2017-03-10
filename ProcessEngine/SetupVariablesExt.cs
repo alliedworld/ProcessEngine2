@@ -53,6 +53,9 @@ namespace KlaudWerk.ProcessEngine
                     var intSchema = collection.Schemas.SchemaFactory.Create(typeof(int));
                     collection.Add(vd.Name, intSchema);
                     break;
+                case VariableTypeEnum.GroupsList:
+                case VariableTypeEnum.RolesList:
+                case VariableTypeEnum.UsersList:
                 case VariableTypeEnum.String:
                     var stringSchema = collection.Schemas.SchemaFactory.Create(typeof(string));
                     collection.Add(vd.Name, stringSchema);

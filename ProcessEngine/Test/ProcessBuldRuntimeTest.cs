@@ -23,6 +23,7 @@ THE SOFTWARE.
   */
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Klaudwerk.PropertySet;
 using Klaudwerk.PropertySet.Test;
@@ -571,6 +572,98 @@ namespace KlaudWerk.ProcessEngine.Test
         #region Process Runtime Tests
 
         [Test]
+        public void TestVariableDefinitionsCanBeCompiled()
+        {
+            StepHandlerDefinition shd = new StepHandlerDefinition
+            {
+                Script = new ScriptDefinition("return 1;",
+                    ScriptLanguage.CSharpScript, new string[] { }, new string[] { })
+            };
+            VariableDefinition varStr=new VariableDefinition("v_str",string.Empty,VariableTypeEnum.String, shd);
+            VariableRuntime rt=new VariableRuntime(varStr);
+            string[] errors;
+            Assert.IsTrue(rt.TryCompile(out errors));
+            Assert.IsTrue(rt.IsCompiled);
+
+        }
+
+        [Test]
+        public void TestVariableDefinitionsSetPossibleValuesThroughScript()
+        {
+            StepHandlerDefinition shd = new StepHandlerDefinition
+            {
+                Script = new ScriptDefinition("string[] values=new []{\"One\",\"Two\",\"Three\"};\n"+
+                                              "SetPossibleValues(\"v_str\",values);\n"+
+                                              "return 1;\n"
+                                              ,
+                    ScriptLanguage.CSharpScript, new string[] { }, new string[] { })
+            };
+            IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
+            IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
+            VariableDefinition varStr=new VariableDefinition("v_str",string.Empty,VariableTypeEnum.String, shd);
+            VariableRuntime rt=new VariableRuntime(varStr);
+            varStr.SetupVariable(collection);
+            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(collection);
+            Assert.AreEqual(1, collection.Count);
+            string[] errors;
+            Assert.IsTrue(rt.TryCompile(out errors));
+            Assert.IsTrue(rt.IsCompiled);
+            Assert.IsTrue(rt.Evaluate(env).Result);
+            var valueSchema = collection.Schemas.GetSchema("v_str");
+            Assert.IsNotNull(valueSchema);
+            Assert.IsNotNull(valueSchema.PossibleValues);
+            Assert.AreEqual(3, valueSchema.PossibleValues.Count());
+            Assert.AreEqual("One",valueSchema.PossibleValues.ElementAt(0).ToString());
+        }
+
+
+        [Test]
+        public void TestVariableDefinitionUserListSetCollectionValueToString()
+        {
+            VariableDefinition varUsers=new VariableDefinition("users",string.Empty,VariableTypeEnum.UsersList, null);
+            IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
+            IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
+            varUsers.SetupVariable(collection);
+            Assert.AreEqual(1, collection.Count);
+            var valueSchema = collection.Schemas.GetSchema("users");
+            Assert.IsNotNull(valueSchema);
+            Assert.AreEqual("String", valueSchema.TypeName);
+            string val= collection.Get<string>("users");
+            Assert.IsTrue(string.IsNullOrEmpty(val));
+        }
+
+        [Test]
+        public void TestVariableDefinitionRoleListSetCollectionValueToString()
+        {
+            VariableDefinition varRoles=new VariableDefinition("roles",string.Empty,VariableTypeEnum.RolesList, null);
+            IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
+            IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
+            varRoles.SetupVariable(collection);
+            Assert.AreEqual(1, collection.Count);
+            var valueSchema = collection.Schemas.GetSchema("roles");
+            Assert.IsNotNull(valueSchema);
+            Assert.AreEqual("String", valueSchema.TypeName);
+            string val= collection.Get<string>("roles");
+            Assert.IsTrue(string.IsNullOrEmpty(val));
+        }
+
+        [Test]
+        public void TestVariableDefinitionGroupsListSetCollectionValueToString()
+        {
+            VariableDefinition varGroups=new VariableDefinition("groups",string.Empty,VariableTypeEnum.GroupsList, null);
+            IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
+            IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
+            varGroups.SetupVariable(collection);
+            Assert.AreEqual(1, collection.Count);
+            var valueSchema = collection.Schemas.GetSchema("groups");
+            Assert.IsNotNull(valueSchema);
+            Assert.AreEqual("String", valueSchema.TypeName);
+            string val= collection.Get<string>("groups");
+            Assert.IsTrue(string.IsNullOrEmpty(val));
+
+        }
+
+        [Test]
         public void TestVariableDefinitionsSetProperiesInCollection()
         {
             VariableDefinition vdChar=new VariableDefinition("v_char",string.Empty,VariableTypeEnum.Char, new StepHandlerDefinition());
@@ -732,6 +825,48 @@ namespace KlaudWerk.ProcessEngine.Test
             Assert.IsNotNull(status);
             Assert.AreEqual(StepExecutionStatusEnum.Completed, status.Item1.Status);
             Assert.AreEqual("e_1",status.Item2.StepId);
+        }
+
+        [Test]
+        public void SetupProcessCompileWithVariables()
+        {
+            IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
+            IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(collection);
+            string scriptBody = "string[] values=new []{\"One\",\"Two\",\"Three\"};\n" +
+                                "SetPossibleValues(\"v_str\",values);\n" +
+                                "return 1;\n";
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id: "com.klaudwerk.workflow.renewal",
+                name: "Renewal", description: "Policy Renewal");
+            ProcessDefinition pd = builder
+                .Variables().Name("v_str").Type(VariableTypeEnum.String).Handler().Script()
+                    .Language(ScriptLanguage.CSharpScript)
+                    .Body(scriptBody).Done().Done().Done()
+                .Variables().Name("v_int").Type(VariableTypeEnum.Int).Done()
+                .Start("s_1").SetName("start").Done()
+                .Step("s_2").SetName("step").Done()
+                .End("e_1").SetName("end").Done()
+                .Link().From("s_1").To("s_2").Done()
+                .Link().From("s_2").To("e_1").Done()
+                .Build();
+            ProcessRuntimeService rtService=new ProcessRuntimeService();
+            var processRuntime = rtService.Create(builder.Build(), collection);
+            string[] errors;
+            Assert.IsTrue(processRuntime.TryCompile(out errors),string.Join(";",errors ?? new string[]{}));
+            Assert.IsNotNull(processRuntime.Variables);
+            Assert.AreEqual(2,processRuntime.Variables.Count);
+            foreach (VariableRuntime variable in processRuntime.Variables)
+            {
+                Assert.IsTrue(variable.IsCompiled);
+                Assert.IsTrue(variable.Evaluate(env).Result,"Evaluation failed!");
+            }
+            Assert.AreEqual(2,collection.Count);
+            var valueSchema = collection.Schemas.GetSchema("v_str");
+            Assert.IsNotNull(valueSchema);
+            Assert.IsNotNull(valueSchema.PossibleValues);
+            Assert.AreEqual(3,valueSchema.PossibleValues.Count());
+            Assert.AreEqual(new []{"One","Two","Three"},valueSchema.PossibleValues);
         }
 
         [Test]

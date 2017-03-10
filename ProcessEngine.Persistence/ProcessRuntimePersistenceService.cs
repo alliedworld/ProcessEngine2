@@ -164,6 +164,7 @@ namespace KlaudWerk.ProcessEngine.Persistence
             public StepRuntime LastExecutedStep => _real.LastExecutedStep;
 
             public IReadOnlyList<StepRuntime> StartSteps => _real.StartSteps;
+            public IReadOnlyList<VariableRuntime> Variables => _real.Variables;
 
             public IReadOnlyList<string> Errors => _real.Errors;
 

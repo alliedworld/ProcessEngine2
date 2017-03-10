@@ -101,6 +101,7 @@
     <Compile Include="Builder\VariableBuilder.cs" />
     <Compile Include="Builder\VariableMapBuilder.cs" />
     <Compile Include="Builder\VariableTypeEnum.cs" />
+    <Compile Include="Definition\IProcessDefinitionVisitable.cs" />
     <Compile Include="IAssemblyServiceExecution.cs" />
     <Compile Include="IExecutionService.cs" />
     <Compile Include="IIocServiceExecution.cs" />
@@ -134,7 +135,6 @@
     <Compile Include="ExecutionResult.cs" />
     <Compile Include="ICompilable.cs" />
     <Compile Include="IStepHandler.cs" />
-    <Compile Include="LinkRuntime.cs" />
     <Compile Include="ProcessRuntimeEnvironment.cs" />
     <Compile Include="ProcessValidationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,11 +143,14 @@
     <Compile Include="Runtime\IProcessEventListener.cs" />
     <Compile Include="Runtime\IProcessRuntime.cs" />
     <Compile Include="Runtime\IProcessRuntimeService.cs" />
+    <Compile Include="Runtime\LinkRuntime.cs" />
     <Compile Include="Runtime\ProcessRuntime.cs" />
     <Compile Include="Runtime\ProcessRuntimeMemento.cs" />
     <Compile Include="Runtime\ProcessRuntimeService.cs" />
     <Compile Include="Runtime\ProcessStateEnum.cs" />
+    <Compile Include="Runtime\ScriptCompilableBase.cs" />
     <Compile Include="Runtime\StepRuntime.cs" />
+    <Compile Include="Runtime\VariableRuntime.cs" />
     <Compile Include="ScriptLanguage.cs" />
     <Compile Include="SetupVariablesExt.cs" />
     <Compile Include="StepExecutionStatusEnum.cs" />

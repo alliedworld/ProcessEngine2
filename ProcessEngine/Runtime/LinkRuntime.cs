@@ -23,21 +23,16 @@ THE SOFTWARE.
   */
 
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using KlaudWerk.ProcessEngine.Definition;
-using KlaudWerk.ProcessEngine.Runtime;
 
-namespace KlaudWerk.ProcessEngine
+namespace KlaudWerk.ProcessEngine.Runtime
 {
     /// <summary>
     /// Link Runtime class
     /// </summary>
-    public class LinkRuntime : ICompilable
+    public class LinkRuntime : ScriptCompilableBase
     {
         private readonly LinkDefinition _ld;
-        private CsScriptRuntime _script;
-        public bool IsCompiled { get; private set; }
         /// <summary>
         /// Id of the source step
         /// </summary>
@@ -63,36 +58,9 @@ namespace KlaudWerk.ProcessEngine
         /// </summary>
         /// <param name="errors"></param>
         /// <returns></returns>
-        public bool TryCompile(out string[] errors)
+        public override bool TryCompile(out string[] errors)
         {
-            List<string> aggregatingErrors=new List<string>();
-            if (IsCompiled)
-            {
-                errors = aggregatingErrors.ToArray();
-                return true;
-            }
-            if (_ld.Script != null)
-            {
-                string[] onEntryErrors;
-                _script = new CsScriptRuntime(_ld.Script);
-                _script.TryCompile(out onEntryErrors);
-                aggregatingErrors.AddRange(onEntryErrors);
-            }
-            errors = aggregatingErrors.ToArray();
-            IsCompiled = true;
-            return errors.Length == 0;
+            return TryCompileScript(_ld.Script, out errors);
         }
-
-        /// <summary>
-        /// Evaluate the link
-        /// </summary>
-        /// <param name="env"></param>
-        /// <returns>evaluation result true if a link condition has been satisfied. </returns>
-        public async Task<bool> Evaluate(IProcessRuntimeEnvironment env)
-        {
-            int val = await _script.Execute(env);
-            return val == 1;
-        }
-
     }
 }

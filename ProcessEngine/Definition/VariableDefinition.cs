@@ -42,13 +42,14 @@ namespace KlaudWerk.ProcessEngine.Definition
         public VariableTypeEnum VariableType { get; set; }
         [DataMember(Name = "handler")]
         public StepHandlerDefinition HandlerDefinition { get; set; }
-        /// <summary>
-        ///
+
+        ///  <summary>
+        /// Constructor
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="description"></param>
-        /// <param name="variableType"></param>
-        /// <param name="className"></param>
+        /// <param name="name">variable name</param>
+        /// <param name="description">variable description</param>
+        /// <param name="variableType">variable type</param>
+        /// <param name="handler">a handler that can be use to validate or to provide list of possibel values</param>
         public VariableDefinition(
             string name, string description,
             VariableTypeEnum variableType, 

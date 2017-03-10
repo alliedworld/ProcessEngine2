@@ -72,12 +72,18 @@ namespace KlaudWerk.ProcessEngine.Builder
     /// </summary>
     public class StepHandlerBuilder:HandlerBuilder<StepBuilder>
     {
-        private readonly StepBuilder _parent;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="parent"></param>
         public StepHandlerBuilder(StepBuilder parent):base(parent)
         {
         }
-
+        /// <summary>
+        /// Human task handler
+        /// </summary>
+        /// <returns></returns>
         public StepHandlerBuilder HumanTask()
         {
             IocName = string.Empty;
