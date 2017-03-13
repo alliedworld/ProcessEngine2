@@ -509,8 +509,10 @@ namespace KlaudWerk.ProcessEngine.Builder
                 variableBuilder =>
                 new VariableDefinition(variableBuilder.VariableName,
                 variableBuilder.VariableDescription, variableBuilder.VariableType,
-                BuildVariableHandlerDefinition(variableBuilder.VariableHandler))).ToArray();
+                BuildVariableHandlerDefinition(variableBuilder.VariableHandler),
+                new ConstraintDefinition(variableBuilder.VariableConstraints))).ToArray();
         }
+
 
         #endregion
     }

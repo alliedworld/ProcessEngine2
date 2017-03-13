@@ -168,5 +168,33 @@ namespace KlaudWerk.ProcessEngine.Test
 
         }
 
+        [Test]
+        public void TestVariableBuilderRolesList()
+        {
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id: "p_001", name: "Renewal", description: "Policy Renewal");
+            builder.Variables()
+                .Name("users").Type(VariableTypeEnum.RolesList).Constraints()
+                .PossibeValues(new object[]{"admin","worker"}).Done().Done();
+            Assert.IsNotNull(builder.ProcessVariables);
+            Assert.AreEqual(1, builder.ProcessVariables.Count);
+            Assert.AreEqual(new object[] { "admin", "worker" }, builder.ProcessVariables[0].VariableConstraints.Values);
+
+        }
+
+        [Test]
+        public void TestVariableBuilderGroupList()
+        {
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id: "p_001", name: "Renewal", description: "Policy Renewal");
+            builder.Variables()
+                .Name("users").Type(VariableTypeEnum.GroupsList).Constraints()
+                .PossibeValues(new object[]{"g1","g2"}).Done().Done();
+            Assert.IsNotNull(builder.ProcessVariables);
+            Assert.AreEqual(1, builder.ProcessVariables.Count);
+            Assert.AreEqual(new object[] { "g1", "g2" }, builder.ProcessVariables[0].VariableConstraints.Values);
+
+        }
+
     }
 }

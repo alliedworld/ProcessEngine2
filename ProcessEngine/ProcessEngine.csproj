@@ -91,6 +91,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsyncValidationResult.cs" />
+    <Compile Include="Builder\AccountBuilder.cs" />
+    <Compile Include="Builder\ConstraintBuilder.cs" />
     <Compile Include="Builder\LinkBuilder.cs" />
     <Compile Include="Builder\ProcessBuilder.cs" />
     <Compile Include="Builder\ScriptBuilder.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="Builder\VariableBuilder.cs" />
     <Compile Include="Builder\VariableMapBuilder.cs" />
     <Compile Include="Builder\VariableTypeEnum.cs" />
+    <Compile Include="Definition\ConstraintDefinition.cs" />
     <Compile Include="Definition\IProcessDefinitionVisitable.cs" />
     <Compile Include="IAssemblyServiceExecution.cs" />
     <Compile Include="IExecutionService.cs" />

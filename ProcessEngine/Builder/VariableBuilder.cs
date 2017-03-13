@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
   */
 using System;
+using System.Collections.Generic;
 
 namespace KlaudWerk.ProcessEngine.Builder
 {
@@ -33,6 +34,7 @@ namespace KlaudWerk.ProcessEngine.Builder
         private readonly ProcessBuilder _parent;
         private string _name;
         private string _description;
+        private string _accounts;
         private VariableTypeEnum _type;
         private ConstraintBuilder _constraints;
         private readonly VariableHandlerBuilder _handler;
@@ -122,7 +124,7 @@ namespace KlaudWerk.ProcessEngine.Builder
         {
             return _handler;
         }
-        /// <summary>
+         /// <summary>
         /// Finish the builder
         /// </summary>
         /// <returns></returns>
@@ -155,6 +157,14 @@ namespace KlaudWerk.ProcessEngine.Builder
             _constraints = constraintBuilder;
             return this;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accounts"></param>
+        internal void SetAccountValues(List<string> accounts)
+        {
+            _accounts = string.Join(";", accounts.ToArray());
+        }
     }
 
     /// <summary>
@@ -169,101 +179,6 @@ namespace KlaudWerk.ProcessEngine.Builder
         /// <param name="parent">The parent.</param>
         public VariableHandlerBuilder(VariableBuilder parent) : base(parent)
         {
-        }
-    }
-    /// <summary>
-    /// Variables Constraint Builder
-    /// </summary>
-    public class ConstraintBuilder
-    {
-        private readonly VariableBuilder _parent;
-
-        /// <summary>
-        /// Gets the minimum value.
-        /// </summary>
-        /// <value>
-        /// The minimum.
-        /// </value>
-        public object Min { get; private set;}
-        /// <summary>
-        /// Gets the maximum value.
-        /// </summary>
-        /// <value>
-        /// The maximum.
-        /// </value>
-        public object Max { get; private set; }
-        /// <summary>
-        /// Gets the default value.
-        /// </summary>
-        /// <value>
-        /// The default.
-        /// </value>
-        public object Default { get; private set;}
-        /// <summary>
-        /// Gets the possible values.
-        /// </summary>
-        /// <value>
-        /// The values.
-        /// </value>
-        public object[] Values { get;private set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ConstraintBuilder"/> class.
-        /// </summary>
-        /// <param name="parent">The parent.</param>
-        public ConstraintBuilder(VariableBuilder parent)
-        {
-            _parent = parent;
-        }
-
-        /// <summary>
-        /// Set Maximum value.
-        /// </summary>
-        /// <param name="mv">The mv.</param>
-        /// <returns></returns>
-        public ConstraintBuilder MaxValue(object mv)
-        {
-            Max = mv;
-            return this;
-        }
-        /// <summary>
-        /// Set Minimum value.
-        /// </summary>
-        /// <param name="mv">The mv.</param>
-        /// <returns></returns>
-        public ConstraintBuilder MinValue(object mv)
-        {
-            Min=mv;
-            return this;
-        }
-        /// <summary>
-        /// Set Default value
-        /// </summary>
-        /// <param name="defaultValue">The default value.</param>
-        /// <returns></returns>
-        public ConstraintBuilder DefaultValue(object defaultValue)
-        {
-            Default = defaultValue;
-            return this;
-        }
-        /// <summary>
-        /// Set Possibe values.
-        /// </summary>
-        /// <param name="values">The values.</param>
-        /// <returns></returns>
-        public ConstraintBuilder PossibeValues(params object[] values)
-        {
-            Values = values;
-            return this;
-        }
-
-        /// <summary>
-        /// Done building.
-        /// </summary>
-        /// <returns></returns>
-        public VariableBuilder Done()
-        {
-            _parent.SetConstraint(this);
-            return _parent;
         }
     }
 }

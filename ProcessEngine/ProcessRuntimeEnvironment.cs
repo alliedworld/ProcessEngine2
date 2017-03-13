@@ -171,5 +171,15 @@ namespace KlaudWerk.ProcessEngine
             _assemblyServiceExecution = execution;
             return this;
         }
+
+        /// <summary>
+        /// Return Variable service for a variable defined in the workflowe
+        /// </summary>
+        /// <param name="variableName"></param>
+        /// <returns></returns>
+        public IVariablesService GetVariableService(string variableName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

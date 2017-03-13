@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Klaudwerk.PropertySet;
@@ -6,6 +7,41 @@ using KlaudWerk.ProcessEngine.Runtime;
 
 namespace KlaudWerk.ProcessEngine
 {
+    [Flags]
+    public enum VariableServiceCapabilities {
+        /// <summary>
+        /// The service can validate the variable value
+        /// </summary>
+        Validate=1,
+        /// <summary>
+        /// The service can provide the list of possible values
+        /// </summary>
+        ListProvider
+    }
+    /// <summary>
+    /// Variable service interface
+    /// </summary>
+    public interface IVariablesService
+    {
+        /// <summary>
+        /// The service capabilities
+        /// </summary>
+        VariableServiceCapabilities Capabilities { get; }
+        /// <summary>
+        /// Try to validate a variable value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="errors"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        bool TryValidate<T>(T value, out string[] errors);
+        /// <summary>
+        /// Return the list of possible values
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        IEnumerable<T> GetPossibleValues<T>();
+    }
     /// <summary>
     /// Process Runtime Environment Interface
     /// </summary>
@@ -89,5 +125,11 @@ namespace KlaudWerk.ProcessEngine
         /// </summary>
         /// <param name="execution"></param>
         IProcessRuntimeEnvironment SetAssemblyExecution(IAssemblyServiceExecution execution);
+        /// <summary>
+        /// Return Variable service for a variable defined in the workflowe
+        /// </summary>
+        /// <param name="variableName"></param>
+        /// <returns></returns>
+        IVariablesService GetVariableService(string variableName);
     }
 }

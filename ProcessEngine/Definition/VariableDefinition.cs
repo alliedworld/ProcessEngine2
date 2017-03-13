@@ -42,7 +42,8 @@ namespace KlaudWerk.ProcessEngine.Definition
         public VariableTypeEnum VariableType { get; set; }
         [DataMember(Name = "handler")]
         public StepHandlerDefinition HandlerDefinition { get; set; }
-
+        [DataMember(Name="const")]
+        public ConstraintDefinition Constraints { get; set; }
         ///  <summary>
         /// Constructor
         /// </summary>
@@ -51,14 +52,17 @@ namespace KlaudWerk.ProcessEngine.Definition
         /// <param name="variableType">variable type</param>
         /// <param name="handler">a handler that can be use to validate or to provide list of possibel values</param>
         public VariableDefinition(
-            string name, string description,
+            string name,
+            string description,
             VariableTypeEnum variableType, 
-            StepHandlerDefinition handler)
+            StepHandlerDefinition handler,
+            ConstraintDefinition constraints)
         {
             Name = name;
             Description = description;
             VariableType = variableType;
             HandlerDefinition = handler;
+            Constraints = constraints;
         }
         /// <summary>
         ///

@@ -84,7 +84,20 @@ namespace KlaudWerk.ProcessEngine.Definition
         {
             variableDefinition.HandlerDefinition?.Accept(this);
             _sb.Append($"{variableDefinition.Description}|{variableDefinition.Name}|{variableDefinition.VariableType}");
-            }
+        }
+
+        public void Visit(ConstraintDefinition constraintsDefinition)
+        {
+            if (constraintsDefinition == null)
+                return;
+            if (!string.IsNullOrEmpty(constraintsDefinition.DefaultValue))
+                _sb.Append("|" + constraintsDefinition.DefaultValue);
+            if(!string.IsNullOrEmpty(constraintsDefinition.MaxValue))
+                _sb.Append("|" + constraintsDefinition.MaxValue);
+            if(!string.IsNullOrEmpty(constraintsDefinition.MinValue))
+                _sb.Append("|" + constraintsDefinition.MinValue);
+            constraintsDefinition.PossibleValues?.ToList().ForEach(v=>_sb.Append("|"+v));
+        }
 
         public void Visit(VariableMapDefinition variableMapDefinition)
         {

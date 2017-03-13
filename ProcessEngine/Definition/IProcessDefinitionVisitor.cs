@@ -64,6 +64,11 @@ namespace KlaudWerk.ProcessEngine.Definition
         /// <param name="variableDefinition"></param>
         void Visit(VariableDefinition variableDefinition);
         /// <summary>
+        /// Visit <see cref="ConstraintDefinition"/>
+        /// </summary>
+        /// <param name="constraintsDefinition"></param>
+        void Visit(ConstraintDefinition constraintsDefinition);
+        /// <summary>
         /// Visit <see cref="VariableMapDefinition"/>
         /// </summary>
         /// <param name="variableMapDefinition"></param>

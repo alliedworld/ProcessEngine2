@@ -75,10 +75,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProcessEngine.Persistence.Mongo\ProcessEngine.Persistence.Mongo.csproj">
-      <Project>{31074fde-20a2-4b2a-a53f-9bad0dfd2930}</Project>
-      <Name>ProcessEngine.Persistence.Mongo</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ProcessEngine.Persistence\ProcessEngine.Persistence.csproj">
       <Project>{8030dadc-0110-4dde-a176-32ef96de9306}</Project>
       <Name>ProcessEngine.Persistence</Name>

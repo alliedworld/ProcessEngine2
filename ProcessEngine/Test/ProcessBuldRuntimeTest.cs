@@ -31,6 +31,7 @@ using KlaudWerk.ProcessEngine.Builder;
 using KlaudWerk.ProcessEngine.Definition;
 using KlaudWerk.ProcessEngine.Runtime;
 using Moq;
+using Newtonsoft.Json;
 using NUnit.Framework;
 
 namespace KlaudWerk.ProcessEngine.Test
@@ -156,6 +157,37 @@ namespace KlaudWerk.ProcessEngine.Test
 
         }
 
+        [Test]
+        public void TestGroupOrRoleVariableDefinitionsShouldPreserveAccounstAfterBuild()
+        {
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id: "com.klaudwerk.workflow.renewal",
+                name: "Renewal", description: "Policy Renewal");
+            IReadOnlyList<ProcessValidationResult> result;
+            bool isValid=builder.Variables().Name("roles")
+                    .Type(VariableTypeEnum.RolesList)
+                    .Constraints().PossibeValues(new object[]{"admin","worker"}).Done()
+                    .Done()
+                .Variables().Name("groups")
+                    .Type(VariableTypeEnum.GroupsList)
+                    .Constraints().PossibeValues(new object[]{"g1"}).Done()
+                    .Done()
+                .Start("s_1").SetName("Start").Done()
+                .End("e_1").SetName("End Process").Done()
+                .Link().From("s_1").To("e_1").Name("finish").Done()
+                .TryValidate(out result);
+            Assert.IsTrue(isValid);
+            var processDefinition = builder.Build();
+            Assert.IsNotNull(processDefinition);
+            Assert.IsNotNull(processDefinition.Variables);
+            Assert.AreEqual(2,processDefinition.Variables.Length);
+            Assert.IsNotNull(processDefinition.Variables[0].Constraints);
+            Assert.IsNotNull(processDefinition.Variables[1].Constraints);
+            Assert.AreEqual(new string[]{"admin","worker"},processDefinition.Variables[0].Constraints.PossibleValues.
+                Select(JsonConvert.DeserializeObject<string>).ToArray());
+            Assert.AreEqual(new string[]{"g1"},processDefinition.Variables[1].Constraints.PossibleValues
+                .Select(JsonConvert.DeserializeObject<string>).ToArray());
+        }
         [Test]
         public void TestExecuteScriptInEnvironment()
         {
@@ -579,7 +611,7 @@ namespace KlaudWerk.ProcessEngine.Test
                 Script = new ScriptDefinition("return 1;",
                     ScriptLanguage.CSharpScript, new string[] { }, new string[] { })
             };
-            VariableDefinition varStr=new VariableDefinition("v_str",string.Empty,VariableTypeEnum.String, shd);
+            VariableDefinition varStr=new VariableDefinition("v_str",string.Empty,VariableTypeEnum.String, shd,null);
             VariableRuntime rt=new VariableRuntime(varStr);
             string[] errors;
             Assert.IsTrue(rt.TryCompile(out errors));
@@ -600,7 +632,7 @@ namespace KlaudWerk.ProcessEngine.Test
             };
             IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
-            VariableDefinition varStr=new VariableDefinition("v_str",string.Empty,VariableTypeEnum.String, shd);
+            VariableDefinition varStr=new VariableDefinition("v_str",string.Empty,VariableTypeEnum.String, shd,null);
             VariableRuntime rt=new VariableRuntime(varStr);
             varStr.SetupVariable(collection);
             ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(collection);
@@ -620,7 +652,7 @@ namespace KlaudWerk.ProcessEngine.Test
         [Test]
         public void TestVariableDefinitionUserListSetCollectionValueToString()
         {
-            VariableDefinition varUsers=new VariableDefinition("users",string.Empty,VariableTypeEnum.UsersList, null);
+            VariableDefinition varUsers=new VariableDefinition("users",string.Empty,VariableTypeEnum.UsersList, null,null);
             IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
             varUsers.SetupVariable(collection);
@@ -635,7 +667,7 @@ namespace KlaudWerk.ProcessEngine.Test
         [Test]
         public void TestVariableDefinitionRoleListSetCollectionValueToString()
         {
-            VariableDefinition varRoles=new VariableDefinition("roles",string.Empty,VariableTypeEnum.RolesList, null);
+            VariableDefinition varRoles=new VariableDefinition("roles",string.Empty,VariableTypeEnum.RolesList, null,null);
             IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
             varRoles.SetupVariable(collection);
@@ -650,7 +682,7 @@ namespace KlaudWerk.ProcessEngine.Test
         [Test]
         public void TestVariableDefinitionGroupsListSetCollectionValueToString()
         {
-            VariableDefinition varGroups=new VariableDefinition("groups",string.Empty,VariableTypeEnum.GroupsList, null);
+            VariableDefinition varGroups=new VariableDefinition("groups",string.Empty,VariableTypeEnum.GroupsList, null,null);
             IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
             varGroups.SetupVariable(collection);
@@ -666,14 +698,15 @@ namespace KlaudWerk.ProcessEngine.Test
         [Test]
         public void TestVariableDefinitionsSetProperiesInCollection()
         {
-            VariableDefinition vdChar=new VariableDefinition("v_char",string.Empty,VariableTypeEnum.Char, new StepHandlerDefinition());
-            VariableDefinition vdInt=new VariableDefinition("v_int",string.Empty,VariableTypeEnum.Int, new StepHandlerDefinition());
-            VariableDefinition vdDecimal=new VariableDefinition("v_decimal",string.Empty,VariableTypeEnum.Decimal,  new StepHandlerDefinition());
-            VariableDefinition vdString=new VariableDefinition("v_string",string.Empty,VariableTypeEnum.String, new StepHandlerDefinition());
-            VariableDefinition vdJson=new VariableDefinition("v_json",string.Empty,VariableTypeEnum.Json, new StepHandlerDefinition());
-            VariableDefinition vdObject=new VariableDefinition("v_object",string.Empty,VariableTypeEnum.Char, new StepHandlerDefinition());
-            VariableDefinition vdNone=new VariableDefinition("v_none",string.Empty,VariableTypeEnum.None, new StepHandlerDefinition());
-            VariableDefinition vdBool=new VariableDefinition("v_bool",string.Empty,VariableTypeEnum.Boolean, new StepHandlerDefinition());
+            VariableDefinition vdChar=new VariableDefinition("v_char",string.Empty,VariableTypeEnum.Char, new StepHandlerDefinition()
+                ,new ConstraintDefinition());
+            VariableDefinition vdInt=new VariableDefinition("v_int",string.Empty,VariableTypeEnum.Int, new StepHandlerDefinition(),new ConstraintDefinition());
+            VariableDefinition vdDecimal=new VariableDefinition("v_decimal",string.Empty,VariableTypeEnum.Decimal,  new StepHandlerDefinition(),new ConstraintDefinition());
+            VariableDefinition vdString=new VariableDefinition("v_string",string.Empty,VariableTypeEnum.String, new StepHandlerDefinition(),new ConstraintDefinition());
+            VariableDefinition vdJson=new VariableDefinition("v_json",string.Empty,VariableTypeEnum.Json, new StepHandlerDefinition(),new ConstraintDefinition());
+            VariableDefinition vdObject=new VariableDefinition("v_object",string.Empty,VariableTypeEnum.Char, new StepHandlerDefinition(),new ConstraintDefinition());
+            VariableDefinition vdNone=new VariableDefinition("v_none",string.Empty,VariableTypeEnum.None, new StepHandlerDefinition(),new ConstraintDefinition());
+            VariableDefinition vdBool=new VariableDefinition("v_bool",string.Empty,VariableTypeEnum.Boolean, new StepHandlerDefinition(),new ConstraintDefinition());
 
             VariableDefinition[] defs = {vdChar, vdInt, vdDecimal, vdString, vdJson, vdObject, vdNone, vdBool};
 
