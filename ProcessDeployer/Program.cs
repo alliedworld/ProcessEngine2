@@ -69,8 +69,26 @@ namespace Klaudwerk.ProcessDeployer
                 {"deactivate",DeactivateWorkflow},
                 {"r+",AddRoles},
                 {"r-",RemoveRoles},
-                {"m",RemoveFlow}
+                {"m",RemoveFlow},
+                {"p",PrintDefinition},
+                {"print",PrintDefinition},
             };
+
+        private static void PrintDefinition(ApplicationArgumments a)
+        {
+            Guid guid = CheckId(a);
+            if (guid == Guid.Empty)
+            {
+                Console.WriteLine("Valid Process Definition GUID required.");
+                return;
+            }
+            if (a.Version == -1)
+            {
+                Console.WriteLine("Version number is required.");
+                return;
+            }
+            WfDeployer.PrintDefinition(guid, a.Version);
+        }
 
         private static void RemoveFlow(ApplicationArgumments a)
         {
@@ -86,7 +104,8 @@ namespace Klaudwerk.ProcessDeployer
                 return;
             }
             Console.WriteLine($"Removing workflow: {guid} {a.Version}");
-            WfDeployer.RemoveWorkflow(guid, a.Version);        }
+            WfDeployer.RemoveWorkflow(guid, a.Version);
+        }
 
         private static void RemoveRoles(ApplicationArgumments a)
         {
@@ -121,6 +140,7 @@ commands:
  h,? or help          - print help
  la or listassemblies - list workflows in assemblies catalog
  ld or listdeployed   - list deployed workflowa
+ p  or print          - print JSON workflow definition
  d  or deploy         - deploy a workflow
  u  or undeploy       - undeploy a workflow
  a  or activate       - activate workflow

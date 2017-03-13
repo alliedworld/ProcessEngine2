@@ -28,6 +28,7 @@ using Castle.Windsor;
 using Castle.Windsor.Configuration.Interpreters;
 using KlaudWerk.ProcessEngine.Definition;
 using KlaudWerk.ProcessEngine.Persistence;
+using Newtonsoft.Json;
 
 namespace Klaudwerk.ProcessDeployer
 {
@@ -129,6 +130,19 @@ namespace Klaudwerk.ProcessDeployer
         public void RemoveWorkflow(Guid guid, int aVersion)
         {
             _persistence.Remove(guid, aVersion);
+        }
+
+        public void PrintDefinition(Guid guid, int aVersion)
+        {
+            ProcessDefinition pd;
+            ProcessDefStatusEnum stat;
+            AccountData[] accounts;
+            if (!_persistence.TryFind(guid, aVersion, out pd, out stat, out accounts))
+            {
+                Console.WriteLine($"Cannot find workflow Id={guid} version={aVersion}" );
+                return;
+            }
+            Console.WriteLine(JsonConvert.SerializeObject(pd, Formatting.Indented));
         }
     }
 }
