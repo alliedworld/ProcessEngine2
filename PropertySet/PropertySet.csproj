@@ -72,6 +72,7 @@
     <Compile Include="CharSchema.cs" />
     <Compile Include="DateTimeSchema.cs" />
     <Compile Include="DoubleSchema.cs" />
+    <Compile Include="GroupsSchema.cs" />
     <Compile Include="IntSchema.cs" />
     <Compile Include="IPropertySchemaFactory.cs" />
     <Compile Include="IPropertySchemaSet.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="PropertySetCollection.cs" />
     <Compile Include="PropertySetCollectionBase.cs" />
     <Compile Include="PropertyValidationException.cs" />
+    <Compile Include="RolesSchema.cs" />
     <Compile Include="SchemaBase.cs" />
     <Compile Include="Serialization\DefaultValueSerializer.cs" />
     <Compile Include="Serialization\JsonPropertySerializer.cs" />
@@ -111,6 +113,7 @@
     <Compile Include="Test\SchemaTests.cs" />
     <Compile Include="Test\TestSchemaExt.cs" />
     <Compile Include="Test\ValueSetCollectionTest.cs" />
+    <Compile Include="UsersSchema.cs" />
     <Compile Include="ValueSchemaExt.cs" />
   </ItemGroup>
   <ItemGroup>

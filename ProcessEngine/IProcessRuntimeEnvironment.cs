@@ -65,6 +65,10 @@ namespace KlaudWerk.ProcessEngine
         /// </summary>
         Guid ProcessId { get; }
         /// <summary>
+        /// Retrieve the process runtime
+        /// </summary>
+        IProcessRuntime ProcessRuntime { get; }
+        /// <summary>
         /// Id of the transition that needs to be taken
         /// </summary>
         string Transition { get; }

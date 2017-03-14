@@ -98,7 +98,6 @@ namespace KlaudWerk.ProcessEngine.Test
             Assert.IsTrue(isValid);
             var processDefinition = builder.Build();
             Assert.IsNotNull(processDefinition);
-
         }
 
         [Test]
@@ -191,7 +190,7 @@ namespace KlaudWerk.ProcessEngine.Test
         [Test]
         public void TestExecuteScriptInEnvironment()
         {
-            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(null) {ProcessEnvId = 1};
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(null,null) {ProcessEnvId = 1};
             ScriptDefinition sd=new ScriptDefinition(
                 @"
                     ProcessEnvId+1
@@ -207,7 +206,7 @@ namespace KlaudWerk.ProcessEngine.Test
         [Test]
         public void TestScriptExecutionShouldThrowException()
         {
-            var env=new ProcessRuntimeEnvironment(null);
+            var env=new ProcessRuntimeEnvironment(null, null);
             env.ProcessEnvId = 1;
             ScriptDefinition sd=new ScriptDefinition(
                 @"
@@ -224,7 +223,7 @@ namespace KlaudWerk.ProcessEngine.Test
         [Test]
         public void TestStepDefinitionCompilation()
         {
-            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(null);
+            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(null, null);
             env.ProcessEnvId = 1;
             ScriptDefinition onEntry=new ScriptDefinition(
                 @"
@@ -247,7 +246,7 @@ namespace KlaudWerk.ProcessEngine.Test
         [Test]
         public void ScriptExecutionCanFailOnEnterValidationScript()
         {
-            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(null);
+            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(null, null);
             env.ProcessEnvId = 1;
             ScriptDefinition onEntry=new ScriptDefinition(
                 @"
@@ -273,7 +272,7 @@ namespace KlaudWerk.ProcessEngine.Test
         [Test]
         public void ScriptExecutionCanFailOnExitalidationScript()
         {
-            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(null);
+            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(null, null);
             env.ProcessEnvId = 1;
             ScriptDefinition onEntry=new ScriptDefinition(
                 @"
@@ -304,7 +303,7 @@ namespace KlaudWerk.ProcessEngine.Test
         {
             IPropertySchemaSet propertySet=new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection=new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
-            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(collection);
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(null, collection);
             propertySet.SetSchema("policy", new StringSchema());
             propertySet.SetSchema("account", new StringSchema());
             propertySet.SetSchema("id", new IntSchema());
@@ -331,7 +330,7 @@ namespace KlaudWerk.ProcessEngine.Test
         {
             IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
-            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(collection);
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(null, collection);
             propertySet.SetSchema("policy", new StringSchema());
             propertySet.SetSchema("account", new StringSchema());
             propertySet.SetSchema("id", new IntSchema());
@@ -361,7 +360,7 @@ namespace KlaudWerk.ProcessEngine.Test
         {
             IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
-            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(collection);
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(null, collection);
             propertySet.SetSchema("policy", new StringSchema());
             propertySet.SetSchema("account", new StringSchema());
             propertySet.SetSchema("id", new IntSchema());
@@ -390,7 +389,7 @@ namespace KlaudWerk.ProcessEngine.Test
         [Test]
         public void LinkWithScriptCanBeCompiled()
         {
-            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(null);
+            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(null, null);
             env.ProcessEnvId = 1;
             ScriptDefinition script=new ScriptDefinition(
                 @"
@@ -411,7 +410,7 @@ namespace KlaudWerk.ProcessEngine.Test
         [Test]
         public void LinkWithInvalidScriptShouldReturnErrors()
         {
-            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(null);
+            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(null, null);
             env.ProcessEnvId = 1;
             ScriptDefinition script=new ScriptDefinition(
                 @"
@@ -432,7 +431,7 @@ namespace KlaudWerk.ProcessEngine.Test
         [Test]
         public void LinkWithScriptCanBeEvaluated()
         {
-            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(null);
+            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(null, null);
             env.ProcessEnvId = 1;
             ScriptDefinition script=new ScriptDefinition(
                 @"
@@ -458,7 +457,7 @@ namespace KlaudWerk.ProcessEngine.Test
         {
             IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
-            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(collection);
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(null, collection);
             env.ProcessEnvId = 1;
             StepDefinition sd = new StepDefinition(Guid.NewGuid(), "step_id", string.Empty, String.Empty, true, false,
                 null, null, null, null, null, null,
@@ -533,7 +532,7 @@ namespace KlaudWerk.ProcessEngine.Test
         {
             IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
-            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(collection);
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(null, collection);
             env.ProcessEnvId = 1;
             ScriptDefinition script=new ScriptDefinition(
                 @"
@@ -558,7 +557,7 @@ namespace KlaudWerk.ProcessEngine.Test
         {
             IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
-            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(collection);
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(null, collection);
             env.ProcessEnvId = 1;
             ScriptDefinition script=new ScriptDefinition(
                 @"
@@ -582,7 +581,7 @@ namespace KlaudWerk.ProcessEngine.Test
         {
             IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
-            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(collection);
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(null, collection);
             env.ProcessEnvId = 1;
             ScriptDefinition script=new ScriptDefinition(
                 @"
@@ -635,7 +634,7 @@ namespace KlaudWerk.ProcessEngine.Test
             VariableDefinition varStr=new VariableDefinition("v_str",string.Empty,VariableTypeEnum.String, shd,null);
             VariableRuntime rt=new VariableRuntime(varStr);
             varStr.SetupVariable(collection);
-            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(collection);
+            ProcessRuntimeEnvironment env=new ProcessRuntimeEnvironment(null, collection);
             Assert.AreEqual(1, collection.Count);
             string[] errors;
             Assert.IsTrue(rt.TryCompile(out errors));
@@ -659,7 +658,7 @@ namespace KlaudWerk.ProcessEngine.Test
             Assert.AreEqual(1, collection.Count);
             var valueSchema = collection.Schemas.GetSchema("users");
             Assert.IsNotNull(valueSchema);
-            Assert.AreEqual("String", valueSchema.TypeName);
+            Assert.AreEqual("UsersList", valueSchema.TypeName);
             string val= collection.Get<string>("users");
             Assert.IsTrue(string.IsNullOrEmpty(val));
         }
@@ -674,7 +673,7 @@ namespace KlaudWerk.ProcessEngine.Test
             Assert.AreEqual(1, collection.Count);
             var valueSchema = collection.Schemas.GetSchema("roles");
             Assert.IsNotNull(valueSchema);
-            Assert.AreEqual("String", valueSchema.TypeName);
+            Assert.AreEqual("RolesList", valueSchema.TypeName);
             string val= collection.Get<string>("roles");
             Assert.IsTrue(string.IsNullOrEmpty(val));
         }
@@ -689,7 +688,7 @@ namespace KlaudWerk.ProcessEngine.Test
             Assert.AreEqual(1, collection.Count);
             var valueSchema = collection.Schemas.GetSchema("groups");
             Assert.IsNotNull(valueSchema);
-            Assert.AreEqual("String", valueSchema.TypeName);
+            Assert.AreEqual("GroupsList", valueSchema.TypeName);
             string val= collection.Get<string>("groups");
             Assert.IsTrue(string.IsNullOrEmpty(val));
 
@@ -731,7 +730,7 @@ namespace KlaudWerk.ProcessEngine.Test
         {
             IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
-            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(collection);
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(null, collection);
             var factory = new ProcessBuilderFactory();
             var builder = factory.CreateProcess(id: "com.klaudwerk.workflow.renewal",
                 name: "Renewal", description: "Policy Renewal");
@@ -769,11 +768,139 @@ namespace KlaudWerk.ProcessEngine.Test
         }
 
         [Test]
+        public void TestRuntimeProcessShouldSetDefaultAndPossibleValuesOnVariables()
+        {
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id: "com.klaudwerk.workflow.renewal",
+                name: "Renewal", description: "Policy Renewal");
+            IReadOnlyList<ProcessValidationResult> result;
+            bool isValid = builder
+                    .Variables().Name("str").Type(VariableTypeEnum.String)
+                        .Constraints().DefaultValue("1").PossibeValues(new object[] { "1", "2", "3" }).Done()
+                    .Done()
+                    .Variables().Name(("int")).Type(VariableTypeEnum.Int)
+                        .Constraints().DefaultValue(100).PossibeValues(new object[] { 100, 200, 200 }).Done()
+                    .Done()
+                    .Variables().Name("bool").Type(VariableTypeEnum.Boolean)
+                        .Constraints().DefaultValue(true).Done()
+                    .Done()
+                    .Variables().Name("decimal").Type(VariableTypeEnum.Decimal)
+                        .Constraints().DefaultValue(12.5d).PossibeValues(new object[] { 10.5d, 11.5d, 12.5d }).Done()
+                    .Done()
+                    .Variables().Name("char").Type(VariableTypeEnum.Char)
+                        .Constraints().DefaultValue('c').PossibeValues(new object[] { 'a', 'b', 'c' }).Done()
+                    .Done()
+                    .Variables().Type(VariableTypeEnum.Json).Name("json")
+                        .Constraints().DefaultValue("{s:100}").PossibeValues(new object[] { "{s:100}", "{s:200}", "{s:300}" }).Done()
+                    .Done()
+                    .Variables().Type(VariableTypeEnum.Object).Name("obj")
+                        .Constraints().DefaultValue("1").PossibeValues(new object[] { "1", "2", "3" }).Done()
+                    .Done()
+                    .Variables().Type(VariableTypeEnum.GroupsList).Name("grp")
+                        .Constraints().DefaultValue("gr1").PossibeValues(new object[] { "gr1", "gr2", "gr3" }).Done()
+                    .Done()
+                    .Variables().Type(VariableTypeEnum.RolesList).Name("role")
+                        .Constraints().DefaultValue("r1").PossibeValues(new object[] { "r1", "r2", "r3" }).Done()
+                    .Done()
+                    .Variables().Type(VariableTypeEnum.UsersList).Name("usr")
+                        .Constraints().DefaultValue("u1").PossibeValues(new object[] { "u1", "u2", "u3" }).Done()
+                    .Done()
+
+                .Start("s_1").SetName("Start").Done()
+                .End("e_1").SetName("End Process").Done()
+                .Link().From("s_1").To("e_1").Name("finish").Done()
+                .TryValidate(out result);
+            Assert.IsTrue(isValid);
+            var processDefinition = builder.Build();
+            Assert.IsNotNull(processDefinition);
+            IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
+            IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(null, collection);
+            ProcessRuntimeService rtb = new ProcessRuntimeService();
+            var processRuntime = rtb.Create(processDefinition, collection);
+            Assert.IsNotNull(processRuntime);
+            string[] errors;
+            Assert.IsTrue(processRuntime.TryCompile(out errors));
+            // collection variables should be set
+            Assert.AreEqual(10,collection.Count);
+            IValueSchema<object> schema = collection.Schemas.GetSchema("str");
+            Assert.IsNotNull(schema);
+            Assert.IsNotNull(schema.DefaultValue);
+            Assert.IsNotNull(schema.PossibleValues);
+            Assert.AreEqual(3, schema.PossibleValues.Count());
+            Assert.AreEqual(new object[] { "1", "2", "3" }, schema.PossibleValues);
+
+            schema = collection.Schemas.GetSchema("int");
+            Assert.IsNotNull(schema);
+            Assert.IsNotNull(schema.DefaultValue);
+            Assert.IsNotNull(schema.PossibleValues);
+            Assert.AreEqual(3, schema.PossibleValues.Count());
+            Assert.AreEqual(new object[] { 100, 200, 200 }, schema.PossibleValues);
+
+            schema = collection.Schemas.GetSchema("bool");
+            Assert.IsNotNull(schema);
+            Assert.IsNotNull(schema.DefaultValue);
+            Assert.IsNotNull(schema.PossibleValues);
+            Assert.AreEqual(2, schema.PossibleValues.Count());
+            Assert.AreEqual(new object[] { true, false }, schema.PossibleValues);
+
+            schema = collection.Schemas.GetSchema("decimal");
+            Assert.IsNotNull(schema);
+            Assert.IsNotNull(schema.DefaultValue);
+            Assert.IsNotNull(schema.PossibleValues);
+            Assert.AreEqual(3, schema.PossibleValues.Count());
+            Assert.AreEqual(new object[] { 10.5d, 11.5d, 12.5d }, schema.PossibleValues);
+
+            schema = collection.Schemas.GetSchema("char");
+            Assert.IsNotNull(schema);
+            Assert.IsNotNull(schema.DefaultValue);
+            Assert.IsNotNull(schema.PossibleValues);
+            Assert.AreEqual(3, schema.PossibleValues.Count());
+            Assert.AreEqual(new object[] { 'a', 'b', 'c' }, schema.PossibleValues);
+
+            schema = collection.Schemas.GetSchema("json");
+            Assert.IsNotNull(schema);
+            Assert.IsNotNull(schema.DefaultValue);
+            Assert.IsNotNull(schema.PossibleValues);
+            Assert.AreEqual(3, schema.PossibleValues.Count());
+            Assert.AreEqual(new object[] { "{s:100}", "{s:200}", "{s:300}" }, schema.PossibleValues);
+
+            schema = collection.Schemas.GetSchema("obj");
+            Assert.IsNotNull(schema);
+            Assert.IsNotNull(schema.DefaultValue);
+            Assert.IsNotNull(schema.PossibleValues);
+            Assert.AreEqual(3, schema.PossibleValues.Count());
+            Assert.AreEqual(new object[] { "1", "2", "3" }, schema.PossibleValues);
+
+            schema = collection.Schemas.GetSchema("grp");
+            Assert.IsNotNull(schema);
+            Assert.IsNotNull(schema.DefaultValue);
+            Assert.IsNotNull(schema.PossibleValues);
+            Assert.AreEqual(3, schema.PossibleValues.Count());
+            Assert.AreEqual(new object[] { "gr1", "gr2", "gr3" }, schema.PossibleValues);
+
+            schema = collection.Schemas.GetSchema("role");
+            Assert.IsNotNull(schema);
+            Assert.IsNotNull(schema.DefaultValue);
+            Assert.IsNotNull(schema.PossibleValues);
+            Assert.AreEqual(3, schema.PossibleValues.Count());
+            Assert.AreEqual(new object[] { "r1", "r2", "r3" }, schema.PossibleValues);
+
+
+            schema = collection.Schemas.GetSchema("usr");
+            Assert.IsNotNull(schema);
+            Assert.IsNotNull(schema.DefaultValue);
+            Assert.IsNotNull(schema.PossibleValues);
+            Assert.AreEqual(3, schema.PossibleValues.Count());
+            Assert.AreEqual(new object[] { "u1", "u2", "u3" }, schema.PossibleValues);
+        }
+
+        [Test]
         public void SetupFlowTestRequiredVariables()
         {
             IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
-            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(collection);
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(null, collection);
             var factory = new ProcessBuilderFactory();
             var builder = factory.CreateProcess(id: "com.klaudwerk.workflow.renewal",
                 name: "Renewal", description: "Policy Renewal");
@@ -826,7 +953,7 @@ namespace KlaudWerk.ProcessEngine.Test
         {
             IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
-            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(collection);
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(null, collection);
             var factory = new ProcessBuilderFactory();
             var builder = factory.CreateProcess(id: "com.klaudwerk.workflow.renewal",
                 name: "Renewal", description: "Policy Renewal");
@@ -865,7 +992,7 @@ namespace KlaudWerk.ProcessEngine.Test
         {
             IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
             IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
-            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(collection);
+            ProcessRuntimeEnvironment env = new ProcessRuntimeEnvironment(null, collection);
             string scriptBody = "string[] values=new []{\"One\",\"Two\",\"Three\"};\n" +
                                 "SetPossibleValues(\"v_str\",values);\n" +
                                 "return 1;\n";

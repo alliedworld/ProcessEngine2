@@ -117,7 +117,7 @@ namespace Klaudwerk.PropertySet
         /// Validates the specified value on set.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void Validate(object value)
+        public virtual void Validate(object value)
         {
             if (value == null)
             {

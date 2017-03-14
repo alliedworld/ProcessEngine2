@@ -131,6 +131,122 @@ namespace Klaudwerk.PropertySet.Test
             Assert.IsNotNull(strSchema);
         }
 
+        [Test]
+        public void TestSerializeRolesSchema()
+        {
+            IValueSchema<string> schema = new RolesSchema()
+            {
+                AllowNull = false,
+                DefaultValue = "abc",
+                MaxLength = 100,
+                MinLength = 2,
+                PossibleValues = new[] { "abc", "def" }
+            };
+            SchemaJsonSerializationVisitor visitor = new SchemaJsonSerializationVisitor();
+            schema.Accept(visitor);
+            Assert.AreEqual(typeof(string), visitor.ValueType);
+            Assert.AreEqual(typeof(RolesSchema), visitor.SchemaType);
+            Assert.IsNotNull(visitor.JsonValue);
+            Assert.AreNotEqual(0, visitor.JsonValue.Length);
+        }
+
+        [Test]
+        public void TestSerializeGroupsSchema()
+        {
+            IValueSchema<string> schema = new GroupsSchema()
+            {
+                AllowNull = false,
+                DefaultValue = "abc",
+                MaxLength = 100,
+                MinLength = 2,
+                PossibleValues = new[] { "abc", "def" }
+            };
+            SchemaJsonSerializationVisitor visitor = new SchemaJsonSerializationVisitor();
+            schema.Accept(visitor);
+            Assert.AreEqual(typeof(string), visitor.ValueType);
+            Assert.AreEqual(typeof(GroupsSchema), visitor.SchemaType);
+            Assert.IsNotNull(visitor.JsonValue);
+            Assert.AreNotEqual(0, visitor.JsonValue.Length);
+
+        }
+
+        [Test]
+        public void TestSerializeUsersSchema()
+        {
+            IValueSchema<string> schema = new UsersSchema
+            {
+                AllowNull = false,
+                DefaultValue = "abc",
+                MaxLength = 100,
+                MinLength = 2,
+                PossibleValues = new[] { "abc", "def" }
+            };
+            SchemaJsonSerializationVisitor visitor = new SchemaJsonSerializationVisitor();
+            schema.Accept(visitor);
+            Assert.AreEqual(typeof(string), visitor.ValueType);
+            Assert.AreEqual(typeof(UsersSchema), visitor.SchemaType);
+            Assert.IsNotNull(visitor.JsonValue);
+            Assert.AreNotEqual(0, visitor.JsonValue.Length);
+
+        }
+        [Test]
+        public void TestDeserializeRolesSchema()
+        {
+            IValueSchema<string> schema = new RolesSchema
+            {
+                AllowNull = true,
+                DefaultValue = "abc",
+                MaxLength = 100,
+                MinLength = 2,
+                PossibleValues = new[] { "abc", "def" }
+            };
+            SchemaJsonSerializationVisitor visitor = new SchemaJsonSerializationVisitor();
+            schema.Accept(visitor);
+
+            IValueSchema<object> vs = JsonSchemaDeserializer.Deserialize(visitor.SchemaType, visitor.JsonValue);
+            Assert.IsNotNull(vs);
+            Assert.AreEqual(typeof(string), vs.Type);
+        }
+
+        [Test]
+        public void TestDeserializeGroupsSchema()
+        {
+            IValueSchema<string> schema = new GroupsSchema
+            {
+                AllowNull = true,
+                DefaultValue = "abc",
+                MaxLength = 100,
+                MinLength = 2,
+                PossibleValues = new[] { "abc", "def" }
+            };
+            SchemaJsonSerializationVisitor visitor = new SchemaJsonSerializationVisitor();
+            schema.Accept(visitor);
+
+            IValueSchema<object> vs = JsonSchemaDeserializer.Deserialize(visitor.SchemaType, visitor.JsonValue);
+            Assert.IsNotNull(vs);
+            Assert.AreEqual(typeof(string), vs.Type);
+        }
+
+        [Test]
+        public void TestDeserializeUsersSchema()
+        {
+            IValueSchema<string> schema = new UsersSchema
+            {
+                AllowNull = true,
+                DefaultValue = "abc",
+                MaxLength = 100,
+                MinLength = 2,
+                PossibleValues = new[] { "abc", "def" }
+            };
+            SchemaJsonSerializationVisitor visitor = new SchemaJsonSerializationVisitor();
+            schema.Accept(visitor);
+
+            IValueSchema<object> vs = JsonSchemaDeserializer.Deserialize(visitor.SchemaType, visitor.JsonValue);
+            Assert.IsNotNull(vs);
+            Assert.AreEqual(typeof(string), vs.Type);
+        }
+
+
     }
 
 }

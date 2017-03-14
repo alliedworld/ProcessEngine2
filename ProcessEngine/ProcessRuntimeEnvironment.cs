@@ -61,6 +61,7 @@ namespace KlaudWerk.ProcessEngine
 
         public int ProcessEnvId { get; set; }
         public Guid ProcessId { get; set; }
+        public IProcessRuntime ProcessRuntime { get; }
         public string Transition { get; set; }
 
         /// <summary>
@@ -68,8 +69,10 @@ namespace KlaudWerk.ProcessEngine
         /// </summary>
         /// <param name="propertySet">The property set.</param>
         public ProcessRuntimeEnvironment(
+            IProcessRuntime runtime,
             IPropertySetCollection propertySet)
         {
+            ProcessRuntime = runtime;
             PropertySet = propertySet;
         }
 

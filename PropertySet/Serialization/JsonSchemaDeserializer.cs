@@ -79,6 +79,11 @@ namespace Klaudwerk.PropertySet.Serialization
             {"Klaudwerk.PropertySet.IntSchema", typeof(IntSchema)},
             {"Klaudwerk.PropertySet.LongSchema", typeof(LongSchema)},
             {"Klaudwerk.PropertySet.StringSchema", typeof(StringSchema)},
+
+            {"Klaudwerk.PropertySet.RolesSchema", typeof(RolesSchema)},
+            {"Klaudwerk.PropertySet.GroupsSchema", typeof(GroupsSchema)},
+            {"Klaudwerk.PropertySet.UsersSchema", typeof(UsersSchema)},
+
             {"Klaudwerk.PropertySet.DateTimeSchema", typeof(DateTimeSchema)},
             {"Klaudwerk.PropertySet.DoubleSchema", typeof(DoubleSchema)},
             {"Klaudwerk.PropertySet.ObjectSchema", typeof(ObjectSchema)}
