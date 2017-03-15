@@ -54,7 +54,11 @@ namespace KlaudWerk.ProcessEngine.Builder
             VarRequire=VarRequiredEnum.None;
             return this;
         }
-        
+        public VariableMapBuilder ReadOnly()
+        {
+            VarRequire|=VarRequiredEnum.ReadOnly;
+            return this;
+        }
         public StepBuilder Remove()
         {
             _parent.RemoveVarMap(this);
