@@ -42,6 +42,10 @@ namespace KlaudWerk.ProcessEngine
         /// <summary>
         /// a variable value should be set by step body execution
         /// </summary>
-        OnExit=2
+        OnExit=2,
+        /// <summary>
+        /// a variable value is read-only in the step
+        /// </summary>
+        ReadOnly=4
     }
 }
