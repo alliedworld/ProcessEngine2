@@ -114,6 +114,8 @@ namespace Klaudwerk.PropertySet
                 _serializer=new SerializerWrapper<T?>(_real);
             }
 
+            public string DisplayHint { get { return _real.DisplayHint; } set { _real.DisplayHint = value; } }
+
             public void Validate(object value)
             {
                 _real.Validate(value);
@@ -198,6 +200,9 @@ namespace Klaudwerk.PropertySet
             {
                 get { return _real; }
             }
+
+            public string DisplayHint { get { return _real.DisplayHint; } set { _real.DisplayHint = value; } }
+
             public void Validate(object value)
             {
                 _real.Validate(value);

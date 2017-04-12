@@ -92,7 +92,9 @@
   <ItemGroup>
     <Compile Include="AsyncValidationResult.cs" />
     <Compile Include="Builder\AccountBuilder.cs" />
+    <Compile Include="Builder\ActionRelationBuilder.cs" />
     <Compile Include="Builder\ConstraintBuilder.cs" />
+    <Compile Include="Builder\DisplayHintEnum.cs" />
     <Compile Include="Builder\LinkBuilder.cs" />
     <Compile Include="Builder\ProcessBuilder.cs" />
     <Compile Include="Builder\ScriptBuilder.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="Builder\VariableBuilder.cs" />
     <Compile Include="Builder\VariableMapBuilder.cs" />
     <Compile Include="Builder\VariableTypeEnum.cs" />
+    <Compile Include="Definition\ActionRelationDefinition.cs" />
     <Compile Include="Definition\ConstraintDefinition.cs" />
     <Compile Include="Definition\IProcessDefinitionVisitable.cs" />
     <Compile Include="IAssemblyServiceExecution.cs" />
@@ -160,6 +163,7 @@
     <Compile Include="StepHandlerTypeEnum.cs" />
     <Compile Include="StepTypeEnum.cs" />
     <Compile Include="TaskStatus.cs" />
+    <Compile Include="Test\ActionRelationBuilderTests.cs" />
     <Compile Include="Test\ProcessBuilderTests.cs" />
     <Compile Include="Test\ProcessBuilderValidationTests.cs" />
     <Compile Include="Test\ProcessBuldRuntimeTest.cs" />

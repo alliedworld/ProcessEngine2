@@ -44,6 +44,7 @@ namespace KlaudWerk.ProcessEngine
             if (c.PossibleValues != null)
                 schema.PossibleValues =
                     c.PossibleValues.Select(JsonConvert.DeserializeObject<T>).Cast<object>().ToArray();
+            schema.DisplayHint = c.DisplayHint.ToString();
         }
 
         /// <summary>

@@ -74,6 +74,11 @@ namespace KlaudWerk.ProcessEngine.Definition
         /// <param name="variableMapDefinition"></param>
         void Visit(VariableMapDefinition variableMapDefinition);
         /// <summary>
+        /// Visit <see cref="ActionRelationDefinition"/>
+        /// </summary>
+        /// <param name="actionRelation"></param>
+        void Visit(ActionRelationDefinition actionRelation);
+        /// <summary>
         /// Visit <see cref="ProcessDefinition"/>
         /// </summary>
         /// <param name="processDefinition"></param>

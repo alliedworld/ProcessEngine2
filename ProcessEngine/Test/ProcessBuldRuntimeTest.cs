@@ -649,6 +649,15 @@ namespace KlaudWerk.ProcessEngine.Test
 
 
         [Test]
+        public void TestVariableSetDisplayHint()
+        {
+            VariableBuilder builder=new VariableBuilder(new ProcessBuilder("id"));
+            builder.Name("var").Constraints().MaxValue(100).MinValue(10).Hint(DisplayHintEnum.Currency).Done().Done();
+            ConstraintDefinition cd=new ConstraintDefinition(builder.VariableConstraints);
+            Assert.AreEqual(DisplayHintEnum.Currency, cd.DisplayHint);
+
+        }
+        [Test]
         public void TestVariableDefinitionUserListSetCollectionValueToString()
         {
             VariableDefinition varUsers=new VariableDefinition("users",string.Empty,VariableTypeEnum.UsersList, null,null);

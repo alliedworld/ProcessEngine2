@@ -37,7 +37,8 @@ namespace KlaudWerk.ProcessEngine
             Process=1,
             Step,
             Link,
-            Script
+            Script,
+            Action
         }
         /// <summary>
         /// Gets the artifact.

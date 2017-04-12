@@ -316,6 +316,32 @@ namespace KlaudWerk.ProcessEngine.Test
             Assert.AreEqual(0, builder.Links.Count);
         }
 
+        [Test]
+        public void CreateProcessWithActionRelationsShouldBeSuccessfull()
+        {
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id: "p_001", name: "Renewal", description: "Policy Renewal");
+            builder.Start("s_1").Done().End("e_1");
+            builder.Step("s_2").Action().Name("a_1").Skippable(false).Done();
+            builder.Step("s_3").Action().Name("a_2").Skippable(false).Done();
+            builder.Link().From("s_1").To("s_2").Done();
+            builder.Link().From("s_1").To("s_3").Done();
+            builder.Link().From("s_1").To("e_1").Done();
+            builder.Link().From("s_2").To("e_1").Done();
+            builder.Link().From("s_3").To("e_1").Done();
+            builder.BuildActionRelations().If("a_1").RequiredOnStep("s_2").Then("a_2").RequiredOnStep("s_3").Done().Done();
+            IReadOnlyList<ProcessValidationResult> erros    ;
+            Assert.IsTrue(builder.TryValidate(out erros));
+            Assert.AreEqual(0,erros.Count);
+            var processDefinition = builder.Build();
+            Assert.IsNotNull(processDefinition);
+            Assert.IsNotNull(processDefinition.ActionsRelations);
+            Assert.AreEqual(1,processDefinition.ActionsRelations.Length);
+            Assert.AreEqual("s_2",processDefinition.ActionsRelations[0].SourceStepId);
+            Assert.AreEqual("s_3",processDefinition.ActionsRelations[0].TargetStepId);
+            Assert.AreEqual("a_1",processDefinition.ActionsRelations[0].SourceActionId);
+            Assert.AreEqual("a_2",processDefinition.ActionsRelations[0].TargetActionId);
+        }
 
     }
 

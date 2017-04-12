@@ -105,6 +105,9 @@ namespace Klaudwerk.PropertySet
         [DataMember]
         public bool AllowNull { get; set; }
 
+        [DataMember]
+        public string DisplayHint { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SchemaBase&lt;T&gt;"/> class.
         /// </summary>

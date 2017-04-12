@@ -24,6 +24,7 @@ THE SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Castle.Components.DictionaryAdapter;
 using KlaudWerk.ProcessEngine.Definition;
 
 namespace KlaudWerk.ProcessEngine.Builder
@@ -36,6 +37,7 @@ namespace KlaudWerk.ProcessEngine.Builder
         private readonly Dictionary<string,StepContainer> _steps=new Dictionary<string, StepContainer>();
         private readonly Dictionary<Tuple<string,string>,LinkBuilder> _links=new Dictionary<Tuple<string, string>, LinkBuilder>();
         private readonly List<VariableBuilder> _variables=new List<VariableBuilder>();
+        private readonly List<ActionRelationBuilder> _actionRelations=new EditableList<ActionRelationBuilder>();
         /// <summary>
         /// Gets the identifier.
         /// </summary>
@@ -103,6 +105,7 @@ namespace KlaudWerk.ProcessEngine.Builder
         /// </value>
         public IReadOnlyList<VariableBuilder> ProcessVariables => _variables.ToList();
 
+        public IReadOnlyList<ActionRelationBuilder> ActionRelations => _actionRelations;
         /// <summary>
         /// Initializes a new instance of the <see cref="ProcessBuilder"/> class.
         /// </summary>
@@ -223,6 +226,24 @@ namespace KlaudWerk.ProcessEngine.Builder
                 throw new ArgumentException($"The link from {linkBuilder.StepFrom.Id} to {linkBuilder.StepTo.Id} already exist.");
             _links[new Tuple<string, string>(linkBuilder.StepFrom.Id,linkBuilder.StepTo.Id)] = linkBuilder;
         }
+        /// <summary>
+        /// Start building Action Relations
+        /// </summary>
+        /// <returns></returns>
+        public ActionRelationBuilder BuildActionRelations()
+        {
+            return new ActionRelationBuilder(this);
+        }
+
+        /// <summary>
+        /// End Building Action Relations
+        /// </summary>
+        /// <param name="actionRelationBuilder"></param>
+        internal void SetActionRelationBuilder(ActionRelationBuilder actionRelationBuilder)
+        {
+            if(!_actionRelations.Contains(actionRelationBuilder))
+                _actionRelations.Add(actionRelationBuilder);
+        }
 
         /// <summary>
         /// Gets the outgoing liks from a step
@@ -264,6 +285,7 @@ namespace KlaudWerk.ProcessEngine.Builder
                 results.AddRange(ValidateEndStep());
                 results.AddRange(ValidateSteps());
                 results.AddRange(ValidateLinks());
+                results.AddRange(ValidateActionsLinks());
             }
             validationResults = results;
             return results.Count==0;
@@ -287,8 +309,11 @@ namespace KlaudWerk.ProcessEngine.Builder
             var stepDefs = BuildStepDefinitions();
             var linkDefs = BuildLiknsDefinition(stepDefs);
             var variables=BuildVariables();
-            return new ProcessDefinition(Guid.NewGuid(), Id, Name, Description, stepDefs, linkDefs, variables);
+            var actionsRels = BuildActionsRelations();
+            return new ProcessDefinition(Guid.NewGuid(), Id, Name, Description, stepDefs, linkDefs, variables, actionsRels);
         }
+
+
 
 
         /// <summary>
@@ -395,6 +420,41 @@ namespace KlaudWerk.ProcessEngine.Builder
             }
             return results;
         }
+
+        private IEnumerable<ProcessValidationResult> ValidateActionsLinks()
+        {
+            List<ProcessValidationResult> results=new List<ProcessValidationResult>();
+            foreach (var relation in _actionRelations)
+            {
+                var step = Steps.FirstOrDefault(s => s.Item1.Id == relation.SourceStepId);
+                if (step == null)
+                {
+                    results.Add(new ProcessValidationResult(ProcessValidationResult.ItemEnum.Step,relation.SourceStepId,
+                        "Source step doesn't exist"));
+                    continue;
+                }
+                if (step.Item1.Actions.All(a => a.ActionName != relation.SourceActionId))
+                {
+                    results.Add(new ProcessValidationResult(ProcessValidationResult.ItemEnum.Action,relation.SourceActionId,
+                        "Source action doesn't exist"));
+                    continue;
+                }
+                step = Steps.FirstOrDefault(s => s.Item1.Id == relation.TargetStepId);
+                if (step == null)
+                {
+                    results.Add(new ProcessValidationResult(ProcessValidationResult.ItemEnum.Step,relation.TargetStepId,
+                        "Target step doesn't exist"));
+                    continue;
+                }
+                if (step.Item1.Actions.All(a => a.ActionName != relation.TargetActionId))
+                {
+                    results.Add(new ProcessValidationResult(ProcessValidationResult.ItemEnum.Action,relation.TargetActionId,
+                        "Target action doesn't exist"));
+                }
+            }
+            return results;
+        }
+
 #endregion
 
         #region Private Methods
@@ -513,7 +573,18 @@ namespace KlaudWerk.ProcessEngine.Builder
                 new ConstraintDefinition(variableBuilder.VariableConstraints))).ToArray();
         }
 
-
+        private ActionRelationDefinition[] BuildActionsRelations()
+        {
+            return _actionRelations?
+                       .Select(r => new ActionRelationDefinition
+                       {
+                           SourceActionId = r.SourceActionId,
+                           TargetActionId = r.TargetActionId,
+                           SourceStepId = r.SourceStepId,
+                           TargetStepId = r.TargetStepId
+                       }).ToArray() ?? new ActionRelationDefinition[] { };
+        }
         #endregion
+
     }
 }

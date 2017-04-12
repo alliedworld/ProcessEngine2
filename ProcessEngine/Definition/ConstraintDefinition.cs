@@ -21,6 +21,8 @@ namespace KlaudWerk.ProcessEngine.Definition
         public string[] PossibleValues { get; set; }
         [DataMember(Name="jsdef")]
         public string DefaultValue { get; set; }
+        [DataMember(Name="hint")]
+        public DisplayHintEnum DisplayHint { get; set; }
         /// <summary>
         /// Constructor
         /// </summary>
@@ -29,6 +31,7 @@ namespace KlaudWerk.ProcessEngine.Definition
         {
             if (builder == null)
                 return;
+            DisplayHint = builder.DisplayHint;
             if (builder.HasDefault && builder.Default != null)
                 DefaultValue = JsonConvert.SerializeObject(builder.Default);
             if (builder.HasMin && builder.Min != null)

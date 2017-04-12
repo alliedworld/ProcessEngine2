@@ -83,9 +83,15 @@ namespace KlaudWerk.ProcessEngine.Definition
         public LinkDefinition[] Links { get; set;}
         /// <summary>
         ///
-        /// </summary>
+        /// Variable definitions</summary>
         [DataMember(Name="vars")]
         public VariableDefinition[] Variables { get; set;}
+        /// <summary>
+        /// Actions relations defenitins
+        /// </summary>
+        [DataMember(Name="actionsrel")]
+        public ActionRelationDefinition[] ActionsRelations { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ProcessDefinition"/> class.
         /// </summary>
@@ -96,10 +102,16 @@ namespace KlaudWerk.ProcessEngine.Definition
         /// <param name="steps">The steps.</param>
         /// <param name="links">The links.</param>
         /// <param name="variables"></param>
-        public ProcessDefinition(Guid id, string flowId, string name, string description,
+        /// <param name="actionsRelations"></param>
+        public ProcessDefinition(
+            Guid id,
+            string flowId,
+            string name,
+            string description,
             StepDefinition[] steps,
             LinkDefinition[] links,
-            VariableDefinition[] variables
+            VariableDefinition[] variables,
+            ActionRelationDefinition[] actionsRelations
             )
         {
             Id = id;
@@ -109,6 +121,7 @@ namespace KlaudWerk.ProcessEngine.Definition
             Steps = steps;
             Links = links;
             Variables = variables;
+            ActionsRelations = actionsRelations;
         }
         /// <summary>
         /// Default constructor

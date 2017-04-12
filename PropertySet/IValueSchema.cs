@@ -33,6 +33,7 @@ namespace Klaudwerk.PropertySet
     /// </summary>
     public interface IValueSchema<T>:ISchemaVisitable
     {
+
         /// <summary>
         /// Gets the type of the property.
         /// </summary>
@@ -76,6 +77,10 @@ namespace Klaudwerk.PropertySet
         /// </summary>
         /// <value><c>true</c> if the null value allowed; otherwise, <c>false</c>.</value>
         bool AllowNull { get; set; }
+        /// <summary>
+        /// Property Schema Display Hint
+        /// </summary>
+        string DisplayHint { get; set; }
         /// <summary>
         /// Validates the specified value on set.
         /// </summary>

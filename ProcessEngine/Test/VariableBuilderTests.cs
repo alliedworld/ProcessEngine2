@@ -196,5 +196,22 @@ namespace KlaudWerk.ProcessEngine.Test
 
         }
 
+        [Test]
+        public void TestVariableBuilderSetDisplayHint()
+        {
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id: "p_001", name: "Renewal", description: "Policy Renewal");
+            builder.Variables()
+                .Name("users")
+                .Type(VariableTypeEnum.GroupsList)
+                .Constraints()
+                .Hint(DisplayHintEnum.Number)
+                .Done()
+                .Done();
+            Assert.IsNotNull(builder.ProcessVariables);
+            Assert.AreEqual(1, builder.ProcessVariables.Count);
+            Assert.AreEqual(DisplayHintEnum.Number, builder.ProcessVariables[0].VariableConstraints.DisplayHint);
+        }
+
     }
 }

@@ -104,6 +104,11 @@ namespace KlaudWerk.ProcessEngine.Definition
             _sb.Append($"{variableMapDefinition.Name}|{variableMapDefinition.Required}");
         }
 
+        public void Visit(ActionRelationDefinition actionRelation)
+        {
+            _sb.Append(actionRelation.ToString());
+        }
+
         public void Visit(ProcessDefinition processDefinition)
         {
             processDefinition.Steps?.ToList().ForEach(s=>s.Accept(this));

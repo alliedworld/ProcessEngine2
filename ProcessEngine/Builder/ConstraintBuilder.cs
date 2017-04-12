@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace KlaudWerk.ProcessEngine.Builder
 {
     /// <summary>
@@ -23,6 +25,10 @@ namespace KlaudWerk.ProcessEngine.Builder
         /// Indicates that the builder has the list of possible values
         /// </summary>
         public bool HasPossibleValuesList { get; private set; }
+        /// <summary>
+        /// Display hint
+        /// </summary>
+        public DisplayHintEnum DisplayHint { get; private set; }
         /// <summary>
         /// Gets the minimum value.
         /// </summary>
@@ -104,6 +110,16 @@ namespace KlaudWerk.ProcessEngine.Builder
             HasPossibleValuesList = true;
             return this;
         }
+        /// <summary>
+        /// Set display hint
+        /// </summary>
+        /// <param name="hint"></param>
+        /// <returns></returns>
+        public ConstraintBuilder Hint(DisplayHintEnum hint)
+        {
+            DisplayHint = hint;
+            return this;
+        }
 
         /// <summary>
         /// Done building.
@@ -114,5 +130,6 @@ namespace KlaudWerk.ProcessEngine.Builder
             _parent.SetConstraint(this);
             return _parent;
         }
+
     }
 }
