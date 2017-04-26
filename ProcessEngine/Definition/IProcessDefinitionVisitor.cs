@@ -83,5 +83,10 @@ namespace KlaudWerk.ProcessEngine.Definition
         /// </summary>
         /// <param name="processDefinition"></param>
         void Visit(ProcessDefinition processDefinition);
+        /// <summary>
+        /// Visit <see cref="TagDefinition"/>
+        /// </summary>
+        /// <param name="tagDefinition"></param>
+        void Visit(TagDefinition tagDefinition);
     }
 }

@@ -28,7 +28,6 @@ using System.Threading.Tasks;
 using Klaudwerk.PropertySet;
 using Klaudwerk.PropertySet.Test;
 using KlaudWerk.ProcessEngine.Runtime;
-using KlaudWerk.ProcessEngine.Test;
 
 namespace KlaudWerk.ProcessEngine
 {
@@ -183,6 +182,14 @@ namespace KlaudWerk.ProcessEngine
         public IVariablesService GetVariableService(string variableName)
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Tag Service Provider
+        /// </summary>
+        public ITagServiceProvider TagServiceProvider
+        {
+            get;
         }
     }
 }

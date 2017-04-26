@@ -24,7 +24,8 @@ THE SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;                                                                                            
+using System.Linq;
+using Castle.Components.DictionaryAdapter.Xml;
 
 namespace KlaudWerk.ProcessEngine.Runtime
 {
@@ -56,6 +57,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
         private readonly IReadOnlyList<LinkRuntime> _links;
         private readonly IReadOnlyList<StepRuntime> _steps;
         private readonly IReadOnlyList<VariableRuntime> _variables;
+        private readonly IReadOnlyList<TagRuntime> _tags;
         private StepRuntime _lastExecutedStep;
         private readonly List<string> _errors=new List<string>();
         /// <summary>
@@ -86,6 +88,10 @@ namespace KlaudWerk.ProcessEngine.Runtime
         /// List of errors
         /// </summary>
         public IReadOnlyList<string> Errors => _errors;
+        /// <summary>
+        /// Tags Runtime
+        /// </summary>
+        public IReadOnlyList<TagRuntime> Tags => _tags;
 
         /// <summary>
         /// Process Runtime Constructor
@@ -98,12 +104,14 @@ namespace KlaudWerk.ProcessEngine.Runtime
             Guid id,
             IEnumerable<LinkRuntime> links,
             IEnumerable<StepRuntime> steps,
-            IEnumerable<VariableRuntime> variables
+            IEnumerable<VariableRuntime> variables,
+            IEnumerable<TagRuntime> tags
             )
         {
             _links = links.ToList();
             _steps = steps.ToList();
             _variables = variables.ToList();
+            _tags = tags.ToList();
             State=ProcessStateEnum.NotStarted;
             Id = id;
         }
@@ -121,6 +129,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
             IEnumerable<LinkRuntime> links,
             IEnumerable<StepRuntime> steps,
             IEnumerable<VariableRuntime> variables,
+            IEnumerable<TagRuntime> tags,
             StepRuntime suspendedInStep,
             ProcessStateEnum status
         )
@@ -128,6 +137,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
             _links = links.ToList();
             _steps = steps.ToList();
             _variables = variables.ToList();
+            _tags = tags.ToList();
             State = status;
             Id = id;
             SuspendedInStep = suspendedInStep;

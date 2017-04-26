@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using KlaudWerk.ProcessEngine.Builder;
+using KlaudWerk.ProcessEngine.Definition;
 using NUnit.Framework;
 
 namespace KlaudWerk.ProcessEngine.Test
@@ -341,6 +342,34 @@ namespace KlaudWerk.ProcessEngine.Test
             Assert.AreEqual("s_3",processDefinition.ActionsRelations[0].TargetStepId);
             Assert.AreEqual("a_1",processDefinition.ActionsRelations[0].SourceActionId);
             Assert.AreEqual("a_2",processDefinition.ActionsRelations[0].TargetActionId);
+        }
+
+        [Test]
+        public void CreateProcessWithTagsShouldBuildProcessDefinitionWithTags()
+        {
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id: "p_001", name: "Renewal", description: "Policy Renewal");
+            builder.Start("s_1").Done().End("e_1");
+            builder.Step("s_2");
+            builder.Step("s_3");
+            builder.Link().From("s_1").To("s_2").Done();
+            builder.Link().From("s_1").To("s_3").Done();
+            builder.Link().From("s_1").To("e_1").Done();
+            builder.Link().From("s_2").To("e_1").Done();
+            builder.Link().From("s_3").To("e_1").Done();
+            builder.Tag("LOB").Handler().IocService("lobService").Done().Name("Line of Business");
+            IReadOnlyList<ProcessValidationResult> erros    ;
+            Assert.IsTrue(builder.TryValidate(out erros));
+            Assert.AreEqual(0,erros.Count);
+            var processDefinition = builder.Build();
+            Assert.IsNotNull(processDefinition);
+            Assert.IsNotNull(processDefinition.Tags);
+            Assert.AreEqual(1,processDefinition.Tags.Count());
+            TagDefinition td = processDefinition.Tags[0];
+            Assert.AreEqual("LOB",td.Id);
+            Assert.AreEqual("Line of Business",td.DisplayName);
+            Assert.IsNotNull(td.Handler);
+            Assert.AreEqual("lobService",td.Handler.IocName);
         }
 
     }

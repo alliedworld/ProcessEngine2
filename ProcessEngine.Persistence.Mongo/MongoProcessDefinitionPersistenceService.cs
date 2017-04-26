@@ -25,12 +25,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Security.Authentication;
 using System.Text;
 using Castle.Components.DictionaryAdapter;
 using KlaudWerk.ProcessEngine.Definition;
 using KlaudWerk.ProcessEngine.Persistence;
 using log4net;
-using log4net.Util;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 
@@ -53,7 +53,11 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
         /// <param name="database">Mongo Database</param>
         public MongoProcessDefinitionPersistenceService(string url, string database)
         {
-            MongoClient client = new MongoClient(new MongoUrl(url));
+
+            MongoClientSettings settings = MongoClientSettings.FromUrl(new MongoUrl(url));
+            settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+
+            MongoClient client = new MongoClient(settings);
             _database = client.GetDatabase(database);
             _collection = _database.GetCollection<ProcessDefinitionPersistence>(CollectionName);
 

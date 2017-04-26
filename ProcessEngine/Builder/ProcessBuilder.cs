@@ -38,6 +38,7 @@ namespace KlaudWerk.ProcessEngine.Builder
         private readonly Dictionary<Tuple<string,string>,LinkBuilder> _links=new Dictionary<Tuple<string, string>, LinkBuilder>();
         private readonly List<VariableBuilder> _variables=new List<VariableBuilder>();
         private readonly List<ActionRelationBuilder> _actionRelations=new EditableList<ActionRelationBuilder>();
+        private readonly List<TagBuilder> _tagBuilders=new EditableList<TagBuilder>();
         /// <summary>
         /// Gets the identifier.
         /// </summary>
@@ -97,6 +98,11 @@ namespace KlaudWerk.ProcessEngine.Builder
         /// The links.
         /// </value>
         public IReadOnlyList<LinkBuilder> Links => _links.Values.ToList();
+
+        /// <summary>
+        /// Tag builders
+        /// </summary>
+        public IReadOnlyList<TagBuilder> Tags => _tagBuilders;
         /// <summary>
         /// Gets the process variables.
         /// </summary>
@@ -167,6 +173,22 @@ namespace KlaudWerk.ProcessEngine.Builder
         public StepBuilder Step(string id)
         {
             return AddStep(id, StepTypeEnum.Regular);
+        }
+        /// <summary>
+        /// Start to build a tag
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public TagBuilder Tag(string id)
+        {
+            var tagBuilder = _tagBuilders.FirstOrDefault(b => b.Id == id);
+            if (tagBuilder == null)
+            {
+                tagBuilder = new TagBuilder(id, this);
+                _tagBuilders.Add(tagBuilder);
+            }
+            return tagBuilder;
         }
 
         /// <summary>
@@ -245,6 +267,19 @@ namespace KlaudWerk.ProcessEngine.Builder
                 _actionRelations.Add(actionRelationBuilder);
         }
 
+
+        /// <summary>
+        /// remove the tag
+        /// </summary>
+        /// <param name="id"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        internal void RemoveTag(string id)
+        {
+            var tag = _tagBuilders.FirstOrDefault(t => t.Id == id);
+            if (tag != null)
+                _tagBuilders.Remove(tag);
+        }
+
         /// <summary>
         /// Gets the outgoing liks from a step
         /// </summary>
@@ -310,7 +345,9 @@ namespace KlaudWerk.ProcessEngine.Builder
             var linkDefs = BuildLiknsDefinition(stepDefs);
             var variables=BuildVariables();
             var actionsRels = BuildActionsRelations();
-            return new ProcessDefinition(Guid.NewGuid(), Id, Name, Description, stepDefs, linkDefs, variables, actionsRels);
+            var tagDefinitions = BuildTagDefinitions();
+            return new ProcessDefinition(Guid.NewGuid(), Id, Name, Description, stepDefs, linkDefs,
+                variables, actionsRels, tagDefinitions);
         }
 
 
@@ -501,10 +538,34 @@ namespace KlaudWerk.ProcessEngine.Builder
             return steps.ToArray();
         }
 
+        private TagDefinition[] BuildTagDefinitions()
+        {
+            List<TagDefinition> tags=new List<TagDefinition>();
+            foreach (TagBuilder builder in _tagBuilders)
+            {
+                TagDefinition td = new TagDefinition
+                {
+                    Id = builder.Id,
+                    DisplayName = builder.DisplayName,
+                    Handler = BuildTagHandler(builder.TagHandler)
+                };
+                tags.Add(td);
+            }
+            return tags.ToArray();
+        }
+
         private StepHandlerDefinition BuildStepHandler(StepHandlerBuilder sbStepHandler)
         {
             return new StepHandlerDefinition(stepHandlerType:sbStepHandler.StepHandlerType,
             script:sbStepHandler.ScriptBuilder==null?null:BuildScript(sbStepHandler.ScriptBuilder),
+                iocName:sbStepHandler.IocName,
+                classFullName:sbStepHandler.FullClassName);
+        }
+
+        private StepHandlerDefinition BuildTagHandler(TagHandlerBuilder sbStepHandler)
+        {
+            return new StepHandlerDefinition(stepHandlerType:sbStepHandler.StepHandlerType,
+                script:sbStepHandler.ScriptBuilder==null?null:BuildScript(sbStepHandler.ScriptBuilder),
                 iocName:sbStepHandler.IocName,
                 classFullName:sbStepHandler.FullClassName);
         }

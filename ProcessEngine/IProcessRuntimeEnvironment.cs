@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Klaudwerk.PropertySet;
+using KlaudWerk.ProcessEngine.Definition;
 using KlaudWerk.ProcessEngine.Runtime;
 
 namespace KlaudWerk.ProcessEngine
@@ -41,6 +42,23 @@ namespace KlaudWerk.ProcessEngine
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         IEnumerable<T> GetPossibleValues<T>();
+    }
+    /// <summary>
+    /// Tag Service
+    /// </summary>
+    public interface ITageService
+    {
+        string Name { get; }
+        string DisplayName { get; }
+        IReadOnlyList<string> GetValues(IProcessRuntimeEnvironment env);
+
+    }
+    /// <summary>
+    /// Tag Service Provider
+    /// </summary>
+    public interface ITagServiceProvider
+    {
+        ITageService GetTagService(TagDefinition tagDefinition);
     }
     /// <summary>
     /// Process Runtime Environment Interface
@@ -135,5 +153,9 @@ namespace KlaudWerk.ProcessEngine
         /// <param name="variableName"></param>
         /// <returns></returns>
         IVariablesService GetVariableService(string variableName);
+        /// <summary>
+        /// Tag Service Provider
+        /// </summary>
+        ITagServiceProvider TagServiceProvider { get; }
     }
 }

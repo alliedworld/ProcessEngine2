@@ -102,12 +102,14 @@
     <Compile Include="Builder\StepActionBuilder.cs" />
     <Compile Include="Builder\StepBuilder.cs" />
     <Compile Include="Builder\StepHandlerBuilder.cs" />
+    <Compile Include="Builder\TagBuilder.cs" />
     <Compile Include="Builder\VariableBuilder.cs" />
     <Compile Include="Builder\VariableMapBuilder.cs" />
     <Compile Include="Builder\VariableTypeEnum.cs" />
     <Compile Include="Definition\ActionRelationDefinition.cs" />
     <Compile Include="Definition\ConstraintDefinition.cs" />
     <Compile Include="Definition\IProcessDefinitionVisitable.cs" />
+    <Compile Include="Definition\TagDefinition.cs" />
     <Compile Include="IAssemblyServiceExecution.cs" />
     <Compile Include="IExecutionService.cs" />
     <Compile Include="IIocServiceExecution.cs" />
@@ -156,6 +158,8 @@
     <Compile Include="Runtime\ProcessStateEnum.cs" />
     <Compile Include="Runtime\ScriptCompilableBase.cs" />
     <Compile Include="Runtime\StepRuntime.cs" />
+    <Compile Include="Runtime\TagHandlerProvider.cs" />
+    <Compile Include="Runtime\TagRuntime.cs" />
     <Compile Include="Runtime\VariableRuntime.cs" />
     <Compile Include="ScriptLanguage.cs" />
     <Compile Include="SetupVariablesExt.cs" />
@@ -171,6 +175,8 @@
     <Compile Include="Test\ScriptTest.cs" />
     <Compile Include="Test\SecurityBuilderTest.cs" />
     <Compile Include="Test\StepBuilderTest.cs" />
+    <Compile Include="Test\TagBuilderTest.cs" />
+    <Compile Include="Test\TagServiceProviderTest.cs" />
     <Compile Include="Test\VariableBuilderTests.cs" />
     <Compile Include="Validators.cs" />
     <Compile Include="VarRequiredEnum.cs" />

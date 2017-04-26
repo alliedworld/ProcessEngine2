@@ -117,6 +117,11 @@ namespace KlaudWerk.ProcessEngine.Definition
             _sb.Append($"{processDefinition.FlowId}|{processDefinition.Description}|{processDefinition.Name}");
         }
 
+        public void Visit(TagDefinition tagDefinition)
+        {
+            _sb.Append($"{tagDefinition.Id}");
+        }
+
         /// <summary>
         /// Calculate MD5 checksum
         /// </summary>

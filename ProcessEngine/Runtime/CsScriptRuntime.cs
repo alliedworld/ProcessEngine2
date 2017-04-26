@@ -31,28 +31,21 @@ using Microsoft.CodeAnalysis.Scripting;
 
 namespace KlaudWerk.ProcessEngine.Runtime
 {
-    /// <summary>
-    /// Process CS Script runtime
-    /// </summary>
-    public class CsScriptRuntime
+    public class CsScriptRuntimeGeneric<T>
     {
-        private readonly ScriptDefinition _sd;
-        private Script<int> _script;
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="sd">The instance of <see cref="ScriptDefinition"/></param>
-        public CsScriptRuntime(ScriptDefinition sd)
+        protected readonly ScriptDefinition _sd;
+        protected Script<T> _script;
+
+        public CsScriptRuntimeGeneric(ScriptDefinition sd)
         {
             _sd = sd;
         }
-
         /// <summary>
         /// Try to compile the script
         /// </summary>
         /// <param name="errors"></param>
         /// <returns></returns>
-        public bool TryCompile(out string[] errors)
+        public virtual bool TryCompile(out string[] errors)
         {
             errors=new string[]{};
             if (_sd.Lang == ScriptLanguage.None)
@@ -63,7 +56,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
             if(_sd.References!=null && _sd.References.Length>0)
                 scriptOptions = scriptOptions.WithReferences(_sd.References);
             scriptOptions=scriptOptions.WithReferences(typeof(IPropertySetCollection).Assembly);
-            _script=CSharpScript.Create<int>(code: _sd.Script, options: scriptOptions,
+            _script=CSharpScript.Create<T>(code: _sd.Script, options: scriptOptions,
                 globalsType: typeof(IProcessRuntimeEnvironment));
             var diags = _script.Compile();
             if (diags != null && diags.Length > 0)
@@ -76,16 +69,42 @@ namespace KlaudWerk.ProcessEngine.Runtime
         /// <param name="env"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public async Task<int> Execute(IProcessRuntimeEnvironment env)
+        public virtual async Task<T> Execute(IProcessRuntimeEnvironment env)
         {
             if (_sd.Lang == ScriptLanguage.None)
-                return 1;
+                return default(T);
             if(_script==null)
                 throw new ArgumentException("Script is not initialized.");
-            ScriptState<int> result = await _script.RunAsync(env);
+            ScriptState<T> result = await _script.RunAsync(env);
             if (result.Exception != null)
                 throw result.Exception;
             return result.ReturnValue;
+        }
+
+    }
+    /// <summary>
+    /// Process CS Script runtime
+    /// </summary>
+    public class CsScriptRuntime:CsScriptRuntimeGeneric<int>
+    {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="sd"></param>
+        public CsScriptRuntime(ScriptDefinition sd) : base(sd)
+        {
+        }
+
+        /// <summary>
+        /// Override base method to return 1 if the script does not exist
+        /// </summary>
+        /// <param name="env"></param>
+        /// <returns></returns>
+        public override Task<int> Execute(IProcessRuntimeEnvironment env)
+        {
+            if (_sd.Lang == ScriptLanguage.None)
+                return Task.FromResult(1);
+            return base.Execute(env);
         }
     }
 }
