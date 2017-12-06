@@ -166,6 +166,35 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo
         }
 
         /// <summary>
+        /// Retrieve Process Runtime summary
+        /// </summary>
+        /// <param name="processRuntimeId"></param>
+        /// <param name="summary"></param>
+        /// <returns></returns>
+        public override bool TryGetProcessSummary(Guid processRuntimeId, out ProcessRuntimeSummary summary)
+        {
+            summary = null;
+            var filter = Builders<MongoProcessRuntimePersistence>.Filter.Eq(r => r.Id, processRuntimeId);
+            MongoProcessRuntimePersistence rtp = _collection.Find(filter).SingleOrDefault();
+            if (rtp == null)
+            {
+                return false;
+            }
+            summary=new ProcessRuntimeSummary
+            {
+                Id = processRuntimeId,
+                Errors = rtp.Errors==null?new string[]{}:rtp.Errors.ToArray(),
+                Status = (ProcessStateEnum)rtp.Status,
+                LastUpdated = rtp.LastUpdated,
+                NextStepId = rtp.NextStepId,
+                SuspendedInStep = rtp.SuspendedStepId,
+                FlowDefinitionId = rtp.DefinitionFlowId,
+                FlowDefinitionMd5 = rtp.DefinitionMd5
+            };
+            return true;
+        }
+
+        /// <summary>
         /// Continue the execution after freeze
         /// </summary>
         /// <param name="real"></param>

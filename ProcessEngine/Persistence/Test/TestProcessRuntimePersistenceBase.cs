@@ -37,7 +37,7 @@ namespace KlaudWerk.ProcessEngine.Persistence.Test
 {
     public abstract class TestProcessRuntimePersistenceBase
     {
-        protected virtual void OnTestCreateSimplePersistentRuntime()
+        protected virtual IProcessRuntime OnTestCreateSimplePersistentRuntime()
         {
             IProcessDefinitionPersisnenceService service = GetProcessDefinitionPersistenceService();
             var processDefinition = BuildProcessdefinition();
@@ -49,6 +49,7 @@ namespace KlaudWerk.ProcessEngine.Persistence.Test
             PropertySetCollection collection = new PropertySetCollection(new PropertySchemaSet(new PropertySchemaFactory()));
             IProcessRuntime runtime = pservice.Create(processDefinition, collection);
             Assert.IsNotNull(runtime);
+            return runtime;
         }
 
         protected virtual void OnTestLoadSimpleRuntimeProcess()

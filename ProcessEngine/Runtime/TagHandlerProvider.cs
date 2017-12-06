@@ -21,7 +21,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
             switch (tagDefinition.Handler.StepHandlerType)
             {
                 case StepHandlerTypeEnum.IoC:
-                    return new IocTagService(tagDefinition.Id, _iocTagServiceProvider);
+                    return new IocTagService(tagDefinition, _iocTagServiceProvider);
                 case StepHandlerTypeEnum.Script:
                     return new ScriptTagService(tagDefinition);
                 case StepHandlerTypeEnum.Service:
@@ -66,9 +66,9 @@ namespace KlaudWerk.ProcessEngine.Runtime
             /// <summary>
             /// IoC Service constructor
             /// </summary>
-            public IocTagService(string name,Func<string,ITageService> iocTagServiceProvider)
+            public IocTagService(TagDefinition tagDef,Func<string,ITageService> iocTagServiceProvider)
             {
-                _service = iocTagServiceProvider(name);
+                _service = iocTagServiceProvider(tagDef.Handler.IocName);
                 Name = _service.Name;
                 DisplayName = _service.DisplayName;
             }

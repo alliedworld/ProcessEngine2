@@ -17,7 +17,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
         [DataMember]
         public string SuspendedInStep { get; set; }
         [DataMember]
-        public string Errors { get; set; }
+        public string[] Errors { get; set; }
         [DataMember]
         public string FlowDefinitionId { get; set; }
         [DataMember]

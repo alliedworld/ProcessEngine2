@@ -55,5 +55,12 @@ namespace KlaudWerk.ProcessEngine.Runtime
         /// <param name="reason"></param>
         /// <returns></returns>
         bool Cancel(Guid processRuntimeId, string reason);
+        /// <summary>
+        /// Retrieve Process Runtime summary
+        /// </summary>
+        /// <param name="processRuntimeId"></param>
+        /// <param name="summary"></param>
+        /// <returns></returns>
+        bool TryGetProcessSummary(Guid processRuntimeId, out ProcessRuntimeSummary summary);
     }
 }

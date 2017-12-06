@@ -1,65 +1,11 @@
 using System;
-using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Klaudwerk.PropertySet;
-using KlaudWerk.ProcessEngine.Definition;
 using KlaudWerk.ProcessEngine.Runtime;
 
 namespace KlaudWerk.ProcessEngine
 {
-    [Flags]
-    public enum VariableServiceCapabilities {
-        /// <summary>
-        /// The service can validate the variable value
-        /// </summary>
-        Validate=1,
-        /// <summary>
-        /// The service can provide the list of possible values
-        /// </summary>
-        ListProvider
-    }
-    /// <summary>
-    /// Variable service interface
-    /// </summary>
-    public interface IVariablesService
-    {
-        /// <summary>
-        /// The service capabilities
-        /// </summary>
-        VariableServiceCapabilities Capabilities { get; }
-        /// <summary>
-        /// Try to validate a variable value
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="errors"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        bool TryValidate<T>(T value, out string[] errors);
-        /// <summary>
-        /// Return the list of possible values
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        IEnumerable<T> GetPossibleValues<T>();
-    }
-    /// <summary>
-    /// Tag Service
-    /// </summary>
-    public interface ITageService
-    {
-        string Name { get; }
-        string DisplayName { get; }
-        IReadOnlyList<string> GetValues(IProcessRuntimeEnvironment env);
-
-    }
-    /// <summary>
-    /// Tag Service Provider
-    /// </summary>
-    public interface ITagServiceProvider
-    {
-        ITageService GetTagService(TagDefinition tagDefinition);
-    }
     /// <summary>
     /// Process Runtime Environment Interface
     /// </summary>

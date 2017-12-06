@@ -9,6 +9,7 @@ using KlaudWerk.ProcessEngine.Persistence;
 using KlaudWerk.ProcessEngine.Persistence.Test;
 using KlaudWerk.ProcessEngine.Runtime;
 using KlaudWerk.ProcessEngine.Test;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using Moq;
 using NUnit.Framework;
@@ -52,6 +53,21 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo.Test
         public void TestCreateSimplePersistentRuntime()
         {
             OnTestCreateSimplePersistentRuntime();
+        }
+
+        [Test]
+        public void TestRetrieveSimplePersistentRuntimeSummary()
+        {
+            var runtime = OnTestCreateSimplePersistentRuntime();
+            IProcessRuntimeService pservice = GetProcessRuntime();
+            ProcessRuntimeSummary summary;
+            Assert.IsTrue(pservice.TryGetProcessSummary(runtime.Id, out summary));
+            Assert.IsNotNull(summary);
+            Assert.AreEqual(runtime.Id,summary.Id);
+            Assert.AreEqual(runtime.State,summary.Status);
+            Assert.IsFalse(string.IsNullOrEmpty(summary.FlowDefinitionId));
+            Assert.IsFalse(string.IsNullOrEmpty(summary.FlowDefinitionMd5));
+
         }
 
         [Test]

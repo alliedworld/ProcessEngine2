@@ -110,5 +110,17 @@ namespace KlaudWerk.ProcessEngine.Runtime
         {
             return true;
         }
+
+        /// <summary>
+        /// Retrieve Process Runtime summary
+        /// </summary>
+        /// <param name="processRuntimeId"></param>
+        /// <param name="summary"></param>
+        /// <returns></returns>
+        public virtual bool TryGetProcessSummary(Guid processRuntimeId, out ProcessRuntimeSummary summary)
+        {
+            summary = null;
+            return false;
+        }
     }
 }
