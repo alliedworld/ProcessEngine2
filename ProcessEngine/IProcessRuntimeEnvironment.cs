@@ -103,5 +103,10 @@ namespace KlaudWerk.ProcessEngine
         /// Tag Service Provider
         /// </summary>
         ITagServiceProvider TagServiceProvider { get; }
+
+        /// <summary>
+        /// Resets the transition.
+        /// </summary>
+        void ResetTransition();
     }
 }

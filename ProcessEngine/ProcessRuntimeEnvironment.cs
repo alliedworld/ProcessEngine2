@@ -185,6 +185,15 @@ namespace KlaudWerk.ProcessEngine
         }
 
         /// <summary>
+        /// Resets the transition.
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public void ResetTransition()
+        {
+            Transition = string.Empty;
+        }
+
+        /// <summary>
         /// Tag Service Provider
         /// </summary>
         public ITagServiceProvider TagServiceProvider

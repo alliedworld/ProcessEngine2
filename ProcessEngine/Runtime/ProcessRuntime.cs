@@ -25,7 +25,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using Castle.Components.DictionaryAdapter.Xml;
 
 namespace KlaudWerk.ProcessEngine.Runtime
 {
@@ -251,6 +250,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
             }
             try
             {
+                
                 return f(new StateActionParams
                 {
                     Step = rt,
@@ -379,6 +379,7 @@ namespace KlaudWerk.ProcessEngine.Runtime
                 {
                     SuspendedInStep = null;
                     State = ProcessStateEnum.Ready;
+                    env.ResetTransition();
                     return new Tuple<ExecutionResult, StepRuntime>(
                         new ExecutionResult(StepExecutionStatusEnum.Ready), next);
                 }

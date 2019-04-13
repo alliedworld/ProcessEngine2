@@ -32,7 +32,7 @@ namespace KlaudWerk.ProcessEngine.Test
                 .Returns(new string[]{"1","2"}).Verifiable();
             ITagServiceProvider provider = new TagHandlerProvider(name =>
             {
-                Assert.AreEqual("LOB",name);
+                Assert.AreEqual("Method",name);
                 return mService.Object;
             });
             var tagService = provider.GetTagService(td);
