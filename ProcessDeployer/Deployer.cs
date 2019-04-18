@@ -90,18 +90,21 @@ namespace Klaudwerk.ProcessDeployer
             defs[0].Accept(visitor);
             string md5 = visitor.CalculateMd5();
             IReadOnlyList<ProcessDefinitionDigest> processes = _persistence.LisAlltWorkflows();
-            var processDefinitionDigests = processes.Where(p => p.Id == guid).ToArray();
-            int nextVersion = processDefinitionDigests.Length>0?processDefinitionDigests.Max(p => p.Version)+1:1;
+            var processDefinitionDigests = processes.Where(p => p.FlowId == defs[0].FlowId).ToArray();
             foreach (ProcessDefinitionDigest p in processDefinitionDigests)
             {
                  if(p.Md5==md5)
                      throw new ArgumentException($"Process ID={defs[0].Id} MD5={md5} already deployed. Cannot deploy the same process with the same MD5.");
             }
-            foreach (ProcessDefinitionDigest p in processes)
+
+            int maxVersion = 0;
+            foreach (ProcessDefinitionDigest p in processDefinitionDigests)
             {
                 _persistence.SetStatus(p.Id, p.Version, ProcessDefStatusEnum.NotActive);
+                if (p.Version > maxVersion)
+                    maxVersion = p.Version;
             }
-            _persistence.Create(defs[0],ProcessDefStatusEnum.Active,nextVersion);
+            _persistence.Create(defs[0],ProcessDefStatusEnum.Active,maxVersion+1);
         }
 
         public void SetWorkflowStatus(Guid guid, int version, ProcessDefStatusEnum status)
