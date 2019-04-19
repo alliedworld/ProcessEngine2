@@ -242,6 +242,7 @@ commands:
             var aggregationPath = Path.Combine(
                 Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                 "Workflows");
+            Console.WriteLine($"Load Assemblies From: {aggregationPath}");
             if (Directory.Exists(aggregationPath))
             {
                 var directoryCatalog = new DirectoryCatalog(aggregationPath);
