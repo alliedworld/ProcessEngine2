@@ -36,5 +36,6 @@ namespace KlaudWerk.ProcessEngine.Builder
         UsersList,
         GroupsList,
         RolesList,
+        DateTime,
     }
 }

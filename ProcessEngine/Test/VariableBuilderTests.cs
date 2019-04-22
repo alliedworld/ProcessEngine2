@@ -167,6 +167,22 @@ namespace KlaudWerk.ProcessEngine.Test
             Assert.AreEqual("TypeName, AssemblyName",vars[0].VariableHandler.FullClassName);
 
         }
+        [Test]
+        public void TestVariableBuilderDateTime()
+        {
+            var factory = new ProcessBuilderFactory();
+            var builder = factory.CreateProcess(id: "p_001", name: "Renewal", description: "Policy Renewal");
+            builder.Variables()
+                .Name("date").Type(VariableTypeEnum.DateTime)
+                .Constraints()
+                .Hint(DisplayHintEnum.DateTime)
+                .Done()
+                .Done();
+            Assert.IsNotNull(builder.ProcessVariables);
+            Assert.AreEqual(1, builder.ProcessVariables.Count);
+            Assert.AreEqual(DisplayHintEnum.DateTime, builder.ProcessVariables[0].VariableConstraints.DisplayHint);
+
+        }
 
         [Test]
         public void TestVariableBuilderRolesList()

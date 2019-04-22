@@ -24,6 +24,10 @@ namespace KlaudWerk.ProcessEngine.Builder
         /// <summary>
         /// Number with separators (.,)
         /// </summary>
-        NumberWithSeparator
+        NumberWithSeparator,
+        /// <summary>
+        /// The date time
+        /// </summary>
+        DateTime
     }
 }

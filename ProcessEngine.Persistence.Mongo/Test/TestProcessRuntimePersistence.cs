@@ -263,6 +263,7 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo.Test
             builder
                 .Variables().Name("v_1").Type(VariableTypeEnum.String).Done()
                 .Variables().Name("v_2").Type(VariableTypeEnum.String).Done()
+                .Variables().Name("v_3").Type(VariableTypeEnum.DateTime).Done()
                 .Start("s_1").Handler().HumanTask().Done().SetName("Start")
                     .Vars().Name("v_1").Done()
                     .Vars().Name("v_2").Done()
@@ -272,6 +273,7 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo.Test
                 .Step("s_3").Handler().HumanTask().Done()
                     .Vars().Name("v_1").OnExit().Done()
                     .Vars().Name("v_2").OnExit().Done()
+                    .Vars().Name("v_3").OnExit().Done()
                     .Done()
                 .End("e_1").SetName("End Process").Done()
                 .Link().From("s_1").To("s_2").Name("s_1_s_2").Done()
@@ -309,12 +311,13 @@ namespace Klaudwerk.ProcessEngine.Persistence.Mongo.Test
             Assert.AreEqual(execute.Item2.StepId, "s_1");
             collection.Set("v_1", "v_1");
             collection.Set("v_2", "v_2");
+            collection.Set("v_3",(DateTime?)DateTime.Parse("10/11/2019"));
             execute = runtime.Continue(mEnv.Object);
             Assert.IsNotNull(execute);
             Assert.AreEqual(StepExecutionStatusEnum.Ready, execute.Item1.Status, "The Workflow should be in Suspended state");
             Assert.AreEqual(execute.Item2.StepId, "s_3");
             Assert.IsNotNull(execute.Item2.StepDefinition.VariablesMap);
-            Assert.AreEqual(2,execute.Item2.StepDefinition.VariablesMap.Length);
+            Assert.AreEqual(3,execute.Item2.StepDefinition.VariablesMap.Length);
             Assert.AreEqual(VarRequiredEnum.OnExit, execute.Item2.StepDefinition.VariablesMap[0].Required);
             Assert.AreEqual(VarRequiredEnum.OnExit, execute.Item2.StepDefinition.VariablesMap[1].Required);
 

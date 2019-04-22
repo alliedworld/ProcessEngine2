@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
   */
 
+using System;
 using System.Linq;
 using Klaudwerk.PropertySet;
 using KlaudWerk.ProcessEngine.Builder;
@@ -105,6 +106,11 @@ namespace KlaudWerk.ProcessEngine
                     var boolSchema = collection.Schemas.SchemaFactory.Create(typeof (bool));
                     SetupConstraints<bool?>(vd.Constraints, boolSchema);
                     collection.Add(vd.Name, boolSchema);
+                    break;
+                case VariableTypeEnum.DateTime:
+                    var dateTimeSchema = collection.Schemas.SchemaFactory.Create(typeof(DateTime));
+                    SetupConstraints<DateTime?>(vd.Constraints, dateTimeSchema);
+                    collection.Add(vd.Name, dateTimeSchema);
                     break;
                 case VariableTypeEnum.None:
                     break;

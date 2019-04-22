@@ -646,8 +646,15 @@ namespace KlaudWerk.ProcessEngine.Test
             Assert.AreEqual(3, valueSchema.PossibleValues.Count());
             Assert.AreEqual("One",valueSchema.PossibleValues.ElementAt(0).ToString());
         }
-
-
+        [Test]
+        public void TestSetupDateTimeVariable()
+        {
+            IPropertySchemaSet propertySet = new ValueSetCollectionTest.MockPropertySchemaSet(new PropertySchemaFactory());
+            IPropertySetCollection collection = new ValueSetCollectionTest.MockPropertySetCollection(propertySet);
+            VariableDefinition varDateTime=new VariableDefinition("v_dateTime",string.Empty,VariableTypeEnum.DateTime, null,null);
+            VariableRuntime rt=new VariableRuntime(varDateTime);
+            varDateTime.SetupVariable(collection);
+        }
         [Test]
         public void TestVariableSetDisplayHint()
         {
