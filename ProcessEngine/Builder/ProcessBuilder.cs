@@ -347,7 +347,7 @@ namespace KlaudWerk.ProcessEngine.Builder
             var actionsRels = BuildActionsRelations();
             var tagDefinitions = BuildTagDefinitions();
             return new ProcessDefinition(Guid.NewGuid(), Id, Name, Description, stepDefs, linkDefs,
-                variables, actionsRels, tagDefinitions);
+                variables, actionsRels, tagDefinitions, DueInDays);
         }
 
 

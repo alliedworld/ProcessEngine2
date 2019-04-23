@@ -96,6 +96,14 @@ namespace KlaudWerk.ProcessEngine.Definition
         /// </summary>
         [DataMember(Name="tags")]
         public TagDefinition[] Tags { get; set; }
+        /// <summary>
+        /// Gets or sets the due in days.
+        /// </summary>
+        /// <value>
+        /// The due in days.
+        /// </value>
+        [DataMember(Name="dueInDays")]
+        public int? DueInDays { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProcessDefinition"/> class.
@@ -118,7 +126,8 @@ namespace KlaudWerk.ProcessEngine.Definition
             LinkDefinition[] links,
             VariableDefinition[] variables,
             ActionRelationDefinition[] actionsRelations,
-            TagDefinition[] tagdefinitions
+            TagDefinition[] tagdefinitions,
+            int? dueInDays
             )
         {
             Id = id;
@@ -130,13 +139,9 @@ namespace KlaudWerk.ProcessEngine.Definition
             Variables = variables;
             ActionsRelations = actionsRelations;
             Tags = tagdefinitions;
+            DueInDays = dueInDays;
         }
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public ProcessDefinition()
-        {
-        }
+        
 
         /// <summary>
         /// Accept the visitor

@@ -331,11 +331,14 @@ namespace KlaudWerk.ProcessEngine.Test
             builder.Link().From("s_2").To("e_1").Done();
             builder.Link().From("s_3").To("e_1").Done();
             builder.BuildActionRelations().If("a_1").RequiredOnStep("s_2").Then("a_2").RequiredOnStep("s_3").Done().Done();
+            builder.SetDueInDays(10);
             IReadOnlyList<ProcessValidationResult> erros    ;
             Assert.IsTrue(builder.TryValidate(out erros));
             Assert.AreEqual(0,erros.Count);
             var processDefinition = builder.Build();
             Assert.IsNotNull(processDefinition);
+            Assert.IsTrue(processDefinition.DueInDays.HasValue);
+            Assert.AreEqual(10,processDefinition.DueInDays);
             Assert.IsNotNull(processDefinition.ActionsRelations);
             Assert.AreEqual(1,processDefinition.ActionsRelations.Length);
             Assert.AreEqual("s_2",processDefinition.ActionsRelations[0].SourceStepId);
@@ -343,7 +346,7 @@ namespace KlaudWerk.ProcessEngine.Test
             Assert.AreEqual("a_1",processDefinition.ActionsRelations[0].SourceActionId);
             Assert.AreEqual("a_2",processDefinition.ActionsRelations[0].TargetActionId);
         }
-
+        
         [Test]
         public void CreateProcessWithTagsShouldBuildProcessDefinitionWithTags()
         {
@@ -362,6 +365,7 @@ namespace KlaudWerk.ProcessEngine.Test
             Assert.IsTrue(builder.TryValidate(out erros));
             Assert.AreEqual(0,erros.Count);
             var processDefinition = builder.Build();
+            Assert.IsFalse(processDefinition.DueInDays.HasValue);
             Assert.IsNotNull(processDefinition);
             Assert.IsNotNull(processDefinition.Tags);
             Assert.AreEqual(1,processDefinition.Tags.Count());
